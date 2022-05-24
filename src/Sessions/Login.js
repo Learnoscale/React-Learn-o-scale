@@ -47,7 +47,7 @@ export default function Login() {
                     <div className={'form'}>
                     <h1 className={'h3'}>Sign in</h1>
                     <SocialLogin/>
-                    <p>or use your account</p>
+                    <p>or use your account here??</p>
                     <input maxLength={10} placeholder="Phone no." name="phone"   value={params.phone}
                            onChange={e => {
                             const {value: phone} = e.target;
