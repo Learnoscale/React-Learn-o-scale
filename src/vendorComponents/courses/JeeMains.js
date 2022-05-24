@@ -221,7 +221,8 @@ import {Footer} from '../Footer'
                 <div className="test-area-content">
                   <div className="conta">
                     <img
-                      src="https://soe-buck-lb.storage.googleapis.com/tempFile/${PackageDetails.file}"
+                      alt="img"
+                      src="#"
                       style={{ height: 187, width: "100%" }}
                     />
                     <div className="content" id="home_quicklinks">
@@ -234,7 +235,7 @@ import {Footer} from '../Footer'
                       >
                         Silver Package
                       </h1>
-                      <a className="quicklink link1" href="#">
+                      <Link className="quicklink link1" to="#">
                         {" "}
                         <span className="ql_caption">
                           {" "}
@@ -248,7 +249,7 @@ import {Footer} from '../Footer'
                           </span>
                         </span>{" "}
                         <span className="ql_top" /> <span className="ql_bottom" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="test-area-info">
@@ -294,6 +295,7 @@ import {Footer} from '../Footer'
                           />{" "}
                           &nbsp; Based on New Pattern
                           <img
+                            alt=""
                             src="https://soe-buck-lb.storage.googleapis.com/front-end/images/New.png"
                             style={{ marginTop: "-14px" }}
                           />
@@ -385,7 +387,7 @@ import {Footer} from '../Footer'
                       <li>
                         <button
                           id="rzp-button1"
-                          value="${first.id},${first.packageId},0"
+                          value="value"
                           className="btn btn-sm btn-success subpackagebuy"
                         >
                           BUY NOW
@@ -403,7 +405,8 @@ import {Footer} from '../Footer'
                 <div className="test-area-content">
                   <div className="conta">
                     <img
-                      src="https://soe-buck-lb.storage.googleapis.com/tempFile/${PackageDetails.file}"
+                      alt=""
+                      src="#"
                       style={{ height: 187, width: "100%" }}
                     />
                     <div className="content" id="home_quicklinks">
@@ -416,7 +419,7 @@ import {Footer} from '../Footer'
                       >
                         Gold Package
                       </h1>
-                      <a className="quicklink link1" href="#">
+                      <Link className="quicklink link1" to="#">
                         {" "}
                         <span className="ql_caption">
                           {" "}
@@ -430,7 +433,7 @@ import {Footer} from '../Footer'
                           </span>
                         </span>{" "}
                         <span className="ql_top" /> <span className="ql_bottom" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="test-area-info">
@@ -476,6 +479,7 @@ import {Footer} from '../Footer'
                           />{" "}
                           &nbsp; Based on New Pattern
                           <img
+                            alt=""
                             src="https://soe-buck-lb.storage.googleapis.com/front-end/images/New.png"
                             style={{ marginTop: "-14px" }}
                           />
@@ -567,7 +571,7 @@ import {Footer} from '../Footer'
                       <li>
                         <button
                           id="rzp-button1"
-                          value="${second.id},${second.packageId},0"
+                          value="value"
                           className="btn btn-sm btn-success subpackagebuy"
                         >
                           BUY NOW
@@ -585,7 +589,8 @@ import {Footer} from '../Footer'
                 <div className="test-area-content">
                   <div className="conta">
                     <img
-                      src="https://soe-buck-lb.storage.googleapis.com/tempFile/${PackageDetails.file}"
+                      alt=""
+                      src="#"
                       style={{ height: 187, width: "100%" }}
                     />
                     <div className="content" id="home_quicklinks">
@@ -598,7 +603,7 @@ import {Footer} from '../Footer'
                       >
                         Diamond Package
                       </h1>
-                      <a className="quicklink link1" href="#">
+                      <Link className="quicklink link1" to="#">
                         {" "}
                         <span className="ql_caption">
                           {" "}
@@ -612,7 +617,7 @@ import {Footer} from '../Footer'
                           </span>
                         </span>{" "}
                         <span className="ql_top" /> <span className="ql_bottom" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="test-area-info">
@@ -658,6 +663,7 @@ import {Footer} from '../Footer'
                           />{" "}
                           &nbsp; Based on New Pattern
                           <img
+                            alt=""
                             src="https://soe-buck-lb.storage.googleapis.com/front-end/images/New.png"
                             style={{ marginTop: "-14px" }}
                           />
@@ -749,7 +755,7 @@ import {Footer} from '../Footer'
                       <li>
                         <button
                           id="rzp-button1"
-                          value="${PackageDetails.id},${PackageDetails.packageId},1"
+                          value="value"
                           className="btn btn-sm btn-success subpackagebuy"
                         >
                           BUY NOW
@@ -1139,13 +1145,13 @@ import {Footer} from '../Footer'
         </div>
       </div>
       <Footer/>
-      <a
-        href="${pageContext.request.contextPath}/#"
+      <Link
+        href="#"
         className="scroll_top"
         title="Scroll to Top"
         style={{ display: "inline" }}
       >
         Scroll
-      </a>
+      </Link>
     </>
     )}

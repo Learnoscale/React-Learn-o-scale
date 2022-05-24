@@ -52,7 +52,7 @@ export default function Inquiry() {
     <div className="row">
       <div className="col-sm-12 col-md-12 col-lg-12 col-xs-12">
         <div className="col-sm-6 col-md-6 col-xs-12 col-lg-6">
-          <input type="hidden" id="hiddenid" defaultValue="${msg}" />
+          <input type="hidden" id="hiddenid" defaultValue="{msg}" />
           <div className="form-group">
             <div style={{}}>
               <label htmlFor="name">Full Name:</label>
