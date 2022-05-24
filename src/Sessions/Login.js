@@ -69,7 +69,7 @@ export default function Login() {
                     }}>Forget your Password?</Link>
                     <Link className={'d-lg-none'} to={'/sign-up'}>Create a new Account? <span
                         className={'text-primary'}>Sign Up</span></Link>
-                    <button onClick={() => {loginFunction()}}>Sign In</button>
+                    <button onClick={() => {loginFunction()}}>Sign innnnn</button>
                 </div> : <></>}
 
 
