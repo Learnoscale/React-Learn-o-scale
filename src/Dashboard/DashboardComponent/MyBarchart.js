@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { BarChart, Bar, } from "recharts";
 import {makeStyles} from "@material-ui/core/styles";
 const data = [

@@ -18,7 +18,7 @@ import {Add} from "@material-ui/icons";
 import { crud } from "../../services/crud";
 import { useLocation } from "react-router-dom";
 import clsx from "clsx";
-import AddNewSection1 from './AddNewSection1';
+
 
 const label = {inputProps: { 'aria-label': 'Switch demo'}};
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -99,9 +99,7 @@ export default function AddNewSection() {
           });
     }
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+ 
   const handleClose = () => {
     setOpen(false);
   };
@@ -113,6 +111,7 @@ export default function AddNewSection() {
 
   return (
     <div>
+      <p>{loader}</p>
       <Button variant="contained" onClick={() => {
         saveSctiondata();
         Addsectionsave();

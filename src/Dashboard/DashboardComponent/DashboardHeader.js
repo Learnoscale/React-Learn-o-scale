@@ -11,7 +11,7 @@ import Drawer from "../../MainComponents/Drawer";
 import {Themes} from '../../Theme/theme';
 import logo from "../../Images/dashLogo.jpg";
 import '../../Website/Component/headerCss.css';
-import { useParams } from "react-router-dom";
+
 
 export default function HeaderWeb() {
  
@@ -59,7 +59,7 @@ export default function HeaderWeb() {
                                           setUserLogin(null)
                                       }}>
                                     <MenuItem onClick={() => {
-                                     {history.push('/profile/')}
+                                    // {history.push('/profile/')}
                                     }}>Profile</MenuItem>
                                     <MenuItem onClick={() => {
                                         setUserLogin(null)

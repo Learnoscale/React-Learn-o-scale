@@ -41,7 +41,7 @@ export default function SignUp() {
         ButtonText: 'Send Otp'
       
     })
-    const [hide1, setHide1] = useState({
+    const [hide1] = useState({
         phoneHide: true,
         formHIde: false,
         ButtonText: 'Resent Otp'
@@ -70,7 +70,7 @@ export default function SignUp() {
                 var formdata = new FormData();
                 formdata.append("phone", params.phone);
                 try {
-                    const {status} = await crud.create('/api/validate_phone/', formdata);
+                    //const {status} = await crud.create('/api/validate_phone/', formdata);
                     setLoader(false);
                     setState(false);
                 } catch (e) {
@@ -87,7 +87,7 @@ export default function SignUp() {
                 notify.show(error[0], "error", 1000);
             } else {
                 try {
-                    var formdata = new FormData();
+                    //var formdata = new FormData();
                     formdata.append("phone", params.phone);
                     formdata.append("password", params.password);
                     setLoader(true);
@@ -119,7 +119,7 @@ export default function SignUp() {
                 var formdata = new FormData();
                 formdata.append("phone", params.phone);
                 try {
-                    const {status} = await crud.create('/api/validate_phone/', formdata);
+                    //const {status} = await crud.create('/api/validate_phone/', formdata);
                     setLoader(false);
                     setState(false);
                 } catch (e) {

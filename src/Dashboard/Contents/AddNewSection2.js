@@ -9,7 +9,7 @@ import {IconButton, Switch} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import './Contents.css'
 import { Themes } from "../../Theme/theme";
-import {Add} from "@material-ui/icons";
+
 
 const label = {inputProps: { 'aria-label': 'Switch demo'}};
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({

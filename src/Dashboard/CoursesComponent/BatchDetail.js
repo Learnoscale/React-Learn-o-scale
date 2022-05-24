@@ -10,12 +10,12 @@ import {
   Dialog,
   DialogActions,
   DialogTitle,
-  Badge,
+  
   Slide,
 } from "@material-ui/core";
 import {
   Search,
-  YouTube,
+  
   FilterList,
   Add,
   MoreVert,
@@ -25,14 +25,14 @@ import {
   FileCopyRounded,
 
 } from "@material-ui/icons";
-import { Checkbox,Box,Paper,Stack,Radio,FormControl,RadioGroup,FormControlLabel } from '@mui/material';
+import { Box,Paper,Stack,Radio,FormControl,RadioGroup,FormControlLabel } from '@mui/material';
 import { Themes } from "../../Theme/theme";
 import clsx from "clsx";
 import { crud } from "../../services/crud";
 import "../QuestionBankComponent/QuestionCss.css";
 import Loader from "../../MainComponents/Loader";
 import {BatchSidebar} from "../../MainComponents/SideNav";
-import { NavLink,useHistory,useLocation} from 'react-router-dom';
+import { NavLink,useLocation} from 'react-router-dom';
 import '../../Website/Component/headerCss.css';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { pink } from '@mui/material/colors';
@@ -47,10 +47,10 @@ const courses = [
 ]
 
 export default function BatchDetail() {
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+  
   const classes = useStyles();
   const location = useLocation();
-  const history = useHistory();
+  
   const [formData, setFormData] = useState({
     formTitle: "",
     ButtonTitle: "",
@@ -67,8 +67,8 @@ export default function BatchDetail() {
   const [loader, setLoader] = useState(false);
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [data, setData] = useState();
+ 
+  const [data] = useState();
   const [anchorEl, setAnchorEl] = useState(null);
   const [courseData, setCourseData] = useState("");
   //const [courses, setCourses] = useState();
@@ -119,21 +119,7 @@ export default function BatchDetail() {
 
 
      //For duplicating Batch
-  function getDuplicateBatch() {
-    setOpen2(true);
-    setFormaData({
-      formaTitle0: "Duplicate Batch",
-      formaTitle1: "Batch Name",
-      formaTitle2: "Choose Batches",
-      formaTitle3: "",
-      ButtonTitle: "Duplicate",
-    });
-    
-    setCourseData({
-      courseName: data.category_title,
-      course_subtitle: data.category_short,
-    });
-  }
+
   //delete
   async function deletecourse() {
     await crud.confirm();
@@ -144,7 +130,7 @@ export default function BatchDetail() {
   async function getCourses() {
     setLoader(true);
     try {
-      const data = await crud.retrieve("/categoryapi/");
+     // const data = await crud.retrieve("/categoryapi/");
      // setCourses(data);
       setLoader(false);
     } catch (e) {
@@ -156,7 +142,8 @@ export default function BatchDetail() {
     getCourses();
   }, [location]);
   return (
-    <>
+    <> 
+      {formaData}
       <div className="container-fluid" style={{textSize: 8}}>
         <div className="row px-lg-0 py-0">
           <div className="col-lg-1 text" style={{background: Themes.MainHeaderColor}}><ul className="navbar-nav me-auto mb-2 mb-lg-0">

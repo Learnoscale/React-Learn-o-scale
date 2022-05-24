@@ -11,28 +11,19 @@ import {Themes} from "../../Theme/theme";
 import clsx from "clsx";
 import {crud} from "../../services/crud";
 import Slide from '@material-ui/core/Slide';
-import {colourOptions} from "../../MainComponents/SideNav";
-import Select from 'react-select'
+
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import './QuestionCss.css';
 import { useParams } from "react-router-dom";
 import Loader from '../../MainComponents/Loader'
-const courses =[
-    {id:1,title:'Kinetic',topic:45,subtitle:'Physics'},
-    {id:2,title:'Motion',topic:405,subtitle:'Physics'},
-    {id:3,title:'Electro Magnetic Induction',topic:125,subtitle:'Physics'},
-    {id:4,title:'Magnetic Field',topic:35,subtitle:'Physics'},
-]
+
 export default function QuestionTopic() {
     const params = useParams();
     const p =[params.id];
     const classes = useStyles();
     const history = useHistory();
     const location = useLocation();
-    const [state, setState] = useState({
-        courseCategory: null,
-        courseSubject: null
-    });
+
     const [formData, setFormData] = useState({
         formTitle: '',
         ButtonTitle: ''
@@ -98,7 +89,7 @@ export default function QuestionTopic() {
     useEffect(() => {
         getClearAll();
         getTopics();
-    }, [location])
+    }, )
     return (
         <>
             <div className={'container-fluid py-4 '}>

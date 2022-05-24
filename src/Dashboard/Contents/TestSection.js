@@ -7,8 +7,7 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddNewSection from './AddNewSection';
-import { Row, Col } from 'react-bootstrap';
+
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -22,12 +21,12 @@ const Accordion = styled((props) => (
   },
 }));
 
-const AccordionSummary = styled((props) => ( console.log('Accordion Props', props),
+  const AccordionSummary = styled((props) => ( 
   <MuiAccordionSummary
     expandIcon={< ExpandMoreIcon sx={{ fontSize: '1.5rem' }} />}
     {...props}
   />
-))(({ theme }) => ({
+  ))(({ theme }) => ({
   backgroundColor:
     theme.palette.mode === 'light'
       ? 'rgba(255, 255, 255, .05)'

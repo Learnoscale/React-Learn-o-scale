@@ -6,24 +6,19 @@ import {
   InputAdornment,
   Button,
   IconButton,
-  Menu,
-  MenuItem,
+
   Dialog,
   DialogActions,
   DialogTitle,
-  Badge,
+  
   Slide,
 } from "@material-ui/core";
 import {
   Search,
-  YouTube,
   FilterList,
   Add,
-  MoreVert,
-  Edit,
-  Delete,
   Clear,
-  FileCopyRounded,
+  
 
 } from "@material-ui/icons";
 import { Checkbox } from '@mui/material';
@@ -33,7 +28,7 @@ import { crud } from "../../services/crud";
 import "../QuestionBankComponent/QuestionCss.css";
 import Loader from "../../MainComponents/Loader";
 import {BatchSidebar} from "../../MainComponents/SideNav";
-import { NavLink,useHistory,useLocation} from 'react-router-dom';
+import { NavLink,useLocation} from 'react-router-dom';
 import '../../Website/Component/headerCss.css';
 import Link from '@mui/material/Link';
 
@@ -42,7 +37,7 @@ export default function Students() {
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const classes = useStyles();
   const location = useLocation();
-  const history = useHistory();
+
   const [formData, setFormData] = useState({
     formTitle: "",
     ButtonTitle: "",
@@ -61,7 +56,7 @@ export default function Students() {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [data, setData] = useState();
-  const [anchorEl, setAnchorEl] = useState(null);
+
   const [courseData, setCourseData] = useState("");
      
   // handleAdd = (e) => {
@@ -82,32 +77,13 @@ export default function Students() {
       course_subtitle: "",
     });
   }
-  //Edit
-  function getEdit() {
-    setOpen(true);
-    setFormData({
-      formTitle: "Edit Category",
-      ButtonTitle: "UPDATE",
-    });
-    setCourseData({
-      courseName: data.category_title,
-      course_subtitle: data.category_short,
-    });
-  }
-  //For duplicating data
-  function getDuplicateCourse() {
-    setOpen1(true);
-    setFormaData({
-      formaTitle0: "Duplicate Course",
-      formaTitle1: "Course Name",
-      formaTitle2: "Choose Batches",
-      formaTitle3: "",
-      ButtonTitle: "Next",
-    });
-  }
+  
 
 
-     //For duplicating Batch
+
+
+
+  //For duplicating Batch
   function getDuplicateBatch() {
     setOpen2(true);
     setFormaData({
@@ -123,17 +99,13 @@ export default function Students() {
       course_subtitle: data.category_short,
     });
   }
-  //delete
-  async function deletecourse() {
-    await crud.confirm();
-    await crud.delete("/categoryapi/" + data.category_id);
-    getCourses();
-  }
+  
+
   // getCourses
   async function getCourses() {
     setLoader(true);
     try {
-      const data = await crud.retrieve("/categoryapi/");
+      //const data = await crud.retrieve("/categoryapi/");
      // setCourses(data);
       setLoader(false);
     } catch (e) {
@@ -146,6 +118,7 @@ export default function Students() {
   }, [location]);
   return (
     <>
+      {setData}
       <div className="container-fluid" style={{textSize: 8}}>
         <div className="row px-lg-0 py-0">
           <div className="col-lg-1 text" style={{background: Themes.MainHeaderColor}}><ul className="navbar-nav me-auto mb-2 mb-lg-0">

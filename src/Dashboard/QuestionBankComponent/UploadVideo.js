@@ -1,8 +1,6 @@
 import React from 'react'
 import "./uploadImage.css";
-import Fab from '@mui/material/Fab';
-import EditIcon from '@mui/icons-material/Edit';
-import Avatar from '@mui/material/Avatar';
+
 import { Button } from 'react-bootstrap';
 import AddIcon from '@material-ui/icons/Add';
 export default class VideoUpload extends React.Component {
@@ -110,8 +108,7 @@ export default class VideoUpload extends React.Component {
 	}
 	
 	render() {
-		const {urls, files, isDragging} = this.state;
-		const dropClass = isDragging ? "dragDrop dragging" : "dragDrop";
+	
 		
 		return (
 			<div className='outer'>  

@@ -12,8 +12,7 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import SearchIcon from "@material-ui/icons/Search";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
 import {
   Search,
   YouTube,
@@ -25,11 +24,9 @@ import {
   Clear,
   FileCopyRounded,
 } from "@material-ui/icons";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+
 import { Checkbox } from '@mui/material';
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import ClearIcon from "@material-ui/icons/Clear";
+
 import { Themes } from "../../Theme/theme";
 import clsx from "clsx";
 import { crud } from "../../services/crud";
@@ -148,21 +145,11 @@ export default function CourseCourse() {
       setLoader(false);
       }
   }
-  async function deletecourse(){
-        
-    await crud.confirm()
-    
-    await crud.delete('/courseapi/'+ data.cr_id)
-    .then((response) => {
-        if(response==null){
-            getCourses();
-        }
-    });
-  }
+
   useEffect(() => {
     getClearAll();
     getCourses();
-  }, [location]);
+  }, );
   return (
     <>
       <div className="container-fluid" style={{textSize: 8}}>

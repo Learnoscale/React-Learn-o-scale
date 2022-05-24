@@ -2,8 +2,7 @@ import React, {useState} from 'react'
 import MyLinechart from './MyLinechart';
 import MixedChart from "./MixedChart";
 import {makeStyles, Grid,TextField,MenuItem,Divider} from '@material-ui/core';
-import DateFnsUtils from '@date-io/date-fns';
-import {MuiPickersUtilsProvider,KeyboardDatePicker,} from '@material-ui/pickers';
+
 import ArrowUpwardRoundedIcon from "@material-ui/icons/ArrowUpwardRounded";
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -262,13 +261,11 @@ const data1 = [
 export default function Middlefirst() {
     const [active, setActive] = useState(0);
     const [chartData, setCharData] = useState(pdata);
-    const [selectedDate, setSelectedDate] = React.useState(new Date().toDateString());
+    
     const [mixedChart, setMixedChart] = useState(data)
     const [title, setTitle] = useState('student')
     const classes = useStyles();
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-    };
+  
     function GetData(index) {
         setActive(index);
         if (index === 1) {

@@ -10,12 +10,12 @@ import {
   Dialog,
   DialogActions,
   DialogTitle,
-  Badge,
+  
   Slide,
 } from "@material-ui/core";
 import {
   Search,
-  YouTube,
+  
   FilterList,
   Add,
   MoreVert,
@@ -77,7 +77,7 @@ export default function CourseBatches() {
   const [data, setData] = useState();
   const [anchorEl, setAnchorEl] = useState(null);
   const [courseData, setCourseData] = useState("");
-  //const [courses, setCourses] = useState();
+  
   function GetFormManage() {
     setOpen(true);
     setFormData({
@@ -143,7 +143,7 @@ export default function CourseBatches() {
   async function getCourses() {
     setLoader(true);
     try {
-      const data = await crud.retrieve("/categoryapi/");
+      //const data = await crud.retrieve("/categoryapi/");
      // setCourses(data);
       setLoader(false);
     } catch (e) {

@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import {Button} from "@material-ui/core";
+
 import {Link ,Redirect} from 'react-router-dom'
-import OtpInput from 'react-otp-input';
+
 import SocialLogin from "./SocialLogin";
 import _ from 'lodash';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectUser,makeLogin} from "../services/Slices/UserSlice";
-import {crud} from "../services/crud";
+
 import './FormStyle.css';
 import {notify} from "react-notify-toast";
 import Loader from "../MainComponents/Loader";

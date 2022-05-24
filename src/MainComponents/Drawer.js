@@ -57,7 +57,7 @@ export default function Drawer(props) {
         >
             <List style={{background:props.background}}>
                     <ListItem button >
-                        <img src={WebLogo} className={clsx(classes.Logo,'img-fluid')}/>
+                        <img src={WebLogo} className={clsx(classes.Logo,'img-fluid')} alt="img"/> 
                     </ListItem>
             </List>
             <Divider />
@@ -83,7 +83,7 @@ export default function Drawer(props) {
             {['left'].map((anchor) => (
                 <React.Fragment key={anchor}>
                     <div className={clsx('px-2 ',classes.Header)} style={{background:props.background}}>
-                        <img src={WebLogo} className={clsx(classes.Logo,'img-fluid')}/>
+                        <img src={WebLogo} className={clsx(classes.Logo,'img-fluid')} alt="img"/>
                     <Button className={'text-light'} onClick={toggleDrawer(anchor, true)}><DehazeIcon/></Button>
                     </div>
                     <SwipeableDrawer

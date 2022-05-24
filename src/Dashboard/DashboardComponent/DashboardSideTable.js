@@ -83,7 +83,7 @@ export default function SideTable() {
                     <Box number={2005} title="Watch time (hours)" />
                 </Grid>
                 <Grid item xs={12}>
-                    <Box number={15} number={2000} title="Assignments Submmited" />
+                    <Box number={2000} title="Assignments Submmited" />
                 </Grid>
             </Grid>
         </>

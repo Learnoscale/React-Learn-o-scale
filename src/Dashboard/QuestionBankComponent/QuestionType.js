@@ -3,7 +3,7 @@ import {makeStyles,TextField,InputAdornment,Button,IconButton,Menu,MenuItem,Dial
 import {useHistory} from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import AddIcon from '@material-ui/icons/Add';
+
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -30,13 +30,7 @@ export default function QuestionType() {
     const [anchorEl, setAnchorEl] = useState(null);
     const [courseData, setCourseData] = useState('');
     const [courses,setCourses]=useState();
-    function GetFormManage() {
-        setOpen(true)
-        setFormData({
-            formTitle: 'Create New Type',
-            ButtonTitle: 'Create Type',
-        });
-    }
+
     function getClearAll() {
         setCourseData({
             typeName: '',

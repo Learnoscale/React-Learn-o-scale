@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Switch,} from "react-router-dom";
 import PrivateRouter from "../PrivateRouter";
 import Form from '../Sessions/Form';
 import Dashboard from "../Dashboard/Pages/Dashboard";
-import Courses from "../Dashboard/Pages/Courses";
+
 import QuestionBank from "../Dashboard/Pages/QuestionBanks";
 import CourseCategory from "../Dashboard/Pages/CourseCategory";
 import QuestionCourse from '../Dashboard/QuestionBankComponent/QuestionCourse'

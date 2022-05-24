@@ -87,7 +87,7 @@ export default function QuestionSubject() {
     useEffect(() => {
         getSubject();
         getClearAll();
-    }, [location]);
+    }, );
     return (
         <>
             <div className={'container-fluid py-4 '}>

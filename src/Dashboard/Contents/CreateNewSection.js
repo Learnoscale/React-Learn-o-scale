@@ -9,7 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import CreateNewTest from './CreateNewTest';
+
 import AddQuestionsL from './AddQuestions';
 import SimpleAccordion from './TestSection';
 import TestInstructions from './TestInstruction';
@@ -72,10 +72,14 @@ export default function CreateNewSection(props) {
           <div className="row border m-2">
           <div className="col-md-3"><h6>First Section</h6><p>10 Questions 30 mins  30 Marks</p></div>
           <div className="col-md-2"></div>
-            <div className="col-md-3 dropdown"><a className='dropbtn' ><h6>Add Questions</h6></a>
-          <div className='dropdown-content'> <a href="#"><AddQuestionsL/></a>
-    <a href="#">Import from Test</a>
-    <a href="#">Type New Questions</a></div> </div>
+          <div className="col-md-3 dropdown">
+            <p className='dropbtn' ><h6>Add Questions</h6></p>
+            <div className='dropdown-content'> 
+              <a href="addque"><AddQuestionsL/></a>
+              <a href="test">Import from Test</a>
+              <a href="que">Type New Questions</a>
+            </div> 
+          </div>
             <div className="col-md-2 border mb-1 mt-1 text-center "><div className="row text-center"><div className="col">Set Marking</div></div>
              <div className="row m-0 text-center">
                <div className="col-md-4">

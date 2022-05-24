@@ -1,6 +1,5 @@
-import React, {useState,UseEffect} from 'react';
-import { MoreVert } from "@material-ui/icons";
-import { IconButton } from "@material-ui/core";
+import React from 'react';
+
 import "../QuestionBankComponent/QuestionCss.css";
 
 export default function ActiveStudents(props) {

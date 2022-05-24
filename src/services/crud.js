@@ -1,7 +1,7 @@
 import { CrudRequest } from "@crud/core";
 import { notify } from "react-notify-toast";
 export class CrudFactory extends CrudRequest {
-  baseUrl = "https://lmsoskillupdated.herokuapp.com";
+  baseUrl = "http://www.demo3.learnoscale.in";
   getUrl = (...segments) =>
     segments.reduce((url, segment) => url + segment, this.baseUrl);
 
@@ -82,10 +82,10 @@ export class CrudFactory extends CrudRequest {
       res = await response.json();
       const { status, detail } = res;
       if (options.method !== "GET" && notify) {
-        if (status == true) {
+        if (status === true) {
           await notify.show(detail, "success", 1000);
         }
-        if (status == false) {
+        if (status === false) {
           await notify.show(detail, "error", 1000);
         }
         if (status === "warning") {

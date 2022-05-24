@@ -10,7 +10,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import {crud} from "../../services/crud";
 import ChipInput from 'material-ui-chip-input'
 import Loader from '../../MainComponents/Loader';
-import { useParams } from "react-router-dom";
+
 
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
@@ -18,23 +18,14 @@ import { CKEditor } from '@ckeditor/ckeditor5-react'
 import VideoUpload from "./UploadVideo";
 import ReactHtmlParser from 'react-html-parser';
 
-const names = [
-    'English',
-    'Hindi',
-    'Gujrati',
-    
-  ];
+
 export default function QuestionPageD() {  
     
     const [radiovalue, setRadiovalue] = useState();
     const [radiovaluedual, setRadiovaluedual] = useState();
 
-    const [Qdiff, setQdiff] = useState('');
-    const [Qtype, setQtype] = useState('');
   
-    const params = useParams();
-    const p =[params.id];
-    const [data, setData] = useState()
+
     const [loader,setLoader] = useState(false)
   
     const location = useLocation();
@@ -59,13 +50,12 @@ export default function QuestionPageD() {
     const [textsol, settextsol] = useState("")
     const [textsolDual, settextsolDual] = useState("")
 
-    const [textqdes, settextqdes] = useState("")
     const [optionData, setoptionData] = useState([])
     const [optionDatadual, setoptionDatadual] = useState([])
     
    
-    const [text, setText] = useState("")
-    const [personName, setPersonName] = useState([]);
+   
+  
     const[adQuestions,setadQuestions]=useState([]);
     
     const [options, setOptions] =  useState([
@@ -140,46 +130,21 @@ export default function QuestionPageD() {
         setAnswerRadio(option);
         
     }
-    const handleChange = (event) => {
-        setQdiff(event.target.value);
-      };
+
     
-    const handleChangeType = (event) => {
-        setQtype(event.target.value);
-      };  
+   
    
     
-    const handleChangeLanguage = (event) => {
-        const {
-          target: { value },
-        } = event;
-        setPersonName(
-          // On autofill we get a stringified value.
-          typeof value === 'string' ? value.split(',') : value,
-        );
-      };  
+   
     const addOption = () => {
         setOptions([...options, {checked: false, value: ""}]);
       
     }
-    const addQuestion=()=>{
-        console.log("hhhellop")
-        setadQuestions([...adQuestions,{value:""}]);
-    }
+  
     const removeOption = (option) => {
-        setOptions(options.filter(s => s != option));
+        setOptions(options.filter(s => s !== option));
     }
-    function getEdit() {
-        setOpen(true)
-        setFormData({
-            formTitle: 'Edit Question',
-            ButtonTitle: 'UPDATE'
-        });
-        setPostQuestions({
-            QParagraph: data.question_para,
-            QText:data.question_text
-        })
-    }
+   
 
     async function getQuestion()
     {
@@ -208,7 +173,7 @@ export default function QuestionPageD() {
         }
     }
     const[Qid,setQid]=useState();
-    const qid=0;
+    
  
     async function getQid()
     {
@@ -312,6 +277,8 @@ export default function QuestionPageD() {
 
     return (
         <>
+            {QuestionData}
+            {chip}
             <div className={'container-fluid px-lg-5 mt-3'}>
                 <div className={'row'}>
                     <div className={'col-12 col-lg-5 py-2'}>
@@ -372,7 +339,7 @@ export default function QuestionPageD() {
                                  <RadioGroup key={index} aria-label="gender" name="gender1" value={ReactHtmlParser(question?.choices.answer_text)}  
                                  onClick={() => {handleChangeQ(option)}}
                                 > 
-                                <FormControlLabel value={ReactHtmlParser(option.answer_text)} checked={AnswerRadio==option} control={<Radio/>} label={ReactHtmlParser(option.answer_text)}/>
+                                <FormControlLabel value={ReactHtmlParser(option.answer_text)} checked={AnswerRadio===option} control={<Radio/>} label={ReactHtmlParser(option.answer_text)}/>
                                 </RadioGroup>
                                  ))}
                                 <div className={'my-2'}>
@@ -428,7 +395,7 @@ export default function QuestionPageD() {
                                 <MenuItem value={diff.dl_id}>{diff.dl_title}</MenuItem>
                                 ))}
                             </TextField>  
-                            </>:<><h2 className='text-center pt-5'></h2></>}   
+                            </>:<></>}   
                             </div>
                             <div className={'mx-lg-2 px-lg-2'}>
                             <label className={'pb-2'}>Select Language</label>
@@ -440,7 +407,7 @@ export default function QuestionPageD() {
                                 <MenuItem value={lang.lg_id}>{lang.lg_title}</MenuItem>
                             ))}
                             </TextField>
-                            </>:<><h2 className='text-center pt-5'></h2></>}  
+                            </>:<></>}  
                             </div>
                         </div>    
                        
@@ -455,7 +422,7 @@ export default function QuestionPageD() {
                                <MenuItem value={type.qt_id}>{type.qt_title}</MenuItem>
                             ))}
                             </TextField>
-                            </>:<><h2 className='text-center pt-5'></h2></>}   
+                            </>:<></>}   
                             </div>
                         </div>   
 
@@ -707,7 +674,7 @@ export default function QuestionPageD() {
                                                         </Grid>
                                                         <Grid item>
                                                         <RadioGroup key={index}  name="radio-buttons-group"   onClick={() => {handleChangeR(option)}}>  
-                                                            <FormControlLabel key={index} control={<Radio  color={"primary"}/>}  checked={radiovalue==option}/>
+                                                            <FormControlLabel key={index} control={<Radio  color={"primary"}/>}  checked={radiovalue===option}/>
                                                         </RadioGroup>
                                                         </Grid>
                                                     </Grid>

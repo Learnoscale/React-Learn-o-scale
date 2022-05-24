@@ -1,6 +1,6 @@
 import React  from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import {withStyles} from "@material-ui/core";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid,ResponsiveContainer } from 'recharts';
+
 export default function MicedChart(props) {
         return (
             <>

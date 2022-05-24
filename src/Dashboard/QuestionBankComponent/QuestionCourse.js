@@ -9,7 +9,7 @@ import Slide from '@material-ui/core/Slide';
 import './QuestionCss.css';
 import { useLocation } from "react-router-dom";
 import Loader from '../../MainComponents/Loader';
-import { data } from 'jquery';
+
 import { useParams } from "react-router-dom";
 
 
@@ -90,7 +90,7 @@ export default function QuestionCourse() {
         
         getClearAll();
         getCourses();
-    }, [location])
+    }, )
     return (
         <>
             <div className={'container-fluid py-4 '}>

@@ -64,7 +64,7 @@ export default function CreateNewTest() {
   const location = useLocation();
   const [loader, setLoader] = useState(false);
   const [open, setOpen] = useState(false);
-  const [testData,settestData]=useState();
+ 
   const [testLayout,settestLayout]=useState();
   const [formData, setFormData] = useState({
     formTitle: "",
@@ -86,10 +86,7 @@ export default function CreateNewTest() {
            ButtonTitle: 'Create Test',
         });
   }
-  const handleClickOpen = () => {
-   
-    setOpen(true);
-  };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -115,6 +112,7 @@ export default function CreateNewTest() {
   }, [location]);
   return (
     <div>
+      {loader}
       <Button variant="contained" onClick={() => {
         saveTestData();
         AddsaveTest();

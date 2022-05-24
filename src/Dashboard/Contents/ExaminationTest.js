@@ -41,22 +41,22 @@ function a11yProps(index) {
 
 
 export default function ExaminationTest() {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const [value, setValue] = useState()
-  const [formData, setFormData] = useState({
-    formTitle: "",
-    ButtonTitle: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   formTitle: "",
+  //   ButtonTitle: "",
+  // });
   const handleChange = (event, newValue) => {
     setValue(newValue);
   }; 
-  function GetFormManage() {
-    setOpen(true);
-    setFormData({
-      formTitle: "Create New Batch",
-      ButtonTitle: "Create Batch",
-    });
-  }
+  // function GetFormManage() {
+  //   setOpen(true);
+  //   setFormData({
+  //     formTitle: "Create New Batch",
+  //     ButtonTitle: "Create Batch",
+  //   });
+  // }
 
   return (
     <>

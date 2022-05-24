@@ -12,8 +12,7 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import SearchIcon from "@material-ui/icons/Search";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
 import {
   Search,
   YouTube,
@@ -24,10 +23,7 @@ import {
   Delete,
   Clear,
 } from "@material-ui/icons";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import ClearIcon from "@material-ui/icons/Clear";
+
 import { Themes } from "../../Theme/theme";
 import clsx from "clsx";
 import { crud } from "../../services/crud";
@@ -35,7 +31,7 @@ import Slide from "@material-ui/core/Slide";
 import "../QuestionBankComponent/QuestionCss.css";
 import { useLocation } from "react-router-dom";
 import Loader from "../../MainComponents/Loader";
-//import Button from '@mui/material/Button';
+
 
 
 export default function CourseCategory() {
@@ -98,12 +94,7 @@ function getClearAll() {
       setLoader(false);
   }
   }
-  async function deletecourse(){
-    await crud.confirm();
-     await crud.delete('/categoryapi/'+ data.category_id);
-     getCourses();
-
-  }
+ 
   useEffect(() => {
     getClearAll();
     getCourses();

@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {crud} from "../crud";
 
-import { Redirect, Route } from "react-router";
+
 export const UserSlice = createSlice({
     name: 'user',
     initialState: {
