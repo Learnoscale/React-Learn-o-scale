@@ -37,6 +37,7 @@ export default function QuestionCourse() {
             });
     }
     function getClearAll() {
+      
         
         setCourseData({
             courseName: '',
@@ -90,7 +91,8 @@ export default function QuestionCourse() {
         
         getClearAll();
         getCourses();
-    }, )
+        // eslint-disable-next-line
+    },[location] )
     return (
         <>
             <div className={'container-fluid py-4 '}>

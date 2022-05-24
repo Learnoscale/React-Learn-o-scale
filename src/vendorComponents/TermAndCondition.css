@@ -1,0 +1,24 @@
+.terms{
+	margin-right: -9px;
+    margin-left: -9px;
+    margin-top: 5px;
+}
+.panel-heading{
+	font-size: 20px;
+    font-family: -webkit-pictograph;
+}
+.panel-body{
+	font-size: 18px;
+    color: 22638d;
+    font-family: -webkit-pictograph;
+}
+/*for small screens*/
+@media only screen and (max-width: 600px) {
+    .row { 
+margin: 0; 
+padding: 0;
+    }
+    .bannercontent h1{
+      font-size: 20px !important;
+    }
+}

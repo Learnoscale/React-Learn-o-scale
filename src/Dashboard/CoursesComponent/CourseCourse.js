@@ -149,7 +149,8 @@ export default function CourseCourse() {
   useEffect(() => {
     getClearAll();
     getCourses();
-  }, );
+    // eslint-disable-next-line
+  }, [location]);
   return (
     <>
       <div className="container-fluid" style={{textSize: 8}}>

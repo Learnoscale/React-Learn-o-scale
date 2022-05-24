@@ -1,0 +1,138 @@
+.mega-dropdown {
+	position: static !important;
+}
+
+.mega-dropdown-menu {
+	padding: 20px 0px;
+	width: auto;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.mega-dropdown-menu>li>ul {
+	padding: 0;
+	margin: 0;
+}
+
+.mega-dropdown-menu>li>ul>li {
+	list-style: none;
+}
+
+.mega-dropdown-menu>li>ul>li>a {
+	display: block;
+	color: #222;
+	padding: 3px 5px;
+}
+
+.mega-dropdown-menu>li ul>li>a:hover, .mega-dropdown-menu>li ul>li>a:focus
+	{
+	text-decoration: none;
+}
+
+th {
+	text-align: center;
+}
+
+td {
+	text-align: center;
+}
+
+table {
+	width: 100%;
+}
+
+/*blog page css*/
+.price {
+	font-size: 25px;
+	margin: 0 auto;
+	color: #333;
+}
+
+.thumbnail {
+	opacity: 0.70;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.thumbnail:hover {
+	opacity: 1.00;
+	box-shadow: 0px 0px 10px #4bc6ff;
+}
+
+.line {
+	margin-bottom: 5px;
+}
+
+@media screen and (max-width: 770px) {
+	.right {
+		float: left;
+		width: 100%;
+	}
+}
+
+span.thumbnail {
+	border: 1px solid #00c4ff !important;
+	border-radius: 0px !important;
+	-webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.16);
+	-moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.16);
+	box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.16);
+	padding: 10px;
+}
+/*.container h4{margin-top:70px; margin-bottom:30px;}*/
+button {
+	margin-top: 6px;
+}
+
+.right {
+	float: right;
+	border-bottom: 2px solid #0a5971;
+}
+
+.btn-info {
+	color: black;
+	background-color: #19b4e2;
+	border-color: #19b4e2;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.header-text {
+	position: absolute;
+	top: 20%;
+	left: 1.8%;
+	right: auto;
+	width: 96.66666666666666%;
+	color: #fff;
+}
+
+.header-text h2 {
+	font-size: 40px;
+}
+
+.header-text h2 span {
+	background-color: #2980b9;
+	padding: 10px;
+}
+
+.header-text h3 span {
+	background-color: #000;
+	padding: 15px;
+}
+
+.btn-min-block {
+	min-width: 170px;
+	line-height: 26px;
+}
+
+.btn-theme {
+	color: #fff;
+	background-color: transparent;
+	border: 2px solid #fff;
+	margin-right: 15px;
+}
+
+.btn-theme:hover {
+	color: #000;
+	background-color: #fff;
+	border-color: #fff;
+}

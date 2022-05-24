@@ -87,7 +87,8 @@ export default function QuestionSubject() {
     useEffect(() => {
         getSubject();
         getClearAll();
-    }, );
+        // eslint-disable-next-line
+    },[location] );
     return (
         <>
             <div className={'container-fluid py-4 '}>

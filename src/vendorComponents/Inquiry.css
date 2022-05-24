@@ -1,0 +1,84 @@
+aside.sidebar .single {
+	padding: 30px 15px;
+	margin-top: 40px;
+	background: #fcfcfc;
+	border: 1px solid #f0f0f0;
+}
+
+aside.sidebar .single h3.side-title {
+	margin: 0;
+	margin-bottom: 10px;
+	padding: 0;
+	font-size: 20px;
+	color: red;
+	text-transform: uppercase;
+}
+
+aside.sidebar .single h3.side-title:after {
+	content: '';
+	width: 60px;
+	height: 1px;
+	background: red;
+	display: block;
+	margin-top: 6px;
+}
+
+.single.contact-info {
+	background: none;
+	border: none;
+}
+
+.single.contact-info li {
+	margin-top: 30px;
+}
+
+.single.contact-info li .icon {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	color: #00b0ff;
+	text-align: center;
+	line-height: 50px;
+}
+
+.single.contact-info li .info {
+	overflow: hidden;
+	color: #22638d;
+	font-size: 18px;
+	font-family: -webkit-pictograph;
+}
+
+.form-group {
+	color: #22638d;
+	font-size: 18px;
+	font-family: -webkit-pictograph;
+}
+
+.single contact-info {
+	color: #22638d;
+	font-size: 18px;
+	font-family: -webkit-pictograph;
+}
+
+.rotate {
+	-moz-transition: all 2s linear;
+	-webkit-transition: all 2s linear;
+	transition: all 2s linear;
+}
+
+.rotate.down {
+	-ms-transform: rotate(0deg);
+	-moz-transform: rotate(60deg);
+	-webkit-transform: rotate(0deg);
+	transform: rotate(60deg);
+}
+
+@media only screen and (max-width: 600px) {
+	.row {
+		margin: 0;
+		padding: 0;
+	}
+}

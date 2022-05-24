@@ -134,7 +134,7 @@ export default function CreateNewTest() {
         <DialogContent dividers>
        <div className="container-fluid">
          <div className="row">
-           <div className="col-sm-2 d-flex align-items-center"><h6>Tag Name:</h6></div>
+           <div className="col-sm-2 d-flex align-items-center requiredField"><h6>Test Name:</h6></div>
            <div className="col-sm-10">
              <input type="text" value={saveTest.testname} 
              onChange={(e) => {setsaveTest({...saveTest,testname:e.target.value})}} 
@@ -152,20 +152,20 @@ export default function CreateNewTest() {
            </div>
          </div>
          <div className="row">
-           <div className="col-sm-2 d-flex align-items-center"><h6>No. of Questions</h6></div>
+           <div className="col-sm-2 d-flex align-items-center requiredField"><h6>No. of Ques</h6></div>
            <div className="col-sm-2">
              <input type='number'  value={saveTest.questionNo} 
              onChange={(e) => {setsaveTest({...saveTest,questionNo:e.target.value})}}
               className='border form-control' />
            </div>
-           <div className="col-sm-2 d-flex align-items-center"><h6>Total Marks</h6></div>
+           <div className="col-sm-2 d-flex pb-3 align-items-center requiredField"><h6>Total Marks</h6></div>
            <div className="col-sm-2">
              <input type='number'  value={saveTest.totalmarks} 
              onChange={(e) => {setsaveTest({...saveTest,totalmarks:e.target.value})}}
               className='border form-control' />
            </div><br/>
-           <div className="col-sm-2 d-flex align-items-center"><h6 className='px-4'>Duration</h6> </div>
-           <div className="col-sm-6">
+           <div className="col-sm-1 d-flex align-items-center requiredField"><h6 className='ps-2 pb-3'>Duration</h6> </div>
+           <div className="col-sm-3 ps-5 pt-2">
           <select name="hours"  value={saveTest.hour} 
           onChange={(e) => {setsaveTest({...saveTest,hour:e.target.value})}}  
           id="hour" className='border'>
@@ -184,7 +184,7 @@ export default function CreateNewTest() {
             <option value="12">12</option> */}
             </select>
             <label htmlFor="hour">
-            <p className='px-4'>Hour</p>
+            <p className='px-2'>H</p>
             </label>
             <select name="minute" value={saveTest.minute} 
             onChange={(e) => {setsaveTest({...saveTest,minute:e.target.value})}}  
@@ -252,7 +252,7 @@ export default function CreateNewTest() {
               <option value="60">60</option>           */}
               </select>
               <label htmlFor="minute">
-              <p className='px-4'>Minute</p>
+              <p className='px-2'>Min</p>
               </label></div>
           
          </div>
@@ -304,9 +304,12 @@ export default function CreateNewTest() {
          <div className="row my-3">
            <div className="col-sm-2 d-flex align-items-center"><h6>Test start From</h6></div>
            <div className="col-sm-4"><input type="datetime-local" id='start-date'className='border  form-control'  value={saveTest.startDate}  onChange={(e) => {setsaveTest({...saveTest,startDate:e.target.value})}} /></div> 
-           <div className="col-sm-2 d-flex align-items-center"><h6>Test End on</h6></div>
-           <div className="col-sm-4"><input type="datetime-local" id='end-date'className='border  form-control'  value={saveTest.endDate}  onChange={(e) => {setsaveTest({...saveTest,endDate:e.target.value})}} /></div>
-    
+           <div className="col-sm-6" style={{display:(saveTest.testcategory==="Examination")? 'inline-block':'none'}}>
+             <div className="row" >
+             <div className="col-sm-3 d-flex align-items-center"><h6>End on</h6></div>
+           <div className="col-sm-9 d-flex align-items-right" ><input type="datetime-local" id='end-date'className='border  form-control'  value={saveTest.endDate}  onChange={(e) => {setsaveTest({...saveTest,endDate:e.target.value})}}/></div>
+             </div>
+           </div>
          </div>
        </div>
         </DialogContent>

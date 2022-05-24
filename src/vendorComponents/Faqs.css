@@ -1,0 +1,58 @@
+.wrapper {
+	width: 100%;
+}
+
+@media ( max-width :992px) {
+	.wrapper {
+		width: 100%;
+	}
+}
+
+.panel-heading {
+	padding: 0;
+	border: 0;
+}
+
+.panel-title>a, .panel-title>a:active {
+	display: block;
+	padding: 15px;
+	color: #22638d;
+    font-size: 18px;
+    font-family: -webkit-pictograph;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	word-spacing: 3px;
+	text-decoration: none;
+}
+
+.panel-heading  a:before {
+	font-family: 'Glyphicons Halflings';
+	content: "\e114";
+	float: right;
+	transition: all 0.5s;
+}
+
+.panel-heading.active a:before {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.scroll {
+	overflow: scroll;
+}
+
+.panel-body {
+	padding: 34px;
+	font-size: 18px;
+	color: #1a1e21;
+	    font-family: -webkit-pictograph;
+}
+/*for small screens*/
+@media only screen and (max-width: 600px) {
+    .row { 
+margin: 0; 
+padding: 0;
+    }
+}

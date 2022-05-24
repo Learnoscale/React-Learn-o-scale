@@ -1,0 +1,8 @@
+.publish{
+    color: red;
+}
+
+.publish a:hover,
+.publish a:active{
+    color: green;
+}

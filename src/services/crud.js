@@ -1,7 +1,7 @@
 import { CrudRequest } from "@crud/core";
 import { notify } from "react-notify-toast";
 export class CrudFactory extends CrudRequest {
-  baseUrl = "http://www.demo3.learnoscale.in";
+  baseUrl = "https://lmsoskillupdated.herokuapp.com";
   getUrl = (...segments) =>
     segments.reduce((url, segment) => url + segment, this.baseUrl);
 

@@ -7,7 +7,7 @@
 }
 .divider{
     width: 100%;
-    height: 1px;
+    height: 1.5px;
     background: #eee;
     margin-top: 10px
     
@@ -28,8 +28,8 @@
     justify-content: space-between;
 }
 .TextFieldHeight{
-    min-height: 35px;
-    width: 100%
+    min-height: 15px;
+    width: 95%
 }
 @media(min-width: 1000px){
     .card{
@@ -67,6 +67,10 @@
     width: 100%;
     min-height: 100px;
     
+}
+.centre{
+    justify-content: center;
+  align-items: center;
 }
 
 .row1{

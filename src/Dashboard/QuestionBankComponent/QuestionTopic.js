@@ -18,11 +18,12 @@ import { useParams } from "react-router-dom";
 import Loader from '../../MainComponents/Loader'
 
 export default function QuestionTopic() {
+    const location = useLocation();
     const params = useParams();
     const p =[params.id];
     const classes = useStyles();
     const history = useHistory();
-    const location = useLocation();
+  
 
     const [formData, setFormData] = useState({
         formTitle: '',
@@ -34,13 +35,6 @@ export default function QuestionTopic() {
     const [anchorEl, setAnchorEl] = useState(null);
     const [courseData, setCourseData] = useState('');
     const [courses,setCourses]=useState();
-    function GetFormManage() {
-        setOpen(true)
-        setFormData({
-            formTitle: 'Create New Topic',
-            ButtonTitle: 'Create Topic',
-        });
-    }
     function getClearAll() {
         setCourseData({
             topicName: '',
@@ -48,6 +42,14 @@ export default function QuestionTopic() {
         });
       
     }
+    function GetFormManage() {
+        setOpen(true)
+        setFormData({
+            formTitle: 'Create New Topic',
+            ButtonTitle: 'Create Topic',
+        });
+    }
+ 
     //Edit
     function getEdit() {
         setOpen(true)
@@ -89,7 +91,8 @@ export default function QuestionTopic() {
     useEffect(() => {
         getClearAll();
         getTopics();
-    }, )
+        // eslint-disable-next-line
+    }, [location]);
     return (
         <>
             <div className={'container-fluid py-4 '}>
@@ -129,6 +132,7 @@ export default function QuestionTopic() {
                                 
                                 <IconButton onClick={(event) => {
                                     setAnchorEl(event.currentTarget);
+                                 
                                     setData(value);
                                 }} className={classes.menu}><MoreVertIcon/></IconButton>
                                 <Menu key={index}

@@ -37,7 +37,8 @@ export default function CreateNewSection(props) {
       <Button variant="outlined" onClick={handleClickOpen}>
         Create New Section
       </Button>
-      <Dialog
+      <Dialog 
+        disableEnforceFocus={true} 
         fullScreen
         PaperProps={{ sx: {width: "90%", height: "90%"}}}
         open={open}
@@ -49,7 +50,7 @@ export default function CreateNewSection(props) {
             <Typography sx={{ ml: 1, flex: 1 }} variant="h6" component="div">
             Test Name: {props.name} 
             </Typography>
-            <AddNewSection/>
+            <AddNewSection disableEnforceFocus={true} />
             <IconButton
               edge="start"
               color="inherit"

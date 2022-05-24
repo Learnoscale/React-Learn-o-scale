@@ -3,7 +3,8 @@ import {useHistory} from 'react-router-dom'
 import Login from "./Login";
 import SignUp from "./SignUp";
 import {Player, Controls} from '@lottiefiles/react-lottie-player';
-import HeaderWeb from "../Website/Component/HeaderComponent";
+// import HeaderWeb from "../Website/Component/HeaderComponent";
+import Menu from '../vendorComponents/Menu';
 import Particles from "../MainComponents/Particles";
 import './FormStyle.css';
 import {Themes} from "../Theme/theme";
@@ -17,8 +18,8 @@ export default function Form() {
     }, [path])
     return (
         <><div className={'d-none d-xl-block'}><Particles/></div>
-            <HeaderWeb/>
-            <div className={'d-flex justify-content-center align-items-center'} style={{height: '93vh'}}>
+            <Menu/>
+            <div className={'d-flex justify-content-center align-items-center mt-5'} style={{height: '93vh'}}>
                 <div className={`container ${state}`}>
                     <SignUp/>
                     <Login/>

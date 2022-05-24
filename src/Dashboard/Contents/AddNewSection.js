@@ -18,7 +18,9 @@ import {Add} from "@material-ui/icons";
 import { crud } from "../../services/crud";
 import { useLocation } from "react-router-dom";
 import clsx from "clsx";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
 
+import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
 const label = {inputProps: { 'aria-label': 'Switch demo'}};
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -70,6 +72,7 @@ export default function AddNewSection() {
     formTitle: "",
     ButtonTitle: "",
   });
+  const [showeditor, setShoweditor] = useState(false);
   async function getTestLayOut()
   {
      
@@ -99,7 +102,9 @@ export default function AddNewSection() {
           });
     }
 
- 
+    const handleEditor =() => {
+      setShoweditor(true);
+    }
   const handleClose = () => {
     setOpen(false);
   };
@@ -119,7 +124,8 @@ export default function AddNewSection() {
       }} startIcon={<Add/>}  style={{background: Themes.MainHeaderColor, color: Themes.WHITE}}>
        Add New Section
       </Button>
-      <BootstrapDialog
+      <BootstrapDialog 
+        disableEnforceFocus={true}
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
@@ -132,7 +138,7 @@ export default function AddNewSection() {
         <DialogContent dividers>
        <div className="container-fluid">
          <div className="row my-2">
-           <div className="col-sm-2 d-flex align-items-center"><h6>Section Name</h6></div>
+           <div className="col-sm-2 d-flex align-items-center requiredField"><h6>Section Name</h6></div>
            <div className="col-sm-10"><input type="text"  value={saveSection.secname} 
              onChange={(e) => {setsaveSection({...saveSection,secname:e.target.value})}}  className='border  form-control' /></div>
          </div>
@@ -157,8 +163,8 @@ export default function AddNewSection() {
            <div className="col-sm-4"></div>
          </div>
          <div className="row my-2">
-           <div className="col-sm-2 d-flex align-items-center"><h6 className='pr-4'>Duration</h6> </div>
-           <div className="col-sm-6"><select name="hours"  value={saveSection.hour} 
+           <div className="col-sm-2 d-flex align-items-center requiredField"><h6 className='pr-4'>Duration</h6> </div>
+           <div className="col-sm-6 pt-4"><select name="hours"  value={saveSection.hour} 
           onChange={(e) => {setsaveSection({...saveSection,hour:e.target.value})}}   id="hours" className='border'>
              <option value="1">1</option>
              <option value="2">2</option>
@@ -271,8 +277,11 @@ export default function AddNewSection() {
 
          <div className="row my-3">
            <label htmlFor="section-instruction"> <h6>Section Instructions</h6></label>
-           <textarea name="section-instruction" value={saveSection.secInstruction ? "off" :"on"} 
-             onChange={(e) => {setsaveSection({...saveSection,secInstruction:e.target.checked})}} id="section-instruction" cols="20" rows="5"></textarea>
+           {/* <textarea name="section-instruction" value={saveSection.secInstruction ? "off" :"on"} 
+             onChange={(e) => {setsaveSection({...saveSection,secInstruction:e.target.checked})}} id="section-instruction" cols="20" rows="5"></textarea> */}
+         <div className="border p-4" onClick={handleEditor} ><div style={{ display:(showeditor===true)?'block':'none'}} id='myDIV'  >
+         <CKEditor editor={Editor} /></div>
+         </div>
          </div>
          <div className="row my-3">
          </div>

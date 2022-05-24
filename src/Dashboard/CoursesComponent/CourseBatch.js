@@ -158,7 +158,7 @@ export default function CourseBatches() {
     <>
       <div className="container-fluid" style={{textSize: 8}}>
         <div className="row px-lg-0 py-0">
-          <div className="col-lg-2 text" style={{background: Themes.MainHeaderColor}}><ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <div id="diva" className="col-lg-2 text" style={{background: Themes.MainHeaderColor}}><ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             {BatchSidebar1.map((value => (
                                 <li className="nav-item dropdown" style={{color: Themes.WHITE}} key={value.id}>
                                 

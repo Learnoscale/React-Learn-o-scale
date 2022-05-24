@@ -21,7 +21,7 @@ export default function HeaderWeb() {
     const [userLogin, setUserLogin] = React.useState(null);
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light header d-none d-xl-block"
+            <nav id="nava" className="navbar navbar-expand-lg navbar-light header d-none d-xl-block"
                  style={{background: Themes.MainHeaderColor}}>
                 <div className={clsx("container-fluid",)} style={{background: Themes.MainHeaderColor}}>
                     <Link to={'/'} className="navbar-brand"><img src={logo} alt="logo" className={classes.Logo}/></Link>
@@ -29,7 +29,7 @@ export default function HeaderWeb() {
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <DehazeIcon/></Button>
-                    <div className="collapse navbar-collapse " id="navbarSupportedContent">
+                    <div className="collapse navbar-collapse " id="navbarSupportedContent diva">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             {DashboadNav.map((value => (
                                 <li className="nav-item dropdown" key={value.id}>

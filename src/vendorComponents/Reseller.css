@@ -1,0 +1,130 @@
+.srvices_main1 {
+  overflow: hidden;
+  padding: 30px 0 0;
+  width: 100%;
+}
+
+.service_first {
+  background: #f2efef none repeat scroll 0 0;
+  border: 1px dotted #c0c0c0;
+  border-radius: 0;
+  padding: 20px 10px;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.service_first h1 {
+  color: #326e8b;
+  font-size: 20px;
+  font-family: -webkit-pictograph;
+  font-weight: 400;
+  margin-top: 0;
+  padding: 5px 0 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.heading {
+  border-bottom: 1px solid red;
+  padding-bottom: 9px;
+  position: relative;
+}
+
+.service_first p {
+  font-family: -webkit-pictograph;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0 15px 15px;
+  text-align: center;
+}
+
+.service_button {
+  padding: 10px 0;
+  width: 100%;
+}
+
+.service_button a {
+  background-color: rgb(255, 102, 0);
+  background-image: linear-gradient(to bottom, rgb(240, 146, 4),
+      rgb(230, 92, 0));
+  border: 1px solid;
+  border-radius: 0;
+  color: #fff;
+  font-family: -webkit-pictograph;
+  font-size: 16px;
+  margin: 0 135px;
+  padding: 5px 25px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.service_button a:hover {
+  background: #000000 none repeat scroll 0 0;
+}
+
+.service_first:hover {
+  background: #fff none repeat scroll 0 0;
+  border: 1px dashed #aaa;
+  cursor: auto;
+  display: block;
+}
+
+.smart {
+  font-size: 35px;
+  text-align: center;
+  color: red;
+  font-family: -webkit-pictograph;
+}
+
+#advertise {
+  box-shadow: 10px 10px 5px grey;
+}
+
+.contentmatter {
+  color: #22638d;
+  font-size: 18px;
+  font-family: -webkit-pictograph;
+}
+/*for small screens*/
+@media only screen and (max-width: 600px) {
+  .row {
+      margin: 0;
+      padding: 0;
+  }
+  .smarty-aiims-desc {
+      margin-top: -24px;
+      text-align: justify;
+      padding: 23px;
+      font-size: 15px;
+  }
+  .smarty-container {
+      margin-left: 8px !important;
+  }
+  .smarty-footer {
+      margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .smarty-ads {
+      visibility: hidden;
+      clear: both;
+      float: left;
+      margin: 10px auto 5px 20px;
+      width: 28%;
+      display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #adbox {
+      visibility: hidden;
+      clear: both;
+      float: left;
+      margin: 10px auto 5px 20px;
+      width: 28%;
+      display: none;
+  }
+}

@@ -34,6 +34,7 @@ import PresentToAllIcon from '@mui/icons-material/PresentToAll';
 
 //Admin-Header
 export const DashboadNav = [
+    {id: 14,title: "Home",icon: <DashboardIcon/>,page: "/",},
     {id: 1,title: "Dashboard",icon: <DashboardIcon/>,page: "/dashboard",},
     {id: 2,title: "Courses",icon: <DescriptionIcon/>,page: "/course-category",},
     {id: 3,title: "Question Bank",icon: <ViewListIcon/>,page: "/question-bank",},
@@ -41,7 +42,7 @@ export const DashboadNav = [
     {id: 4, title: "Enquiry", icon: <BallotIcon/>, page: "/enquiry",},
     {id: 13,title: "Engager",icon: <PersonAddIcon/>,page: "/engager",},
     {id: 12,title: "Store",icon: <StoreIcon/>,page: "/store",},
-    {id: 5, title: "Study Material", icon: <MenuBookIcon/>, page: "/study-material"},
+    //{id: 5, title: "Study Material", icon: <MenuBookIcon/>, page: "/study-material"},
     {id: 6, title: "Reports", icon: <PollIcon/>, page: "/reports"},
     {id: 7,title: "Site & App Manager",icon: <DvrIcon/>,page: "/site-&-app-manager",},
     {id: 8,title: "Settings",icon: <SettingsIcon/>,page: "/setting",},

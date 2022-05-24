@@ -70,7 +70,7 @@ export default function Test() {
     <>
       <div className="container-fluid" style={{textSize: 8}}>
         <div className="row px-lg-0 py-0">
-          <div className="col-lg-1 text" style={{background: Themes.MainHeaderColor}}>
+          <div id="diva" className="col-lg-1 text" style={{background: Themes.MainHeaderColor}}>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             {BatchSidebar.map((value => (
                                 <li className="nav-item dropdown"  key={value.id}>

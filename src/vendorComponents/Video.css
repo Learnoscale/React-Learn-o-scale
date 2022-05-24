@@ -1,0 +1,250 @@
+.box{
+overflow: hidden;
+box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+position: relative;
+padding: 0px !important;
+margin-bottom: 0px !important
+}
+
+.box:before {
+content: "";
+width: 100%;
+height: 100%;
+background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,
+    0, 0, 0.1) 10px, rgba(0, 0, 0, 0.1) 20px);
+position: absolute;
+top: 0;
+left: 0;
+z-index: 1;
+opacity: 0;
+transition: all 0.3s ease 0s;
+}
+
+.box img {
+width: 100%;
+height: auto;
+transition: all 0.3s ease 0s;
+}
+
+.box .box-content {
+width: 40%;
+height: 100%;
+padding: 15px 0 0 15px;
+background: rgba(0, 0, 0, 0.7);
+position: absolute;
+top: 0;
+right: -100%;
+transition: all 0.3s ease 0s;
+right: 0;
+margin: auto;
+text-align: center;
+}
+
+.box .overlay {
+width: 100%;
+height: 100%;
+padding: 15px 0 0 15px;
+background: rgba(0, 0, 0, 0.7);
+position: absolute;
+top: 0;
+transition: all 0.3s ease 0s;
+margin: auto;
+text-align: center;
+opacity: 0;
+z-index: 9;
+}
+
+.box:hover .overlay {
+opacity: 1
+}
+
+.box .title {
+font-size: 13px !important;
+font-weight: 600;
+color: #fff !important;
+letter-spacing: 1px;
+margin-top: 30%;
+text-transform: uppercase;
+text-shadow: 0 0 2px #ea1e1f;
+text-align: center;
+}
+
+.para {
+margin-bottom: 14px;
+margin-top: 5px;
+font-weight: 550;
+white-space: normal;
+color: #0000009e;
+font-family: sans-serif;
+}
+
+@media only screen and (max-width:990px) {
+.box {
+    margin-bottom: 30px;
+}
+.box .title {
+    font-size: 22px !important;
+    margin-top: 30% !important
+}
+.box .img1 {
+    width: 50px !important;
+    height: 50px !important
+}
+.para {
+    font-size: 20px;
+    line-height: 27px;
+}
+}
+
+.video-list-thumbs {
+
+}
+
+.video-list-thumbs>li {
+margin-bottom: 12px;
+}
+
+.video-list-thumbs>li:last-child {
+
+}
+
+.video-list-thumbs>li>a {
+display: block;
+position: relative;
+background-color: #111;
+color: #fff;
+padding: 8px;
+border-radius: 3px; 
+transition: all 500ms ease-in-out;
+
+}
+
+.video-list-thumbs>li>a:hover {
+box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+text-decoration: none
+}
+
+.video-list-thumbs h2 {
+bottom: 0;
+font-size: 13px;
+margin: 8px 0 0;
+color: #685757db;
+text-align: justify;
+}
+
+.video-list-thumbs .fa-play-circle {
+font-size: 60px;
+opacity: 0.6;
+position: absolute;
+right: 40%;
+top: 20%;
+text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+transition: all 500ms ease-in-out;
+}
+
+.video-list-thumbs>li>a:hover .fa-play-circle {
+color: #fff;
+opacity: 1;
+text-shadow: 0 1px 3px rgba(0, 0, 0, .8);
+}
+
+.video-list-thumbs .duration {
+background-color: rgba(176, 166, 166, 0.88);
+border-radius: 2px;
+color: #fff;
+font-size: 11px;
+font-weight: bold;
+left: 12px;
+line-height: 13px;
+padding: 2px 3px 1px;
+position: absolute;
+top: 12px;
+transition: all 500ms ease;
+}
+
+.video-list-thumbs>li>a:hover .duration {
+background-color: #000;
+}
+
+.img-responsive, .thumbnail a>img, .thumbnail>img {
+display: block;
+max-width: 100%;
+width: 100%;
+}
+.pdiv{
+margin-bottom: 12px;
+background: #fff;
+border-radius: 4px;
+position: relative;
+-webkit-box-shadow: -1px 1px 4px 0 rgba(117,138,172,.12);
+box-shadow: -1px 1px 4px 0 rgba(38, 39, 39, 0.42);
+padding: 7px;
+margin-bottom: 15px;
+font-size: .75rem;
+}
+.pdiv:hover,.box:hover{
+webkit-transform: scale(1.05);
+-ms-transform: scale(1.05);
+transform: scale(1.05);
+-webkit-transition: all .5s cubic-bezier(.165,.84,.44,1);
+-o-transition: all .5s cubic-bezier(.165,.84,.44,1);
+transition: all .5s cubic-bezier(.165,.84,.44,1);
+}
+@media ( min-width :320px) and (max-width: 480px) {
+.video-list-thumbs .fa-play-circle {
+    font-size: 35px;
+    right: 36%;
+    top: 27%;
+}
+.video-list-thumbs h2 {
+    bottom: 0;
+    font-size: 17px !important;
+    margin: 8px 0 0;
+}
+}
+.social:hover {
+ -webkit-transform: scale(1.1);
+ -moz-transform: scale(1.1);
+ -o-transform: scale(1.1);
+}
+.social {
+ -webkit-transform: scale(0.8);
+ /* Browser Variations: */
+ 
+ -moz-transform: scale(0.8);
+ -o-transform: scale(0.8);
+ -webkit-transition-duration: 0.5s;
+ -moz-transition-duration: 0.5s;
+ -o-transition-duration: 0.5s;
+}
+
+/*
+Multicoloured Hover Variations
+*/
+#social-fb {
+ color: #3B5998;
+}
+#social-tw {
+ color: #4099FF;
+}
+#social-gp {
+ color: #d34836;
+}
+#social-wt {
+ color: #34af23;
+}
+#social-fb:hover {
+ color: #3B5998;
+}
+#social-tw:hover {
+ color: #4099FF;
+}
+#social-gp:hover {
+ color: #d34836;
+}
+#social-wt:hover {
+ color: #34af23;
+}
+iframe{
+max-width: 100%
+}

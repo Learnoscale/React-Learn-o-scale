@@ -48,9 +48,9 @@ h1{
 p{
     font-size: 14px;
     font-weight: 100;
-    line-height: 20px;
+    line-height: 15px;
     letter-spacing: 0.5px;
-    margin: 15px 0 20px;
+    margin: 10px 0 10px;
 }
 input{
     background: #eee;
@@ -70,7 +70,7 @@ a{
 button{
     color: #fff;
     background: #ff4b2b;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     padding: 12px 55px;
     margin: 20px;
@@ -78,7 +78,6 @@ button{
     border: 1px solid #ff4b2b;
     outline: none;
     letter-spacing: 1px;
-    text-transform: uppercase;
     transition: transform 80ms ease-in;
     cursor: pointer;
 }

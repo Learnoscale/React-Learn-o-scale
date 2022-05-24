@@ -1,0 +1,110 @@
+.lib-panel {
+	margin-bottom: 20Px;
+}
+
+.lib-panel img {
+	width: 100%;
+	background-color: transparent;
+}
+
+.lib-panel .row, .lib-panel .col-md-6 {
+	padding: 0;
+	background-color: #FFFFFF;
+}
+
+.lib-panel .lib-row {
+	padding: 0 20px 0 20px;
+}
+
+.lib-panel .lib-row.lib-header {
+	background-color: #FFFFFF;
+	font-size: 20px;
+	padding: 10px 20px 0 20px;
+}
+
+.lib-panel .lib-row.lib-header .lib-header-seperator {
+	height: 2px;
+	width: 26px;
+	background-color: #d9d9d9;
+	margin: 7px 0 7px 0;
+}
+
+.lib-panel .lib-row.lib-desc {
+	position: relative;
+	height: 100%;
+	display: block;
+	font-size: 13px;
+}
+
+.lib-panel .lib-row.lib-desc a {
+	position: absolute;
+	width: 100%;
+	bottom: 10px;
+	left: 20px;
+}
+
+.row-margin-bottom {
+	margin-bottom: 20px;
+}
+
+.box-shadow {
+	-webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .10);
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, .10);
+}
+
+.no-padding {
+	padding: 0;
+}
+
+.headingstyle {
+	text-transform: uppercase;
+	color: #427994;
+	font-family: serif;
+	font-weight: 600;
+	font-size: 24px !important;
+}
+
+.midcontent {
+	color: #427994;
+	font-family: serif;
+	font-size: 18px
+}
+
+.midstyle {
+	font-size: 16px !important;
+	color: #6d6666;
+	font-family: serif;
+}
+.navbar-fixed-top {
+	position: fixed !important;
+	left: 0;
+	top: 0;
+	right: 0;
+	transition: all 0.5s;
+	z-index: 9999;
+}
+
+.scroll_top {
+	width: 34px;
+	height: 34px;
+	position: fixed;
+	display: none;
+	font-size: 0;
+	z-index: 9999;
+	right: 10px;
+	bottom: 32px;
+	background: #666;
+	display: none;
+}
+
+.scroll_top:before {
+	content: "\f106";
+	font-family: "FontAwesome";
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	width: 34px;
+	height: 34px;
+	line-height: 34px;
+	display: block;
+}

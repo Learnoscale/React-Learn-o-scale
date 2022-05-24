@@ -47,7 +47,7 @@ export default function Login() {
                     <div className={'form'}>
                     <h1 className={'h3'}>Sign in</h1>
                     <SocialLogin/>
-                    <p>or use your account here??</p>
+                    <p>or use your account</p>
                     <input maxLength={10} placeholder="Phone no." name="phone"   value={params.phone}
                            onChange={e => {
                             const {value: phone} = e.target;
@@ -69,7 +69,7 @@ export default function Login() {
                     }}>Forget your Password?</Link>
                     <Link className={'d-lg-none'} to={'/sign-up'}>Create a new Account? <span
                         className={'text-primary'}>Sign Up</span></Link>
-                    <button onClick={() => {loginFunction()}}>Sign innnnn</button>
+                    <button onClick={() => {loginFunction()}}>Sign in</button>
                 </div> : <></>}
 
 
