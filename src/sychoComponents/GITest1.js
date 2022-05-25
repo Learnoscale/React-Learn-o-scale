@@ -5,51 +5,10 @@ import Footer from './Footer';
 import ExampleOne from './images/newtest.jpg';
 import ExampleTwo from './images/newtest1.jpg';
 
-// Countdowntimer start
-const CountDownTimer = ({hoursMinSecs}) => {
-   
-  const { hours = 0, minutes = 0, seconds = 60 } = hoursMinSecs;
-  const [[hrs, mins, secs], setTime] = React.useState([hours, minutes, seconds]);
-  const navgate = useHistory();
-
-  const tick = () => {
-       if (mins === 0 && secs === 0) {
-          navgate('/section1');  }
-     else if (secs === 0) {
-          setTime([hrs, mins - 1, 59]);
-      } else {
-          setTime([hrs, mins, secs - 1]);
-      }
-  };
-
-
-  //const reset = () => setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)]);
-
-  
-  React.useEffect(() => {
-      const timerId = setInterval(() => tick(), 1000);
-      return () => clearInterval(timerId);
-  });
-
-  
-  return (
-      <div>
-          <p>{`${hrs.toString().padStart(2, '0')}:${mins
-          .toString()
-          .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</p> 
-      </div>
-  );
-}
-// countdown timer end
-
-
-
-
-
 
 export default function GITestOne() {
   const navigate = useHistory();
-  const hoursMinSecs = { minutes: 1, seconds:0}
+  
   
   
   return(
@@ -61,10 +20,10 @@ export default function GITestOne() {
    
  
       <div   className="row " >
-        <div className="col-md-10">
+        <div className="col-md-10 border">
           <div className="row p-2 bg-secondary sticky-md-top text-center text-white"><h5>Group Instructions: Test 1 Intelligence Test/बुद्धि-परीक्षण</h5></div>
           <div className="row fs-5 ">
-          <div style={{ maxWidth: '100%', maxHeight: '521px', overflow: 'auto'}} className=" col-12 overflow-y fs-6 p-5">
+          <div style={{ maxWidth: '100%', maxHeight: '580px', overflow: 'auto'}} className=" col-12 overflow-y fs-6 p-5">
              <h4>TEST 1:   Intelligence Test / बुद्धि-परीक्षण</h4> <br />
             <div className="row ps-5">
               
@@ -136,20 +95,20 @@ export default function GITestOne() {
            
           </div>
           </div>
-          <div className="row p-1  sticky-md-bottom border">
-            <div className="col-3 p-1  text-center"> </div>
-            <div className="col-7"></div>
-            <div className="col-2 p-1  text-center "><button type="button" class="btn btn-outline-danger  fs-6" onClick={() => navigate.push('/section1')}>Skip Instructions</button></div>
-            
+          <div className="row p-1 border" style={{ position: 'fixed',bottom: '27px', width: '100%'}}>
+           <div className="col-6"></div>
+            <div className="col-3 text-center ">
+            <button type="button" class="btn btn-outline-danger  fs-6" onClick={() => navigate.push('/section1')}>Skip Instructions</button></div>
+            <div className="col-3"> </div>
           </div>
           </div>
           <div className="col-md-2  text-center">
-          <div className="row p-1 bg-secondary sticky-md-top text-white">
-            <div className="col-8"><small>Instruction Timer</small></div>
-            <div className="col-4"><CountDownTimer hoursMinSecs={hoursMinSecs}/></div>
-          </div>
-          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" class="image-responsive"/>
-          <div>Vikash Tiwari</div>
+          {/* <div className="row bg-secondary sticky-md-top text-white">
+            <div className="col-12"><small>Timer</small></div>
+            <div className="col-12"><CountDownTimer hoursMinSecs={hoursMinSecs}/></div>
+          </div> */}
+          {/* <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className="image-responsive"/>
+          <div>Vikash Tiwari</div> */}
           </div>
         </div>
         

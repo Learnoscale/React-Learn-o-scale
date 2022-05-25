@@ -12,6 +12,8 @@ import ChipInput from 'material-ui-chip-input'
 import Loader from '../../MainComponents/Loader';
 
 
+
+
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 
@@ -20,16 +22,15 @@ import ReactHtmlParser from 'react-html-parser';
 
 
 export default function QuestionPageD() {  
-    
+
+
     const [radiovalue, setRadiovalue] = useState();
     const [radiovaluedual, setRadiovaluedual] = useState();
-
-  
 
     const [loader,setLoader] = useState(false)
   
     const location = useLocation();
-    const history = useHistory();
+    const navigate = useHistory();
     const [Question,setQuestion]=useState();
 
     const [Type,setType]=useState();
@@ -37,11 +38,11 @@ export default function QuestionPageD() {
     const [Lang,setLang]=useState();  
 
     const[AnswerRadio,setAnswerRadio]=useState();
-    const [QuestionData,setQuestionData]=useState();
+    const [setQuestionData]=useState();
     const classes = styles();
 
     const [open, setOpen] = useState(false);
-    const [chip,setChip] = useState()
+    const [setChip] = useState()
 
     const [textpara, setTextpara] = useState("")
     const [textque, settextque] = useState("")
@@ -50,12 +51,13 @@ export default function QuestionPageD() {
     const [textsol, settextsol] = useState("")
     const [textsolDual, settextsolDual] = useState("")
 
+
     const [optionData, setoptionData] = useState([])
     const [optionDatadual, setoptionDatadual] = useState([])
     
    
-   
-  
+
+
     const[adQuestions,setadQuestions]=useState([]);
     
     const [options, setOptions] =  useState([
@@ -131,20 +133,17 @@ export default function QuestionPageD() {
         
     }
 
-    
-   
-   
-    
-   
+
+     
     const addOption = () => {
         setOptions([...options, {checked: false, value: ""}]);
       
     }
-  
+    
     const removeOption = (option) => {
         setOptions(options.filter(s => s !== option));
     }
-   
+  
 
     async function getQuestion()
     {
@@ -173,7 +172,7 @@ export default function QuestionPageD() {
         }
     }
     const[Qid,setQid]=useState();
-    
+   
  
     async function getQid()
     {
@@ -257,8 +256,8 @@ export default function QuestionPageD() {
         editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
         return uploadAdapter(loader);
         }
-    }
-    
+      }
+
     
  
     useEffect(() => {
@@ -269,7 +268,7 @@ export default function QuestionPageD() {
         getDifficulty();
         getLanguage();
         getQid();
-       
+        // eslint-disable-next-line
     }, [location]);
   
     
@@ -277,20 +276,18 @@ export default function QuestionPageD() {
 
     return (
         <>
-            {QuestionData}
-            {chip}
             <div className={'container-fluid px-lg-5 mt-3'}>
                 <div className={'row'}>
                     <div className={'col-12 col-lg-5 py-2'}>
-                        <h5>Category : <span className='back-tag' onClick={() => {history.push('/question-bank')}}>{location.state?.category}</span>&gt;
-                            <span className='back-tag' onClick={() => {history.push({pathname: '/question-course',
+                        <h5>Category : <span className='back-tag' onClick={() => {navigate('/question-bank')}}>{location.state?.category}</span>&gt;
+                            <span className='back-tag' onClick={() => {navigate({pathname: '/question-course',
                                 state: {category:location.state?.category,course:location.state?.course}})}}>{location.state?.course}</span>&gt;
-                            <span className='back-tag' onClick={() => {history.push({pathname: '/question-subject',
+                            <span className='back-tag' onClick={() => {navigate({pathname: '/question-subject',
                                 state: {category:location.state?.category,course:location.state?.course,subject:location.state?.subject}})}}>
-                                  {location.state?.subject}</span>&gt; <span className='back-tag' onClick={() => {history.push({pathname: '/question-topic',
+                                  {location.state?.subject}</span>&gt; <span className='back-tag' onClick={() => {navigate({pathname: '/question-topic',
                                 state: {category:location.state?.category,course:location.state?.course,subject:location.state?.subject,topic:location.state?.topic,topic1:location.state?.topic1}})}}>
                                   {location.state?.topic}</span>&gt;
-                            <span className='back-tag' onClick={() => {history.push({pathname: '/question-type',
+                            <span className='back-tag' onClick={() => {navigate({pathname: '/question-type',
                                 state: {category:location.state?.category,course:location.state?.course,subject:location.state?.subject,topic:location.state?.topic,topic1:location.state?.topic1}})}}>
                                   {location.state?.question_type}</span>
                         </h5>
@@ -355,7 +352,7 @@ export default function QuestionPageD() {
                 </div>
             </div> 
 
-            <Dialog  disableEnforceFocus={true}  maxWidth={'lg'}
+            <Dialog disableEnforceFocus={true} maxWidth={'lg'}
              
              open={open}
              TransitionComponent={Transition}>
@@ -378,11 +375,11 @@ export default function QuestionPageD() {
                                             onChange={(event, editor) => { const datapara = editor.getData()
                                             setTextpara(datapara)
                                             }}
-                                            
                                             value={AddFinalQuestions.QPara}
                                             config={{
                                                 extraPlugins: [uploadPlugin]
                                             }}
+                                           
                 />
                         <div className={'col-lg-8 offset-lg-4 col-12  px-lg-3 d-lg-flex justify-content-lg-end'}>
                             <div className={'mx-lg-2 px-lg-2'}>
@@ -932,6 +929,7 @@ const styles = makeStyles((theme) => ({
     },
     input:{
         display:"none"
+        
     }
 
 }))

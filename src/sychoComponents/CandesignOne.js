@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from './Footer';
 
@@ -13,10 +13,10 @@ export default function CandesignOne() {
     
    
  
-      <div  className="row " >
-        <div className="col-md-9">
+      <div   className="row " >
+        <div className="col-md-10">
           <div className="row p-1 bg-info sticky-md-top"><h4>Instructions</h4></div>
-          <div className="col-12 fs-6" style={{ width: '100%', height: '350px', overflow: 'auto'}}>
+          <div className="col-12 fs-6 pb-5" style={{ width: '100%', height: '580px', overflow: 'auto'}}>
             <h5 className='text-center'>GENERAL INSTRUCTIONS REGARDING APTITUDE TEST</h5>
             <h5 className='text-center'>अभिवृत्ति परीक्षण से सम्बंधित सामान्य निर्देश</h5>
             <h5>निर्देशः</h5>
@@ -86,22 +86,22 @@ export default function CandesignOne() {
                 <li>If you find any question difficult, don’t waste time on it. Proceed to the next question.</li><br />
                 <li> In the rest period between two tests try to relax so that you are able to focus again on the next test.</li>
               </ol>
-             
-           
+             </div>
+          
           </div>
-          <div className="row p-1 border sticky-md-bottom">
-            <div className="col-10"></div>
-            <div className="col-2 p-1"><button type="button" className="btn btn-outline-primary fs-6 px-5" onClick={() => navigate.push('/candesign-two')}>Next
+          <div className="col-md-2 border text-center">
+          {/* <img src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className="image-responsive"/>
+          <div className="text-center">Vikash Tiwari</div> */}
+          </div>
+        </div>
+        <div className="row p-1 border" style={{ position: 'fixed',bottom: '27px', width: '100%'}}>
+            <div className="col-8"></div>
+            <div className="col-2"><button type="button" className="btn btn-primary fs-6 px-5" onClick={() => navigate.push('/candesign-two')}>Next
             </button></div>
-          </div>
-          </div>
-          <div className="col-md-3 border text-center">
-          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className="img-fluid"/>
-          <div className="text-center">Vikash Tiwari</div>
+            <div className="col-2 "></div>
           </div>
         </div>
-       
-        </div>
+
         <Footer/>
     </>
   );

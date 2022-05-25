@@ -152,7 +152,7 @@ export default function GITestTwo() {
             <div className="col-8"><small>Instruction Timer</small></div>
             <div className="col-4"><CountDownTimer hoursMinSecs={hoursMinSecs}/></div>
           </div>
-          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" class="image-responsive"/>
+          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className="image-responsive"/>
           <div>Vikash Tiwari</div>
           </div>
         </div>
