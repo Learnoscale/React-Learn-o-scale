@@ -14,7 +14,7 @@ export default function CandesignOne() {
    
  
       <div  className="row " >
-        <div className="col-md-10">
+        <div className="col-md-9">
           <div className="row p-1 bg-info sticky-md-top"><h4>Instructions</h4></div>
           <div className="col-12 fs-6" style={{ width: '100%', height: '350px', overflow: 'auto'}}>
             <h5 className='text-center'>GENERAL INSTRUCTIONS REGARDING APTITUDE TEST</h5>
@@ -91,12 +91,12 @@ export default function CandesignOne() {
           </div>
           <div className="row p-1 border sticky-md-bottom">
             <div className="col-10"></div>
-            <div className="col-2 p-1"><button type="button" class="btn btn-outline-primary fs-6 px-5" onClick={() => navigate.push('/candesign-two')}>Next
+            <div className="col-2 p-1"><button type="button" className="btn btn-outline-primary fs-6 px-5" onClick={() => navigate.push('/candesign-two')}>Next
             </button></div>
           </div>
           </div>
-          <div className="col-md-2 border text-center">
-          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" class="image-responsive"/>
+          <div className="col-md-3 border text-center">
+          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className="img-fluid"/>
           <div className="text-center">Vikash Tiwari</div>
           </div>
         </div>
