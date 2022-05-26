@@ -8,9 +8,6 @@ import ExampleTwo from './images/newtest1.jpg';
 
 export default function GITestOne() {
   const navigate = useHistory();
-  
-  
-  
   return(
     <>
     <div  className="container-fluid"> 
