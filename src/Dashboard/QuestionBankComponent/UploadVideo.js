@@ -1,5 +1,5 @@
 import React from 'react'
-import "./uploadImage.css";
+import solvideo from "./uploadImage.module.css";
 
 import { Button } from 'react-bootstrap';
 import AddIcon from '@material-ui/icons/Add';
@@ -111,8 +111,8 @@ export default class VideoUpload extends React.Component {
 	
 		
 		return (
-			<div className='outer'>  
-				<div className='inner' >
+			<div className={solvideo.outer}>  
+				<div className={solvideo.inner} >
 				<Button variant="outline-secondary" onClick={this.uploadFiles.bind(this)}>
 					Video Solutions<AddIcon/>
                 </Button>

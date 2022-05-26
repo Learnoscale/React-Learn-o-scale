@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
 import Footer from './Footer';
+import classes from './psycho.module.css';
 const label = {inputProps: { 'aria-label': 'Switch demo'}};
 
 export default function CandesignTwo() {
@@ -25,7 +26,7 @@ export default function CandesignTwo() {
    
  
       <div   className="row" >
-        <div className="col-md-10 fs-5 border">
+        <div className="col-md-11 fs-5 border">
           <div className="row p-1 bg-info sticky-md-top"><h4> Other Important Instructions</h4></div>
           <div style={{ maxWidth: '100%', minHeight: '440px', overflow: 'auto'}}>
             
@@ -46,9 +47,9 @@ export default function CandesignTwo() {
             <div className="col-3"></div>
           </div>
           </div>
-          <div className="col-md-2 border text-center">
-          {/* <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className="image-responsive"/>
-          <div className='text-center'>Vikash Tiwari</div> */}
+          <div className="col-md-1 border text-center">
+          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className={classes.img}/>
+          <div className='text-center'>Vikash Tiwari</div>
           </div>
         </div>
         

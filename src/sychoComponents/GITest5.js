@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from './Footer';
 import ExampleOne from './images/perImg.png';
-
+import classes from './psycho.module.css';
 
 // Countdowntimer start
 const CountDownTimer = ({hoursMinSecs}) => {
@@ -59,10 +59,10 @@ export default function GITestFive() {
    
  
       <div   className="row " >
-        <div className="col-md-10">
+        <div className="col-md-11">
           <div className="row p-2 bg-secondary sticky-md-top text-center text-white"><h5>Group Instructions: Test 5 Personality Test/व्यक्तित्व परीक्षण</h5></div>
           <div className="row fs-5 ">
-          <div style={{ maxWidth: '100%', maxHeight: '521px', overflow: 'auto'}} className=" col-12 overflow-y fs-6 p-5">
+          <div style={{ maxWidth: '100%', maxHeight: '580px', overflow: 'auto'}} className=" col-12 overflow-y fs-6 p-5">
              <h4>TEST 1:   Personality Test/ व्यक्तित्व परीक्षण</h4> <br />
             <div className="row ps-5">
               
@@ -108,19 +108,19 @@ export default function GITestFive() {
            
           </div>
           </div>
-          <div className="row p-1  sticky-md-bottom border">
+          <div className="row p-1 border">
             <div className="col-3 p-1  text-center"></div>
             <div className="col-7"></div>
             <div className="col-2 p-1  text-center "><button type="button" class="btn btn-outline-danger fs-6" onClick={() => navigate.push('/section5')}>Skip Instructions</button></div>
             
           </div>
           </div>
-          <div className="col-md-2  text-center">
-          <div className="row p-1 bg-secondary sticky-md-top text-white">
-            <div className="col-8"><small>Instruction Timer</small></div>
-            <div className="col-4"><CountDownTimer hoursMinSecs={hoursMinSecs}/></div>
+          <div className="col-md-1  text-center">
+          <div className="row bg-secondary text-white">
+            <div><small>Timer</small></div>
+            <div><CountDownTimer hoursMinSecs={hoursMinSecs}/></div>
           </div>
-          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className="image-responsive"/>
+          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className={classes.img}/>
           <div>Vikash Tiwari</div>
           </div>
         </div>

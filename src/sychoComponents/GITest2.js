@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Footer from './Footer';
 import ExampleOne from './images/nww.jpg';
 import ExampleTwo from './images/nww1.jpg';
-
+import classes from './psycho.module.css';
 
 // Countdowntimer start
 const CountDownTimer = ({hoursMinSecs}) => {
@@ -60,7 +60,7 @@ export default function GITestTwo() {
    
  
       <div   className="row " >
-        <div className="col-md-10">
+        <div className="col-md-11">
           <div className="row p-2 bg-secondary sticky-md-top text-center text-white"><h5>Group Instructions: Test 2 Selective Attention Test/चयनात्मक ध्यान परीक्षण</h5></div>
           <div className="row fs-5 ">
           <div style={{ maxWidth: '100%', maxHeight: '521px', overflow: 'auto'}} className=" col-12 overflow-y fs-6 p-5">
@@ -147,12 +147,12 @@ export default function GITestTwo() {
             
           </div>
           </div>
-          <div className="col-md-2  text-center">
+          <div className="col-md-1  text-center">
           <div className="row p-1 bg-secondary sticky-md-top text-white">
-            <div className="col-8"><small>Instruction Timer</small></div>
-            <div className="col-4"><CountDownTimer hoursMinSecs={hoursMinSecs}/></div>
+            <div><small>Timer</small></div>
+            <div><CountDownTimer hoursMinSecs={hoursMinSecs}/></div>
           </div>
-          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className="image-responsive"/>
+          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className={classes.img}/>
           <div>Vikash Tiwari</div>
           </div>
         </div>

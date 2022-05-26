@@ -51,6 +51,58 @@ export default function QuestionPageD() {
 
     const [optionData, setoptionData] = useState([])
     const [optionDatadual, setoptionDatadual] = useState([])
+    const[showeditor1,setShoweditor1]=useState(false)
+    const[showeditor2,setShoweditor2]=useState(false)
+    const[showeditor3,setShoweditor3]=useState(false)
+    const[showeditor4,setShoweditor4]=useState(false)
+    const[showeditor5,setShoweditor5]=useState(false)
+    const[showeditor6,setShoweditor6]=useState(false)
+    const[showeditor7,setShoweditor7]=useState(false)
+    const[showeditor8,setShoweditor8]=useState(false)
+    const[showeditor9,setShoweditor9]=useState(false)
+    const[showeditor10,setShoweditor10]=useState(false)
+    const[showeditor11,setShoweditor11]=useState(false)
+    const[showeditor12,setShoweditor12]=useState(false)
+    const[showeditor13,setShoweditor13]=useState(false)
+    const handleEditor1 =() => {
+        setShoweditor1(true);
+    }
+    const handleEditor2 =() => {
+        setShoweditor2(true);
+    }
+    const handleEditor3 =() => {
+        setShoweditor3(true);
+    }
+    const handleEditor4 =() => {
+        setShoweditor4(true);
+    }
+    const handleEditor5 =() => {
+        setShoweditor5(true);
+    }
+    const handleEditor6 =() => {
+        setShoweditor6(true);
+    }
+    const handleEditor7 =() => {
+        setShoweditor7(true);
+    }
+    const handleEditor8=() => {
+        setShoweditor8(true);
+    }
+    const handleEditor9 =() => {
+        setShoweditor9(true);
+    }
+    const handleEditor10 =() => {
+        setShoweditor10(true);
+    }
+    const handleEditor11 =() => {
+        setShoweditor11(true);
+    }
+    const handleEditor12 =() => {
+        setShoweditor12(true);
+    }
+    const handleEditor13 =() => {
+        setShoweditor13(true);
+    }
     
    
 
@@ -255,8 +307,6 @@ export default function QuestionPageD() {
         }
       }
 
-    
- 
     useEffect(() => {
         
         getQuestion();
@@ -367,7 +417,8 @@ export default function QuestionPageD() {
                             <hr/>
                 </div>
                 <div className={'col-12 mt-3'}>
-                         
+                <div className="border p-4" onClick={handleEditor1} >
+                <div style={{ display:(showeditor1===true)?'block':'none'}} >        
                 <CKEditor editor={Editor} datapara={textpara} 
                                             onChange={(event, editor) => { const datapara = editor.getData()
                                             setTextpara(datapara)
@@ -378,6 +429,8 @@ export default function QuestionPageD() {
                                             }}
                                            
                 />
+                </div>
+                </div> 
                         <div className={'col-lg-8 offset-lg-4 col-12  px-lg-3 d-lg-flex justify-content-lg-end'}>
                             <div className={'mx-lg-2 px-lg-2'}>
                             <label className={'pb-2'}>Select Level</label>
@@ -456,6 +509,8 @@ export default function QuestionPageD() {
                             <div className={'col-12 mt-3'}>Question.{index+1}</div>
                             <div className={'col-12 mt-3'}>
                                   {PostQuestions.QLanguage===3?<>
+                                  <div className="border p-4" onClick={handleEditor2} >
+                                  <div style={{ display:(showeditor2===true)?'block':'none'}} > 
                                   <CKEditor editor={Editor} data1={textqueDual} 
                                                   onChange={(event, editor) => { const data1 = editor.getData()
                                                   settextqueDual(data1)
@@ -464,6 +519,10 @@ export default function QuestionPageD() {
                                                     extraPlugins: [uploadPlugin]
                                                   }}
                                                   />
+                                    </div>
+                                    </div>   
+                                    <div className="border p-4" onClick={handleEditor3} >
+                                    <div style={{ display:(showeditor3===true)?'block':'none'}} >            
                                     <CKEditor editor={Editor}  data2={textque} 
                                                   onChange={(event, editor) => { const data2 = editor.getData()
                                                     settextque(data2)
@@ -472,8 +531,12 @@ export default function QuestionPageD() {
                                                     extraPlugins: [uploadPlugin]
                                                   }}
                                                   />
+                                    </div>
+                                    </div>              
                                   </>:<></>}
                                   {PostQuestions.QLanguage===2?<>
+                                  <div className="border p-4" onClick={handleEditor4} >
+                                  <div style={{ display:(showeditor4===true)?'block':'none'}} >
                                   <CKEditor editor={Editor} data3={textque} 
                                                   onChange={(event, editor) => { const data3 = editor.getData()
                                                     settextque(data3)
@@ -482,9 +545,13 @@ export default function QuestionPageD() {
                                                     extraPlugins: [uploadPlugin]
                                                   }}
                                                   />
+                                   </div>
+                                   </div>               
                                       
                                   </>:<></>}
                                   {PostQuestions.QLanguage===1?<>
+                                  <div className="border p-4" onClick={handleEditor5} >
+                                  <div style={{ display:(showeditor5===true)?'block':'none'}}>
                                   <CKEditor editor={Editor} data4={textque} 
                                                   onChange={(event, editor) => { const data4 = editor.getData()
                                                     settextque(data4)
@@ -493,6 +560,8 @@ export default function QuestionPageD() {
                                                     extraPlugins: [uploadPlugin]
                                                 }}  
                                                 />
+                                   </div>
+                                   </div>             
                                   </>:<></>}
                               </div>
                               {
@@ -525,6 +594,8 @@ export default function QuestionPageD() {
                                             </Grid>
 
                                             <Grid item xs={10}>
+                                            <div className="border p-4" onClick={handleEditor6} >
+                                            <div style={{ display:(showeditor6===true)?'block':'none'}}>    
                                             <CKEditor editor={Editor} data5={optionDatadual[index]}
                                            onChange={(event, editor) => { const data5 = editor.getData()
                                             let optionsValuedual = [...optionDatadual]
@@ -534,7 +605,10 @@ export default function QuestionPageD() {
                                         config={{
                                             extraPlugins: [uploadPlugin]
                                         }}
-                                        /></Grid>
+                                        />
+                                        </div>
+                                        </div>
+                                        </Grid>
 
                                             <Grid item xs={1}>
                                                 <Grid container justifyContent={"flex-end"}>
@@ -577,6 +651,8 @@ export default function QuestionPageD() {
                                                 </Grid>
 
                                                 <Grid item xs={10}>
+                                                <div className="border p-4" onClick={handleEditor7} >
+                                                <div style={{ display:(showeditor7===true)?'block':'none'}}>        
                                                 <CKEditor editor={Editor} data6={optionData[index]} 
                                             onChange={(event, editor) => { const data6 = editor.getData()
                                                 let optionsValue = [...optionData]
@@ -587,7 +663,9 @@ export default function QuestionPageD() {
                                                 extraPlugins: [uploadPlugin]
                                             }}
                                             />
-                                                </Grid>
+                                            </div>
+                                            </div>
+                                            </Grid>
 
                                                 <Grid item xs={1}>
                                                     <Grid container justifyContent={"flex-end"}>
@@ -633,6 +711,8 @@ export default function QuestionPageD() {
                                                          </Grid>
 
                                                          <Grid item xs={10}>
+                                            <div className="border p-4" onClick={handleEditor8} >
+                                            <div style={{ display:(showeditor8===true)?'block':'none'}}>                     
                                             <CKEditor  key={index} id={index} editor={Editor} data7={optionData[index]}
                                            onChange={(event, editor) => { const data7 = editor.getData()
                                             let optionsValue = [...optionData]
@@ -644,6 +724,8 @@ export default function QuestionPageD() {
                                             extraPlugins: [uploadPlugin]
                                         }}
                                         />
+                                        </div>
+                                        </div>
                                             </Grid>
 
                                                          <Grid item xs={1}>
@@ -675,6 +757,8 @@ export default function QuestionPageD() {
                                                 </Grid>
 
                                         <Grid item xs={10}>
+                                            <div className="border p-4" onClick={handleEditor9} >
+                                            <div style={{ display:(showeditor9===true)?'block':'none'}}>    
                                             <CKEditor editor={Editor} data8={optionData[index]}
                                             onChange={(event, editor) => { const data8 = editor.getData()
                                             let optionsValue = [...optionData]
@@ -685,6 +769,8 @@ export default function QuestionPageD() {
                                             extraPlugins: [uploadPlugin]
                                         }}
                                         />
+                                        </div>
+                                        </div>
                                         </Grid>
 
                                                 <Grid item xs={1}>
@@ -720,14 +806,20 @@ export default function QuestionPageD() {
                         <div className={'col-12 mt-3'}>
                         <h4 className={'pt-3'}>Solution</h4>
                               {PostQuestions.QLanguage===3?<>
+                              <div className="border p-4" onClick={handleEditor10} >
+                              <div style={{ display:(showeditor10===true)?'block':'none'}}>    
                               <CKEditor editor={Editor} data9={textsolDual} 
                               onChange={(event, editor) => { const data9 = editor.getData()
                               settextsolDual(data9)}}
                               config={{
                                 extraPlugins: [uploadPlugin]
                               }}
-                            />
+                              />
+                            </div>
+                            </div>
                            < VideoUpload /> 
+                           <div className="border p-4" onClick={handleEditor11} >
+                           <div style={{ display:(showeditor11===true)?'block':'none'}}>    
                            <CKEditor editor={Editor} data10={textsol} 
                            onChange={(event, editor) => { const data10 = editor.getData()
                            settextsol(data10) }}
@@ -735,9 +827,13 @@ export default function QuestionPageD() {
                             extraPlugins: [uploadPlugin]
                            }}
                           />
-                            < VideoUpload /> 
+                          </div>
+                          </div>
+                          < VideoUpload /> 
                         </>:<></>}
                         {PostQuestions.QLanguage===2?<>
+                        <div className="border p-4" onClick={handleEditor12} >
+                        <div style={{ display:(showeditor12===true)?'block':'none'}}>    
                        <CKEditor editor={Editor} data11={textsol} 
                         onChange={(event, editor) => { const data11 = editor.getData()
                         settextsol(data11)
@@ -746,9 +842,13 @@ export default function QuestionPageD() {
                             extraPlugins: [uploadPlugin]
                         }}
                         />
+                        </div>
+                        </div>
                         < VideoUpload />  
                         </>:<></>}
                         {PostQuestions.QLanguage===1?<>
+                        <div className="border p-4" onClick={handleEditor13} >
+                        <div style={{ display:(showeditor13===true)?'block':'none'}}>    
                         <CKEditor editor={Editor} data12={textsol} 
                         onChange={(event, editor) => { const data12 = editor.getData()
                         settextsol(data12)
@@ -757,12 +857,14 @@ export default function QuestionPageD() {
                             extraPlugins: [uploadPlugin]
                         }}
                         />
-                      < VideoUpload /> 
+                        </div>
+                        </div>
+                        < VideoUpload /> 
             </>:<></>}
                         </div>
 
                         <div className={'col-5 mt-3'}>
-                            <label className={'pb-2'}>Referance</label>
+                            <label className={'pb-2'}>Reference</label>
                             <div>
                             <TextField value={AddFinalQuestions.QDes} variant={'outlined'}
                             onChange={(e) => {setAddFinalQuestions({...AddFinalQuestions,QDes:e.target.value})}} 

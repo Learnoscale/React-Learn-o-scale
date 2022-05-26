@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from './Footer';
+import classes from './psycho.module.css';
 
 
 export default function CandesignOne() {
@@ -14,7 +15,7 @@ export default function CandesignOne() {
    
  
       <div   className="row " >
-        <div className="col-md-10">
+        <div className="col-md-11">
           <div className="row p-1 bg-info sticky-md-top"><h4>Instructions</h4></div>
           <div className="col-12 fs-6 pb-5" style={{ width: '100%', height: '580px', overflow: 'auto'}}>
             <h5 className='text-center'>GENERAL INSTRUCTIONS REGARDING APTITUDE TEST</h5>
@@ -89,9 +90,9 @@ export default function CandesignOne() {
              </div>
           
           </div>
-          <div className="col-md-2 border text-center">
-          {/* <img src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className="image-responsive"/>
-          <div className="text-center">Vikash Tiwari</div> */}
+          <div className="col-md-1 border text-center">
+          <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className={classes.img}/>
+          <div className="text-center">Vikash Tiwari</div>
           </div>
         </div>
         <div className="row p-1 border" style={{ position: 'fixed',bottom: '27px', width: '100%'}}>
