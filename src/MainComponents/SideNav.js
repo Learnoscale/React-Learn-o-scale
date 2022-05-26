@@ -79,7 +79,7 @@ export const BatchContent = [
    
 ];
 export const ContentNav = [
-    {id: 1, title: "Test",icons: <DescriptionIcon fontSize="small"/>,page: "/announcements",},
+    {id: 1, title: "Test",icons: <DescriptionIcon fontSize="small"/>,page: "/educators",},
     {id: 2, title: "Classes",icons: <LiveTvIcon fontSize="small"/>,page: "/announcements",},
     {id: 3, title: "E-Books",icons: <MenuBookIcon fontSize="small"/>,page: "/announcements",},
     {id: 4, title: "Assignment",icons: <AssignmentIcon fontSize="small"/>,page: "/announcements",},

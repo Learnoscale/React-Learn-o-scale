@@ -177,7 +177,7 @@ button{
 }
 .navbar1 > ul > li {
   white-space: nowrap;
-  padding: 10px 0 10px 24px;
+  padding: 5px 0 5px 10px;
   text-decoration: none;
 }
 .navbar1 a, .navbar1 a:focus {
@@ -221,7 +221,7 @@ button{
 .navbar1 .dropdown ul {
   display: block;
   position: absolute;
-  left: 24px;
+  left: 10px;
   top: calc(100% + 30px);
   margin: 0;
   padding: 10px 0;
@@ -233,10 +233,10 @@ button{
   transition: 0.3s;
 }
 .navbar1 .dropdown ul li {
-  min-width: 200px;
+  min-width: 120px;
 }
 .navbar1 .dropdown ul a {
-  padding: 10px 20px;
+  padding: 5px 5px;
   font-size: 14px;
   text-transform: none;
   color: #666666;
