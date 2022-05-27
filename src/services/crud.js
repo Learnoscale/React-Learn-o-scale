@@ -7,6 +7,7 @@ export class CrudFactory extends CrudRequest {
     const psl = require('psl');
     const x=document.domain
     const Parse = psl.parse(x);
+    console.log('log',x)
     const xp=Parse.sld
     this.baseUrl = "http://"+xp+".learnoscale.in";
     console.log("baseurl",baseUrl)
