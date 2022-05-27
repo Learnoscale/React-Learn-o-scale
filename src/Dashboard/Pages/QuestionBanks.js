@@ -58,8 +58,11 @@ export default function QuestionCreateCourse() {
     // getCourses
     async function getCourses()
     {
+      
         setLoader(true);
+        
         try{
+        
         const data= await crud.retrieve('/categoryapi/');
         setCourses(data);
         setLoader(false);

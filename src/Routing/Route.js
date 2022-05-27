@@ -135,7 +135,7 @@ export default function Routing() {
           <PrivateRouter Component={Students} path={'/Students'} exact/>
           <PrivateRouter Component={ActiveStudents} path={'/ActiveStudents'} exact/>
           <PrivateRouter Component={QuestionBank} path={'/question-bank'} exact/>
-          <PrivateRouter Component={Test} path={'/educators'} exact/>
+          <PrivateRouter Component={Test} path={'/test'} exact/>
           <PrivateRouter Component={QuestionCourse} path={'/question-course/:id'} exact/>
           <PrivateRouter Component={QuestionSubjects} path={'/question-subject/:id'} exact/>
           <PrivateRouter Component={QuestionTopic} path={'/question-topic/:id'} exact/>

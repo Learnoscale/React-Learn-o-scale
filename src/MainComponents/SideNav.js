@@ -79,12 +79,12 @@ export const BatchContent = [
    
 ];
 export const ContentNav = [
-    {id: 1, title: "Test",icons: <DescriptionIcon fontSize="small"/>,page: "/educators",},
-    {id: 2, title: "Classes",icons: <LiveTvIcon fontSize="small"/>,page: "/announcements",},
-    {id: 3, title: "E-Books",icons: <MenuBookIcon fontSize="small"/>,page: "/announcements",},
-    {id: 4, title: "Assignment",icons: <AssignmentIcon fontSize="small"/>,page: "/announcements",},
-    {id: 5, title: "Content-Mapping",icons: <CampaignIcon fontSize="small"/>,page: "/announcements",},
-    {id: 6, title: "Presentation",icons: <PresentToAllIcon fontSize="small"/>,page: "/announcements",}
+    {id: 1, title: "Test",icons: <DescriptionIcon fontSize="small"/>,page: "/test",},
+    {id: 2, title: "Classes",icons: <LiveTvIcon fontSize="small"/>,page: "/classes",},
+    {id: 3, title: "E-Books",icons: <MenuBookIcon fontSize="small"/>,page: "/e-books",},
+    {id: 4, title: "Assignment",icons: <AssignmentIcon fontSize="small"/>,page: "/assignment",},
+    {id: 5, title: "Content-Mapping",icons: <CampaignIcon fontSize="small"/>,page: "/content",},
+    {id: 6, title: "Presentation",icons: <PresentToAllIcon fontSize="small"/>,page: "/presentation",}
 ];
 //Website-header
 export const WebsiteNav = [

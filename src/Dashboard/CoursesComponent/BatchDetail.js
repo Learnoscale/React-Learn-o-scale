@@ -25,17 +25,21 @@ import {
   FileCopyRounded,
 
 } from "@material-ui/icons";
-import { Box,Paper,Stack,Radio,FormControl,RadioGroup,FormControlLabel } from '@mui/material';
+import { Box,Paper,Stack,Radio,FormControl,RadioGroup,FormControlLabel,Typography } from '@mui/material';
 import { Themes } from "../../Theme/theme";
 import clsx from "clsx";
 import { crud } from "../../services/crud";
 import "../QuestionBankComponent/QuestionCss.css";
 import Loader from "../../MainComponents/Loader";
-import {BatchSidebar} from "../../MainComponents/SideNav";
+import {ContentNav, BatchContent, BatchSidebar1,BatchSidebar2} from "../../MainComponents/SideNav";
 import { NavLink,useLocation} from 'react-router-dom';
 import '../../Website/Component/headerCss.css';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { pink } from '@mui/material/colors';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const courses = [
     {id: 1, title: 'BATCH 01', topic:65, subtitle: 'Maths, Physics, Chemistry'},
@@ -146,17 +150,52 @@ export default function BatchDetail() {
       {formaData}
       <div className="container-fluid" style={{textSize: 8}}>
         <div className="row px-lg-0 py-0">
-          <div className="col-lg-1 text" style={{background: Themes.MainHeaderColor}}><ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            {BatchSidebar.map((value => (
+          <div className="col-lg-1 text" style={{background: Themes.MainHeaderColor}}> <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            {BatchSidebar1.map((value => (
                                 <li className="nav-item dropdown" style={{color: Themes.WHITE}} key={value.id}>
-                                   {/*{value.page === '/course-batch' ? <><Badge className={classes.Badge}
-                                                                                 color="secondary"
-                                                                                 badgeContent={'Free'}/></> : <></>}*/}
-                                    {!(value.title === 'Log Out') ?
+                                
+                                   
                                         <NavLink to={value.page} activeClassName={'active_link'}
-                                                 className="nav-link">{value.icons}  {value.title}</NavLink> : <></>}
+                                                 className="nav-link">{value.icons}  {value.title}</NavLink> 
                                 </li>
-                            )))}</ul> </div>
+                            )))}
+                            {BatchContent.map((value => (
+                                <li className="nav-item dropdown" style={{color: Themes.WHITE}} key={value.id}>
+                                  
+                                        <Accordion style={{background: Themes.MainHeaderColor,boxShadow: "none"}}>
+                                         <AccordionSummary 
+                                         expandIcon={<ExpandMoreIcon style={{color: Themes.WHITE}} />}
+                                         aria-controls="panel1a-content"
+                                         id="panel1a-header"
+                                        >
+                                        <Typography style={{color: Themes.WHITE}}>
+                                          <small>{value.icons}  {value.title}</small>
+                                        </Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                        <Typography>
+                                          
+                                        {ContentNav.map((value => (
+                                        <li style={{color: Themes.WHITE}} key={value.id}>
+                                        <NavLink to={value.page} activeClassName={'active_link'}
+                                                 >{value.icons}  {value.title}</NavLink> 
+                                        </li>
+                                        )))}
+                                        </Typography>
+                                        </AccordionDetails>
+                                        </Accordion>
+                                       
+                                </li>
+                                )))}
+                            {BatchSidebar2.map((value => (
+                                <li className="nav-item dropdown" style={{color: Themes.WHITE}} key={value.id}>
+                                  
+                                   
+                                        <NavLink to={value.page} activeClassName={'active_link'}
+                                                 className="nav-link">{value.icons}  {value.title}</NavLink> 
+                                </li>
+                            )))}
+                            </ul></div>
           <div className="col-lg-8 py-4">
             <div className="row px-lg-0">
             <Box

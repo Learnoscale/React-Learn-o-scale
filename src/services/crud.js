@@ -1,17 +1,40 @@
 import { CrudRequest } from "@crud/core";
 import { notify } from "react-notify-toast";
 export class CrudFactory extends CrudRequest {
-  baseUrl = "https://lmsoskillupdated.herokuapp.com";
+  constructor() {
+    const baseUrl=''
+    super();  
+    const psl = require('psl');
+    const x=document.domain
+    const Parse = psl.parse(x);
+    const xp=Parse.sld
+    this.baseUrl = "http://"+xp+".learnoscale.in";
+    console.log("baseurl",baseUrl)
+  }
+  // const psl = require('psl');
+  // const url = 'google.com';
+  // const Parse = psl.parse(url);
+  
+  // const psl = require('psl');
+  // const x='janjeevseva'
+     
+  // console.log("xvalue",x)
+  // const Parse = psl.parse(x); 
+  // console.log("hhh",Parse.sld)
+
+  
   getUrl = (...segments) =>
     segments.reduce((url, segment) => url + segment, this.baseUrl);
 
   async retrieve(url, data = {}, requestOptions = {}) {
+
     return this.send({
       method: "GET",
       url: "" + url,
       data,
       ...requestOptions,
     });
+
   }
 
   async create(url, data = {}, requestOptions = {}) {

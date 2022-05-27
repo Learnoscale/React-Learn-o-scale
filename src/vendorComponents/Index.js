@@ -7,6 +7,7 @@ import img1 from './img/portfolio/portfolio-1.jpg'
 
 
 export const Index = () => (
+    
     <div>
       <Header/>
       {/* ======= Courses Section ======= */}

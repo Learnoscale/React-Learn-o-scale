@@ -15,6 +15,8 @@ import Route from "./Routing/Route";
 import Notifications from "react-notify-toast";
 
 function App() {
+
+    
     return (
         <div className="App">
             <Provider store={store}>
