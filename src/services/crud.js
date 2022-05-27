@@ -10,7 +10,7 @@ export class CrudFactory extends CrudRequest {
     console.log('log',x)
     const xp=Parse.sld
     this.baseUrl = "http://"+xp+".learnoscale.in";
-    console.log("baseurl",baseUrl)
+    console.log("baseurl",this.baseUrl)
   }
   // const psl = require('psl');
   // const url = 'google.com';
