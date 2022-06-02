@@ -15,7 +15,7 @@ export class CrudFactory extends CrudRequest {
       xp=''
     }
     this.baseUrl = "http://"+xp+".learnoscale.in";
-    //this.baseUrl = "http://janjeevseva.learnoscale.in";
+    //this.baseUrl = "https://lmsoskillupdated.herokuapp.com";
     console.log("baseurl",this.baseUrl)
 
   }

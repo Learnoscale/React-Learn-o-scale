@@ -2,9 +2,9 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Divider from '@mui/material/Divider';
-import Toolbar from '@mui/material/Toolbar';
+
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
@@ -51,24 +51,31 @@ export default function CreateNewSection(props) {
         TransitionComponent={Transition}
       >
         
-          <Toolbar>
-            <Typography sx={{ ml: 1, flex: 1 }} variant="h6" component="div">
+         
+          
+          <div className='container-fluid' style={{testAlign: 'center'}}>
+            <div className="row py-2">
+            <div className='col-sm-3'>
             Test Name: {props.testName} 
-            </Typography>
-            <AddNewSection
-            testName={props.testName} 
-            tagname={props.tagname}
-            questionno={props.questionNo}
-            totalmarks={props.totalmarks}
-            hour={props.hour } 
-            minute={props.minute }  
-            testcategory={props.testcategory}
-            testlayout={props.testlayout}
-            poolQ={props.poolQ}
-            freeA={props.freeA}
-            startDate={props.startDate}
-            endDate={props.endDate}
-            disableEnforceFocus={true} />
+            </div>
+            <div className="col-sm-5"></div>
+            <div className="col-sm-3" style={{testAlign: 'center'}}>
+            <AddNewSection 
+                testName={props.testName} 
+                tagName={props.tagName}
+                questionNo={props.questionNo}
+                totalmarks={props.totalmarks}
+                hour={props.hour } 
+                minute={props.minute }  
+                testcategory={props.testcategory}
+                testlayout={props.testlayout}
+                poolQ={props.poolQ}
+                freeA={props.freeA}
+                startDate={props.startDate}
+                endDate={props.endDate}
+                disableEnforceFocus={true} />
+            </div>
+            <div className="col-sm-1">
             <IconButton
               edge="start"
               color="inherit"
@@ -78,7 +85,10 @@ export default function CreateNewSection(props) {
             >
               <CloseIcon />
             </IconButton>
-          </Toolbar>
+            </div>
+            </div>
+          </div>
+          
           <Divider />
           <div class="container-fluid min-vh-100 d-flex flex-column">
     <div className="row flex-grow-1">

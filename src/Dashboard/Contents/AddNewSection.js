@@ -63,7 +63,7 @@ BootstrapDialogTitle.propTypes = {
 
 export default function AddNewSection(props) {
   const testName=props.testName 
-  const tagname=props.tagname
+  const tagname=props.tagName
   const questionno=props.questionNo
   const totalmarks=props.totalmarks
   const hour=props.hour  
@@ -313,7 +313,22 @@ export default function AddNewSection(props) {
            <div className="col-sm-2"></div>
            <div className="col-sm-3"><Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
                     if(formData.ButtonTitle==='Add Section'){
-                          await crud.create('/TestSectionApi/',{
+                      await crud.create('/testMakesapi/',{
+                        user :1,
+                        testName:testName,
+                        tags:tagname,
+                        noOfQuestions:questionno,
+                        totalMarks:totalmarks,
+                        hour:hour,
+                        minute:minute,
+                        testCategory:testcategory,
+                        testLayout:testlayout,
+                        poolQuestion:poolQ,
+                        freeAvailable:freeA,
+                        testShowFrom:startDate,
+                        testEndON:endDate
+                      });
+                      await crud.create('/TestSectionApi/',{
                               sectionName:saveSection.secname,
                               hour:saveSection.hour,
                               minute:saveSection.minute,
@@ -323,23 +338,9 @@ export default function AddNewSection(props) {
                               useSectionAsBreak:saveSection.secBreak,
                               showPreviousSection:false,
                               sectionInstruction:sectioninst,
-                              testmake:10
-                          });
-                          await crud.create('/testMakesapi/',{
-                            user :1,
-                            testName:testName,
-                            tags:tagname,
-                            noOfQuestions:questionno,
-                            totalMarks:totalmarks,
-                            hour:hour,
-                            minute:minute,
-                            testCategory:testcategory,
-                            testLayout:testlayout,
-                            poolQuestion:poolQ,
-                            freeAvailable:freeA,
-                            testShowFrom:startDate,
-                            testEndON:endDate
-                          });
+                              
+                      });
+                      
                     }
                       // setOpen(false)
                     }} color="primary"> 
