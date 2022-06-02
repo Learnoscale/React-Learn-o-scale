@@ -22,6 +22,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function CreateNewSection(props) {
+  
+
+  
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -32,8 +35,10 @@ export default function CreateNewSection(props) {
     setOpen(false);
   };
 
+  
   return (
     <div>
+      
       <Button variant="outlined" onClick={handleClickOpen}>
         Create New Section
       </Button>
@@ -48,9 +53,22 @@ export default function CreateNewSection(props) {
         
           <Toolbar>
             <Typography sx={{ ml: 1, flex: 1 }} variant="h6" component="div">
-            Test Name: {props.name} 
+            Test Name: {props.testName} 
             </Typography>
-            <AddNewSection disableEnforceFocus={true} />
+            <AddNewSection
+            testName={props.testName} 
+            tagname={props.tagname}
+            questionno={props.questionNo}
+            totalmarks={props.totalmarks}
+            hour={props.hour } 
+            minute={props.minute }  
+            testcategory={props.testcategory}
+            testlayout={props.testlayout}
+            poolQ={props.poolQ}
+            freeA={props.freeA}
+            startDate={props.startDate}
+            endDate={props.endDate}
+            disableEnforceFocus={true} />
             <IconButton
               edge="start"
               color="inherit"

@@ -1,8 +1,9 @@
 import { CrudRequest } from "@crud/core";
 import { notify } from "react-notify-toast";
 export class CrudFactory extends CrudRequest {
+  baseUrl=''
   constructor() {
-    var baseUrl=''
+    
     super();  
     const psl = require('psl');
     const x=document.domain
@@ -13,8 +14,9 @@ export class CrudFactory extends CrudRequest {
     {
       xp=''
     }
-    baseUrl = "http://"+xp+".learnoscale.in";
-    console.log("baseurl",baseUrl)
+    this.baseUrl = "http://"+xp+".learnoscale.in";
+    //this.baseUrl = "http://janjeevseva.learnoscale.in";
+    console.log("baseurl",this.baseUrl)
 
   }
   // const psl = require('psl');

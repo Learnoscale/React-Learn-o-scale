@@ -1,76 +1,92 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {selectUser} from "../services/Slices/UserSlice";
+import {Link, useHistory} from 'react-router-dom';
+import _ from 'lodash';
+import {makeLogout} from "../services/Slices/UserSlice";
+import {Button, Menu, MenuItem, Avatar} from "@material-ui/core";
 import './style.css';
-import im1 from './img/favicon.png';
-export const Header = () => (
+// import im1 from './img/favicon.png';
+import { crud } from "../services/crud";
+export default  function Header(){
+
+     const  isAuthenticated = useSelector(selectUser);
+     const dispatch=useDispatch();
+     const [userLogin, setUserLogin] = useState(false);
+     const [adminLogin, setAdminLogin] = useState(false);
+     const [loader, setLoader] = useState(false);
+     const [home, setHome] = useState('');
+     const history = useHistory;
+
+     async function getHome()
+     {
+         setLoader(true);
+         try{
+         const data= await crud.retrieve('/homeapi/');
+         setHome(data);
+         console.log('homedata', data);
+         setLoader(false);
+     }
+     catch(e){
+         setLoader(false);
+     }
+     }
+    
+     useEffect(() => {
+       getHome();
+       const favicon = document.getElementById('favicon');
+       favicon.href =  home[1]?.home_logo;
+       document.getElementById('slug').innerHTML = home[1]?.home_title;
+        
+     },);
+
+
+  return (
+
     <div>
+       {loader}{adminLogin}
       {/* ======= Header ======= */}
-      <header
+      <div
         id="header"
         className="fixed-top d-flex align-items-center header-transparent header-scrolled"
       >
         <div className="container-fluid d-flex justify-content-between align-items-center">
-       
+       {/* Change it to dynamic */}
           <div id="logo">
             <Link to="/">
-              <img src={im1} alt='favicon' />
+              <img src={
+              
+          home[1]?.home_logo
+              } alt='logo' height={'50px'} width={'100%'} />
             </Link>
           </div>
-          <nav id="navbar" className="navbar1">
+          <nav id="navbar" className="navbar">
             <ul>
               <li className="dropdown">
-                <Link to="da">
+                <Link to="#">
                   <span>Online Course</span> <i className="bi bi-chevron-down" />
                 </Link>
                 <ul>
                   <li className="dropdown">
-                    <Link to="fg">
+                    <Link to="#">
                       <span>Banking And Insurance</span>
                       <i className="bi bi-chevron-down" />
                     </Link>
                     <ul>
-                      <li>
-                        <Link to="foundation.html">Foundation Batches</Link>
-                      </li>
-                      <li>
-                        <Link to="ibps.html">IBPS P.O</Link>
-                      </li>
-                      <li>
-                        <Link to="sbipo.html">SBI P.O </Link>
-                      </li>
-                      <li>
-                        <Link to="ibps-clerk-test-series">IBPS Cleark</Link>
-                      </li>
-                      <li>
-                        <Link to="#">SBI Cleark</Link>
-                      </li>
-                      <li>
-                        <Link to="#">ECGC</Link>
-                      </li>
-                      <li>
-                        <Link to="#">SIDBI</Link>
-                      </li>
-                      <li>
-                        <Link to="#">SEBI</Link>
-                      </li>
-                      <li>
-                        <Link to="#">IBPS RRB</Link>
-                      </li>
-                      <li>
-                        <Link to="#">RBI Grade B</Link>
-                      </li>
-                      <li>
-                        <Link to="#">ESIC SSO</Link>
-                      </li>
-                      <li>
-                        <Link to="#">FCI</Link>
-                      </li>
-                      <li>
-                        <Link to="#">NABARD</Link>
-                      </li>
-                      <li>
-                        <Link to="#">Show More</Link>
-                      </li>
+                      <li><Link to="foundation.html">Foundation Batches</Link> </li>
+                      <li><Link to="ibps.html">IBPS P.O</Link></li>
+                      <li><Link to="sbipo.html">SBI P.O </Link></li>
+                      <li><Link to="ibps-clerk-test-series">IBPS Cleark</Link></li>
+                      <li><Link to="#">SBI Cleark</Link></li>
+                      <li><Link to="#">ECGC</Link></li>
+                      <li><Link to="#">SIDBI</Link></li>
+                      <li><Link to="#">SEBI</Link></li>
+                      <li> <Link to="#">IBPS RRB</Link></li>
+                      <li><Link to="#">RBI Grade B</Link></li>
+                      <li><Link to="#">ESIC SSO</Link></li>
+                      <li><Link to="#">FCI</Link></li>
+                      <li><Link to="#">NABARD</Link></li>
+                      <li><Link to="#">Show More</Link></li>
                     </ul>
                   </li>
                   <li className="dropdown">
@@ -79,18 +95,10 @@ export const Header = () => (
                       <i className="bi bi-chevron-down" />
                     </Link>
                     <ul>
-                      <li>
-                        <Link to={"jee-mains-test-series"}>Main Exams</Link>
-                      </li>
-                      <li>
-                        <Link to={"jee-advance-test-series"}>Advanced Exams</Link>
-                      </li>
-                      <li>
-                        <Link to="#"> Full Course</Link>
-                      </li>
-                      <li>
-                        <Link to="#">Foundation Batch</Link>
-                      </li>
+                      <li><Link to={"jee-mains-test-series"}>Main Exams</Link></li>
+                      <li><Link to={"jee-advance-test-series"}>Advanced Exams</Link></li>
+                      <li><Link to="#"> Full Course</Link></li>
+                      <li><Link to="#">Foundation Batch</Link></li>
                     </ul>
                   </li>
                   <li className="dropdown">
@@ -422,24 +430,76 @@ export const Header = () => (
                 <Link className="nav-link scrollto" to="#contact">
                   Contact
                 </Link>
-              </li>
-              <li>
+              </li>{(!(_.isEmpty(isAuthenticated)))?
+                               <li className="nav-item dropdown">
+                                <Button className='mt-1 mx-1' aria-controls="simple-menu" aria-haspopup="true"
+                                        onClick={(event) => {
+                                            setUserLogin(event.currentTarget)
+                                        }}>
+                                    <Avatar alt="Remy Sharp"
+                                            src="https://media-exp1.licdn.com/dms/image/C4E03AQENlMNKH9CE0w/profile-displayphoto-shrink_200_200/0/1634066552225?e=1647475200&v=beta&t=2WaAjJJUXoHhK3P4gTa1jU5Z542bB1iC9IwF9nJdM-0"/>
+                                </Button>
+                                {(userLogin===adminLogin)?
+                                <>
+                                <Menu id="simple-menu" anchorEl={userLogin} keepMounted open={Boolean(userLogin)}
+                                      onClose={(event) => {
+                                          setAdminLogin(null)
+                                      }}>
+                                    <MenuItem onClick={() => {
+                                   history.push('/dashboard')
+                                        setUserLogin(null);
+                                    }}>Admin</MenuItem>
+                                    <MenuItem onClick={() => {
+                                        setAdminLogin(null)
+                                    }}>Profile</MenuItem>
+                                    <MenuItem
+
+                                        onClick={() => {
+                                            dispatch(makeLogout({}))
+                                            history.push('/')
+                                        setAdminLogin(null);}}
+                                    >Logout</MenuItem>
+                                </Menu>
+                                </>:
+                                <>
+                                <Menu id="simple-menu" anchorEl={userLogin} keepMounted open={Boolean(userLogin)}
+                                      onClose={(event) => {
+                                          setUserLogin(null)
+                                      }}>
+                                    <MenuItem onClick={() => {
+                                        setUserLogin(null)
+                                    }}>Profile</MenuItem>
+                                    <MenuItem
+
+                                        onClick={() => {
+                                            dispatch(makeLogout({}))
+                                            history.push('/login')
+                                        setUserLogin(null);}}
+                                    >Logout</MenuItem>
+                                </Menu>
+                                </>}
+                                </li>
+              :<li>
                 <Link className="nav-link scrollto" to="/login-page">
                   Login
                 </Link>
+                
               </li>
+}
             </ul>
             <i className="bi bi-list mobile-nav-toggle" />
           </nav>
           {/* .navbar */}
         </div>
-      </header>
+      </div>
       {/* End Header */}
       {/* ======= Hero Section ======= */}
       <section id="hero">
         <div className="hero-container" data-aos="zoom-in" data-aos-delay={100}>
           <div id="main"></div>
-          <h1>Smart Online Exam</h1>
+          {/* Change it to dynamic */}
+          
+          <h1>{home[1]?.home_title}</h1>
           <h2>We are Creating and Promoting Talents</h2>
           <Link to="#about" className="btn-get-started">
             Get Started
@@ -455,6 +515,9 @@ export const Header = () => (
       </Link>
       {/* Vendor JS Files */}
       {/* Template Main JS File */}
+      
     </div>
+       
   )
+     }
   

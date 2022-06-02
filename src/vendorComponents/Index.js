@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 import { Link } from 'react-router-dom';
-import {Header} from './Header';
+import Header from './Header';
 import {Footer} from './Footer';
 import img1 from './img/portfolio/portfolio-1.jpg'
 

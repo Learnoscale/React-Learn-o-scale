@@ -273,6 +273,7 @@ export default function CreateNewTest() {
              <select name="test-layout" value={saveTest.testlayout} 
              onChange={(e) => {setsaveTest({...saveTest,testlayout:e.target.value})}} 
              className='border' id="test-layout">
+              <option disabled>None</option>
              {testLayout?.map((value, index) => (  
               <option value={value?.tl_id}>{value?.tl_title}</option>
              ))} 
@@ -314,8 +315,21 @@ export default function CreateNewTest() {
        </div>
         </DialogContent>
         <DialogActions>
-        <CreateNewSection testName={saveTest.testname}/>
-        <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
+        <CreateNewSection 
+        testName={saveTest.testname}
+        tagName={saveTest.tagname}
+        questionNo={saveTest.questionNo}
+        totalmarks={saveTest.totalmarks}
+        hour={saveTest.hour}
+        minute={saveTest.minute}
+        testcategory={saveTest.testcategory}
+        testlayout={saveTest.testlayout}
+        poolQ={savePoolFree.poolQ}
+        freeA={savePoolFree.freeA}
+        startDate={saveTest.startDate}
+        endDate={saveTest.endDate}
+        />
+        {/* <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
                     if(formData.ButtonTitle==='Create Test'){
                           await crud.create('/testMakesapi/',{
                               user :1,
@@ -337,7 +351,7 @@ export default function CreateNewTest() {
                       // setOpen(false)
                     }} color="primary"> 
                         {formData.ButtonTitle}
-        </Button>
+        </Button> */}
         </DialogActions>
       </BootstrapDialog>
     </div>

@@ -61,7 +61,20 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function AddNewSection() {
+export default function AddNewSection(props) {
+  const testName=props.testName 
+  const tagname=props.tagname
+  const questionno=props.questionNo
+  const totalmarks=props.totalmarks
+  const hour=props.hour  
+  const minute=props.minute   
+  const testcategory=props.testcategory
+  const testlayout=props.testlayout
+  const poolQ=props.poolQ
+  const freeA=props.freeA
+  const startDate=props.startDate
+  const endDate=props.endDate
+  
   const classes = useStyles();
   const location = useLocation();
   const [loader, setLoader] = useState(false);
@@ -73,6 +86,7 @@ export default function AddNewSection() {
     ButtonTitle: "",
   });
   const [showeditor, setShoweditor] = useState(false);
+  const [sectioninst, setsectioninst] = useState("")
   async function getTestLayOut()
   {
      
@@ -133,7 +147,7 @@ export default function AddNewSection() {
         maxWidth= "md"
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-         Add New Section
+         Add New Section 
         </BootstrapDialogTitle>
         <DialogContent dividers>
        <div className="container-fluid">
@@ -148,6 +162,7 @@ export default function AddNewSection() {
            <select name="test-layout" value={saveSection.testlayout} 
              onChange={(e) => {setsaveSection({...saveSection,testlayout:e.target.value})}} 
              className='border' id="test-layout">
+               <option disabled>None</option>
              {testLayout?.map((value, index) => (  
               <option value={value?.tl_id}>{value?.tl_title}</option>
              ))} 
@@ -196,7 +211,7 @@ export default function AddNewSection() {
                <option value="2">12</option>
                <option value="2">13</option>
                <option value="2">14</option> */}
-               <option value="2">15</option>
+               <option value="15">15</option>
                {/* <option value="1">16</option>
                <option value="2">17</option>
                <option value="2">18</option>
@@ -211,7 +226,7 @@ export default function AddNewSection() {
                <option value="2">27</option>
                <option value="2">28</option>
                <option value="2">29</option> */}
-               <option value="2">30</option>
+               <option value="30">30</option>
                {/* <option value="1">31</option>
                <option value="2">32</option>
                <option value="2">33</option>
@@ -226,7 +241,7 @@ export default function AddNewSection() {
                <option value="2">42</option>
                <option value="2">43</option>
                <option value="2">44</option> */}
-               <option value="2">45</option>
+               <option value="45">45</option>
                {/* <option value="1">46</option>
                <option value="2">47</option>
                <option value="2">48</option>
@@ -265,7 +280,7 @@ export default function AddNewSection() {
              onChange={(e) => {setsaveSection({...saveSection,secSkip:e.target.checked})}} {...label} />on</div>
          </div> 
          <div className="row my-1">
-           <div className="col-sm-9 d-flex align-items-center"><h6>Give students choice fo which questions to attempt</h6></div>
+           <div className="col-sm-9 d-flex align-items-center"><h6>Give students choice of which questions to attempt</h6></div>
            <div className="col-sm-3">off<Switch value={saveSection.stdChoice ? "off" :"on"} 
              onChange={(e) => {setsaveSection({...saveSection,stdChoice:e.target.checked})}} {...label} />on</div>
          </div> 
@@ -277,10 +292,13 @@ export default function AddNewSection() {
 
          <div className="row my-3">
            <label htmlFor="section-instruction"> <h6>Section Instructions</h6></label>
-           {/* <textarea name="section-instruction" value={saveSection.secInstruction ? "off" :"on"} 
-             onChange={(e) => {setsaveSection({...saveSection,secInstruction:e.target.checked})}} id="section-instruction" cols="20" rows="5"></textarea> */}
          <div className="border p-4" onClick={handleEditor} ><div style={{ display:(showeditor===true)?'block':'none'}} id='myDIV'  >
-         <CKEditor editor={Editor} /></div>
+         <CKEditor editor={Editor}
+         dataS={sectioninst} 
+         onChange={(event, editor) => { const dataS = editor.getData()
+         setsectioninst(dataS)
+         }}
+         /></div>
          </div>
          </div>
          <div className="row my-3">
@@ -304,8 +322,23 @@ export default function AddNewSection() {
                               studentChoice: saveSection.stdChoice,
                               useSectionAsBreak:saveSection.secBreak,
                               showPreviousSection:false,
-                              sectionInstruction:saveSection.secInstruction,
+                              sectionInstruction:sectioninst,
                               testmake:10
+                          });
+                          await crud.create('/testMakesapi/',{
+                            user :1,
+                            testName:testName,
+                            tags:tagname,
+                            noOfQuestions:questionno,
+                            totalMarks:totalmarks,
+                            hour:hour,
+                            minute:minute,
+                            testCategory:testcategory,
+                            testLayout:testlayout,
+                            poolQuestion:poolQ,
+                            freeAvailable:freeA,
+                            testShowFrom:startDate,
+                            testEndON:endDate
                           });
                     }
                       // setOpen(false)
