@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {
-  makeStyles,
+// import {
+//   makeStyles,
   
-} from "@material-ui/core";
+// } from "@material-ui/core";
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -12,12 +12,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import {IconButton, Switch} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-//import  styles from './Contents.css'
+
 import { Themes } from "../../Theme/theme";
 import {Add} from "@material-ui/icons";
 import { crud } from "../../services/crud";
 import { useLocation } from "react-router-dom";
-import clsx from "clsx";
+
 import CreateNewSection from './CreateNewSection';
 
 const label = {inputProps: { 'aria-label': 'Switch demo'}};
@@ -60,16 +60,16 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CreateNewTest() {
-  const classes = useStyles();
+  
   const location = useLocation();
   const [loader, setLoader] = useState(false);
   const [open, setOpen] = useState(false);
  
   const [testLayout,settestLayout]=useState();
-  const [formData, setFormData] = useState({
-    formTitle: "",
-    ButtonTitle: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   formTitle: "",
+  //   ButtonTitle: "",
+  // });
   const [saveTest, setsaveTest] = useState('');
   const [savePoolFree, setsavePoolFree] = useState('');
   function AddsaveTest(){
@@ -79,13 +79,13 @@ export default function CreateNewTest() {
       ButtonTitle: 'Create Test',
   });
   }
-  function saveTestData() {
-        setOpen(true)
-        setFormData({
-           formTitle: 'Create New Test',
-           ButtonTitle: 'Create Test',
-        });
-  }
+  // function saveTestData() {
+  //       setOpen(true)
+  //       setFormData({
+  //          formTitle: 'Create New Test',
+  //          ButtonTitle: 'Create Test',
+  //       });
+  // }
 
   const handleClose = () => {
     setOpen(false);
@@ -114,7 +114,7 @@ export default function CreateNewTest() {
     <div>
       {loader}
       <Button variant="contained" onClick={() => {
-        saveTestData();
+        // saveTestData();
         AddsaveTest();
 
       }} 
@@ -358,42 +358,42 @@ export default function CreateNewTest() {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
-  title: {
-    marginTop: "-16px",
-    [theme.breakpoints.up("sm")]: {
-      marginTop: "0px",
-    },
-  },
-  menu: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-  },
-  menuIcon: {
-    marginLeft: 10,
-  },
-  CloseBtn: {
-    position: "absolute",
-    top: 5,
-    right: 10,
-  },
-  FormWidth: {
-    width: 300,
-    minHeight: 200,
-    [theme.breakpoints.up("sm")]: {
-      width: 600,
-    },
-  },
-  justifyContentForm: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  InputTitle: {
-    paddingTop: 5,
-  },
-  Btn: {
-    background: Themes.MainHeaderColor,
-    color: Themes.WHITE,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   title: {
+//     marginTop: "-16px",
+//     [theme.breakpoints.up("sm")]: {
+//       marginTop: "0px",
+//     },
+//   },
+//   menu: {
+//     position: "absolute",
+//     top: 0,
+//     right: 0,
+//   },
+//   menuIcon: {
+//     marginLeft: 10,
+//   },
+//   CloseBtn: {
+//     position: "absolute",
+//     top: 5,
+//     right: 10,
+//   },
+//   FormWidth: {
+//     width: 300,
+//     minHeight: 200,
+//     [theme.breakpoints.up("sm")]: {
+//       width: 600,
+//     },
+//   },
+//   justifyContentForm: {
+//     display: "flex",
+//     justifyContent: "space-between",
+//   },
+//   InputTitle: {
+//     paddingTop: 5,
+//   },
+//   Btn: {
+//     background: Themes.MainHeaderColor,
+//     color: Themes.WHITE,
+//   },
+// }));

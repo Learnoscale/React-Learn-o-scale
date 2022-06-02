@@ -6,7 +6,7 @@ import _ from 'lodash';
 import {makeLogout} from "../services/Slices/UserSlice";
 import {Button, Menu, MenuItem, Avatar} from "@material-ui/core";
 import './style.css';
-// import im1 from './img/favicon.png';
+
 import { crud } from "../services/crud";
 export default  function Header(){
 
