@@ -35,8 +35,8 @@ export default  function Header(){
      useEffect(() => {
        getHome();
        const favicon = document.getElementById('favicon');
-       favicon.href =  home[1]?.home_logo;
-       document.getElementById('slug').innerHTML = home[1]?.home_title;
+       favicon.href =  home[0]?.home_logo;
+       document.getElementById('slug').innerHTML = home[0]?.home_title;
         
      },);
 
@@ -56,7 +56,7 @@ export default  function Header(){
             <Link to="/">
               <img src={
               
-          home[1]?.home_logo
+          home[0]?.home_logo
               } alt='logo' height={'50px'} width={'100%'} />
             </Link>
           </div>
@@ -499,7 +499,7 @@ export default  function Header(){
           <div id="main"></div>
           {/* Change it to dynamic */}
           
-          <h1>{home[1]?.home_title}</h1>
+          <h1>{home[0]?.home_title}</h1>
           <h2>We are Creating and Promoting Talents</h2>
           <Link to="#about" className="btn-get-started">
             Get Started
