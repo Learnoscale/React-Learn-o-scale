@@ -6,16 +6,16 @@ import ExampleOne from './images/newtest.jpg';
 import ExampleTwo from './images/newtest1.jpg';
 import classes from './psycho.module.css';
 
+// Countdowntimer start
 const CountDownTimer = ({hoursMinSecs}) => {
    
   const { hours = 0, minutes = 0, seconds = 60 } = hoursMinSecs;
   const [[hrs, mins, secs], setTime] = React.useState([hours, minutes, seconds]);
-
-  const navgate = useHistory();
+  const navigate = useHistory();
 
   const tick = () => {
        if (mins === 0 && secs === 0) {
-          navgate('/section1');  }
+          navigate.push('/section2');  }
      else if (secs === 0) {
           setTime([hrs, mins - 1, 59]);
       } else {
@@ -35,9 +35,7 @@ const CountDownTimer = ({hoursMinSecs}) => {
   
   return (
       <div>
-          <p>{`${hrs.toString().padStart(2, '0')}:${mins
-          .toString()
-          .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</p> 
+ <span>{`${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</span>  
       </div>
   );
 }
@@ -56,10 +54,10 @@ export default function GITestOne() {
    
  
       <div   className="row " >
-        <div className="col-md-11 border">
+        <div className="col-11">
           <div className="row p-2 bg-secondary sticky-md-top text-center text-white"><h5>Group Instructions: Test 1 Intelligence Test/बुद्धि-परीक्षण</h5></div>
           <div className="row fs-5 ">
-          <div style={{ maxWidth: '100%', maxHeight: '580px', overflow: 'auto'}} className=" col-12 overflow-y fs-6 p-5">
+          <div style={{ maxWidth: '100%', maxHeight: '510px', overflow: 'auto'}} className=" col-12 overflow-y fs-6 p-5">
              <h4>TEST 1:   Intelligence Test / बुद्धि-परीक्षण</h4> <br />
             <div className="row ps-5">
               
@@ -131,20 +129,21 @@ export default function GITestOne() {
            
           </div>
           </div>
-          <div className="row p-1 border" style={{ position: 'fixed',bottom: '27px', width: '100%'}}>
-           <div className="col-6"></div>
-            <div className="col-3 text-center ">
-            <button type="button" class="btn btn-outline-danger  fs-6" onClick={() => navigate.push('/section1')}>Skip Instructions</button></div>
-            <div className="col-3"> </div>
+          <div className="row px-1 bg-white border" style={{ position: 'fixed',bottom: '10px', width: '100%'}}>
+           <div className="col-2"></div>
+            <div className="col-8 text-center ">
+            <button type="button" class="btn btn-outline-danger px-4  fs-6" onClick={() => navigate.push('/section1')}>Skip</button></div>
+            <div className="col-2"></div> 
           </div>
+          
           </div>
-          <div className="col-md-1  text-center">
-          <div className="row bg-secondary sticky-md-top text-white">
+          <div className="col-1  text-center">
+          <div className="row bg-secondary text-white">
             <div><small>Timer</small></div>
             <div><CountDownTimer hoursMinSecs={hoursMinSecs}/></div>
           </div>
           <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className={classes.img}/>
-          <div>Vikash Tiwari</div>
+          <small>Vikash Tiwari</small>
           </div>
         </div>
         

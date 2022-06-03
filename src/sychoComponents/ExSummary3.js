@@ -1,8 +1,7 @@
 import React from "react";
-import Avatar from "@mui/material/Avatar";
-import Stack from '@mui/material/Stack';
 import { useHistory } from 'react-router-dom';
 import Footer from "./Footer";
+import classes from './psycho.module.css';
 
 // Countdowntimer start
 const CountDownTimer = ({hoursMinSecs}) => {
@@ -32,11 +31,9 @@ const CountDownTimer = ({hoursMinSecs}) => {
 
   
   return (
-      <div>
-          <p>{`${hrs.toString().padStart(2, '0')}:${mins
-          .toString()
-          .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</p> 
-      </div>
+     
+         <span>{`${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</span>  
+   
   );
 }
 // countdown timer end
@@ -51,30 +48,26 @@ return(
   <div className="container-fluid">
     <div className="row p-1 bg-dark text-white sticky-md-top"><text>RRC WCR apptitude Test</text></div>
     <div className="row border">
-      <div className="col-10"></div>
-      <div className="col-2"> {  <Stack direction="row" spacing={0}> 
-      <Avatar sx={{ width: 150, height: 120  }} variant="square"   src="/broken-image.jpg"/>
-    
-  
-    </Stack>} 
+      <div className="col-11">
+      
+      <div className="row text-end"><span><text>Timer:</text> <CountDownTimer hoursMinSecs={hoursMinSecs}/></span></div>
+      
+      <div className="row text-center"><h6>Exam Summary</h6></div>
+      </div>
+      <div className="col-1"> <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className={classes.img}/>
    
     </div>
     </div>
-    <div className="row border"><div className="col-4"></div><div className="col-2" style={{ textAlign: "right" }}><text>Break Time left:</text></div><div className="col-1"><CountDownTimer hoursMinSecs={hoursMinSecs}/></div><div className="col-5"></div></div>
-    <div className="row text-center p-2 border"><h6>Exam Summary</h6></div>
     
-      <div className="col-12" style={{ width: '100%', height: '365px', overflow: 'auto'}}>
+      <div className="col-12 py-3" style={{ width: '100%', height: '465px', overflow: 'auto'}}>
       <h6>Test 3- Special Scanning Test / विशेष स्कैनिंग परीक्षण</h6>
-    <table className="table table-bordered my-3 text-center">
+      <table className="table table-bordered my-3 text-center">
     <thead className="bg-info p-4">
       <tr>
         <th className="py-4">Section Name</th>
         <th className="py-4">No. of Questions</th>
         <th className="py-4">Answered</th>
         <th className="py-4">Not Answered</th>
-        <th className="py-4">Marked for review</th>
-        <th className="py-4">Answered and Marked for review <br />
-        (will not be considerd for evaluation)</th>
         <th className="py-4">Not visited</th>
       </tr>
     </thead>
@@ -84,8 +77,6 @@ return(
         <td className="p-3">4</td>
         <td className="p-3">0</td>
         <td className="p-3">4</td>
-        <td className="p-3">0</td>
-        <td className="p-3">0</td>
         <td className="p-3">4</td>
       </tr>
     </tbody>
@@ -98,9 +89,6 @@ return(
         <th className="py-4">No. of Questions</th>
         <th className="py-4">Answered</th>
         <th className="py-4">Not Answered</th>
-        <th className="py-4">Marked for review</th>
-        <th className="py-4">Answered and Marked for review <br />
-        (will not be considerd for evaluation)</th>
         <th className="py-4">Not visited</th>
       </tr>
     </thead>
@@ -110,8 +98,6 @@ return(
         <td className="p-3">4</td>
         <td className="p-3">0</td>
         <td className="p-3">4</td>
-        <td className="p-3">0</td>
-        <td className="p-3">0</td>
         <td className="p-3">4</td>
       </tr>
     </tbody>
@@ -124,9 +110,6 @@ return(
         <th className="py-4">No. of Questions</th>
         <th className="py-4">Answered</th>
         <th className="py-4">Not Answered</th>
-        <th className="py-4">Marked for review</th>
-        <th className="py-4">Answered and Marked for review <br />
-        (will not be considerd for evaluation)</th>
         <th className="py-4">Not visited</th>
       </tr>
     </thead>
@@ -136,8 +119,6 @@ return(
         <td className="p-3">4</td>
         <td className="p-3">0</td>
         <td className="p-3">4</td>
-        <td className="p-3">0</td>
-        <td className="p-3">0</td>
         <td className="p-3">4</td>
       </tr>
     </tbody>
@@ -148,11 +129,12 @@ return(
     
     </div>
   
-    <div className="row p-1  sticky-md-bottom border">
-      <div className="col-10"></div>
-      <div className="col-2"><button type="button" className="btn btn-outline-danger fs-6" onClick={() => navigate.push('/gs-test4')} size="small">Skip Break</button></div>
-      </div>
-  
+    <div className="row px-1 bg-white border" style={{ position: 'fixed',bottom: '10px', width: '100%'}}>
+      <div className="col-2"></div>
+      <div className="col-8 text-center"><button type="button" className="btn btn-outline-danger fs-6" onClick={() => navigate.push('/gs-test4')} size="small">Skip</button></div>
+      <div className="col-2"></div>
+     </div>
+     
     
   </div>
   <Footer/>

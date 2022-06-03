@@ -54,29 +54,24 @@ return(
    
     <div className="row text-center p-2 border"><h6>Exam Summary</h6></div>
     
-      <div className="col-12" style={{ width: '100%', height: '525px', overflow: 'auto'}}>
+      <div className="col-12 py-3 pb-5" style={{ width: '100%', height: '510px', overflow: 'auto'}}>
       <h6>Test 5- Personality Test / व्यक्तित्व परीक्षण</h6>
-    <table className="table table-bordered my-3 text-center">
+      <table className="table table-bordered my-3 text-center">
     <thead className="bg-info p-4">
       <tr>
         <th className="py-4">Section Name</th>
         <th className="py-4">No. of Questions</th>
         <th className="py-4">Answered</th>
         <th className="py-4">Not Answered</th>
-        <th className="py-4">Marked for review</th>
-        <th className="py-4">Answered and Marked for review <br />
-        (will not be considerd for evaluation)</th>
         <th className="py-4">Not visited</th>
       </tr>
     </thead>
     <tbody>
       <tr className="text-center">
-        <td className="p-3">Personality Test</td>
+        <td className="p-3">Intelligence Test</td>
         <td className="p-3">4</td>
         <td className="p-3">0</td>
         <td className="p-3">4</td>
-        <td className="p-3">0</td>
-        <td className="p-3">0</td>
         <td className="p-3">4</td>
       </tr>
     </tbody>
@@ -90,9 +85,6 @@ return(
         <th className="py-4">No. of Questions</th>
         <th className="py-4">Answered</th>
         <th className="py-4">Not Answered</th>
-        <th className="py-4">Marked for review</th>
-        <th className="py-4">Answered and Marked for review <br />
-        (will not be considerd for evaluation)</th>
         <th className="py-4">Not visited</th>
       </tr>
     </thead>
@@ -102,8 +94,6 @@ return(
         <td className="p-3">4</td>
         <td className="p-3">0</td>
         <td className="p-3">4</td>
-        <td className="p-3">0</td>
-        <td className="p-3">0</td>
         <td className="p-3">4</td>
       </tr>
     </tbody>
@@ -116,20 +106,15 @@ return(
         <th className="py-4">No. of Questions</th>
         <th className="py-4">Answered</th>
         <th className="py-4">Not Answered</th>
-        <th className="py-4">Marked for review</th>
-        <th className="py-4">Answered and Marked for review <br />
-        (will not be considerd for evaluation)</th>
         <th className="py-4">Not visited</th>
       </tr>
     </thead>
     <tbody>
       <tr className="text-center">
-        <td className="p-3">Selective Attention Test</td>
+        <td className="p-3">Intelligence Test</td>
         <td className="p-3">4</td>
         <td className="p-3">0</td>
         <td className="p-3">4</td>
-        <td className="p-3">0</td>
-        <td className="p-3">0</td>
         <td className="p-3">4</td>
       </tr>
     </tbody>
@@ -142,59 +127,49 @@ return(
         <th className="py-4">No. of Questions</th>
         <th className="py-4">Answered</th>
         <th className="py-4">Not Answered</th>
-        <th className="py-4">Marked for review</th>
-        <th className="py-4">Answered and Marked for review <br />
-        (will not be considerd for evaluation)</th>
         <th className="py-4">Not visited</th>
       </tr>
     </thead>
     <tbody>
       <tr className="text-center">
-        <td className="p-3">Special Scanning Test</td>
+        <td className="p-3">Intelligence Test</td>
         <td className="p-3">4</td>
         <td className="p-3">0</td>
         <td className="p-3">4</td>
-        <td className="p-3">0</td>
-        <td className="p-3">0</td>
         <td className="p-3">4</td>
       </tr>
     </tbody>
     </table>
-    <h6>Test 4- Information Ordering Test / निर्देशों के अनुसार कार्य करने की क्षमता का परीक्षण</h6> <table className="table table-bordered my-3 text-center">
+    <h6>Test 4- Information Ordering Test / निर्देशों के अनुसार कार्य करने की क्षमता का परीक्षण</h6>
+    <table className="table table-bordered my-3 text-center">
     <thead className="bg-info p-4">
       <tr>
         <th className="py-4">Section Name</th>
         <th className="py-4">No. of Questions</th>
         <th className="py-4">Answered</th>
         <th className="py-4">Not Answered</th>
-        <th className="py-4">Marked for review</th>
-        <th className="py-4">Answered and Marked for review <br />
-        (will not be considerd for evaluation)</th>
         <th className="py-4">Not visited</th>
       </tr>
     </thead>
     <tbody>
       <tr className="text-center">
-        <td className="p-3">Information Ordering Test</td>
+        <td className="p-3">Intelligence Test</td>
         <td className="p-3">4</td>
         <td className="p-3">0</td>
         <td className="p-3">4</td>
-        <td className="p-3">0</td>
-        <td className="p-3">0</td>
         <td className="p-3">4</td>
       </tr>
     </tbody>
     </table>
-  
     
     </div>
   
-    <div className="row p-1  sticky-md-bottom border">
-      <div className="col-5"></div>
-      <div className="col-2"><button type="button" className="btn btn-outline-primary px-5 fs-6" onClick={() => navigate.push('/finish')} size="small">Next</button></div>
-      <div className="col-5"></div>
+    <div className="row px-1 bg-white border" style={{ position: 'fixed',bottom: '10px', width: '100%'}}>
+      <div className="col-2"></div>
+      <div className="col-8 text-center"><button type="button" className="btn btn-success btn-sm fs-6 px-4" onClick={() => navigate.push('/finish')} size="small">Next</button></div>
+      <div className="col-2"></div>
       </div>
-  
+    
     
   </div>
   <Footer/>

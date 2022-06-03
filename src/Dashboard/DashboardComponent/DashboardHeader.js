@@ -29,7 +29,7 @@ export default function HeaderWeb() {
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <DehazeIcon/></Button>
-                    <div className="collapse navbar-collapse " id="navbarSupportedContent diva">
+                    <div className="collapse navbar-collapse pt-5" id="navbarSupportedContent diva">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             {DashboadNav.map((value => (
                                 <li className="nav-item dropdown" key={value.id}>
@@ -90,7 +90,7 @@ const styles = makeStyles((theme) => ({
     Logo: {
         width: '200px',
         height: '70px',
-        position: 'absolute',
+        position: 'fixed',
         top: '0',
         left: 0
     }

@@ -26,16 +26,16 @@ export default function CandesignTwo() {
    
  
       <div   className="row" >
-        <div className="col-md-11 fs-5 border">
+        <div className="col-11 fs-5">
           <div className="row p-1 bg-info sticky-md-top"><h4> Other Important Instructions</h4></div>
-          <div style={{ maxWidth: '100%', minHeight: '440px', overflow: 'auto'}}>
+          <div>
             
          <div> Please tick the check box below to start the exam.</div>
           कृपया परीक्षण आरम्भ करने हेतु नीचे दिये चेक बाक्स को टिक करें ।
              
            
           </div>
-          <div className="row p-1 border sticky-md-bottom">
+          <div className="row p-1 border" style={{ position: 'fixed',bottom: '27px', width: '100%'}}>
             <div className="row">
             <div className="col"><Checkbox {...label} onClick={(event) => {enablebutton(event)}}  size="small"/>
             <small>I have read and understood the instructions. All computer hardware allotted to me are in proper working condition. I declare that I am not in possession of / not wearing / not carrying any prohibited gadget like mobile phone, bluetooth devices etc. / any prohibited material with me into the Examination Hall. I agree that in case of not adhering to the instructions, I shall be liable to be debarred from this Test and / or to disciplinary action, which may include ban from future Tests / Examinations.</small></div>
@@ -47,9 +47,9 @@ export default function CandesignTwo() {
             <div className="col-3"></div>
           </div>
           </div>
-          <div className="col-md-1 border text-center">
+          <div className="col-1 border text-center">
           <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className={classes.img}/>
-          <div className='text-center'>Vikash Tiwari</div>
+          <div className='text-center'>Vikash</div>
           </div>
         </div>
         

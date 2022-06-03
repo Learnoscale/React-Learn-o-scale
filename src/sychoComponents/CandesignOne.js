@@ -9,14 +9,14 @@ export default function CandesignOne() {
   return(
     <>
     <div  className="container-fluid"> 
-    <div  className="row p-4 bg-primary text-white sticky-md-top" />
+    <div  className="row p-4 bg-primary text-white sticky-sm-top" />
       
     
    
  
       <div   className="row " >
-        <div className="col-md-11">
-          <div className="row p-1 bg-info sticky-md-top"><h4>Instructions</h4></div>
+        <div className="col-11">
+          <div className="row p-1 bg-info sticky-sm-top"><h4>Instructions</h4></div>
           <div className="col-12 fs-6 pb-5" style={{ width: '100%', height: '580px', overflow: 'auto'}}>
             <h5 className='text-center'>GENERAL INSTRUCTIONS REGARDING APTITUDE TEST</h5>
             <h5 className='text-center'>अभिवृत्ति परीक्षण से सम्बंधित सामान्य निर्देश</h5>
@@ -90,16 +90,17 @@ export default function CandesignOne() {
              </div>
           
           </div>
-          <div className="col-md-1 border text-center">
+          <div className="col-1 border text-center">
           <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className={classes.img}/>
-          <div className="text-center">Vikash Tiwari</div>
+          <small className="text-center">Vikash Tiwari</small>
           </div>
         </div>
-        <div className="row p-1 border" style={{ position: 'fixed',bottom: '27px', width: '100%'}}>
-            <div className="col-8"></div>
-            <div className="col-2"><button type="button" className="btn btn-primary fs-6 px-5" onClick={() => navigate.push('/candesign-two')}>Next
-            </button></div>
+        <div className="row px-1 bg-white border" style={{ position: 'fixed',bottom: '10px', width: '100%'}}>
             <div className="col-2 "></div>
+            <div className="col-8 text-center"><button type="button" className="btn btn-primary fs-6 px-3" onClick={() => navigate.push('/candesign-two')}>Next
+            </button></div>
+            <div className="col-2"></div>
+           
           </div>
         </div>
 

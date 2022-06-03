@@ -1,9 +1,8 @@
 import React from "react";
-import Avatar from "@mui/material/Avatar";
-import Stack from '@mui/material/Stack';
 import { useHistory } from 'react-router-dom';
 import HowerD from './Hoverabedropdown';
 import Footer from "./Footer";
+import classes from './psycho.module.css';
 
 
 // Countdowntimer start
@@ -35,9 +34,7 @@ const CountDownTimer = ({hoursMinSecs}) => {
   
   return (
       <div>
-          <p>{`${hrs.toString().padStart(2, '0')}:${mins
-          .toString()
-          .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</p> 
+        <span>{`${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</span>  
       </div>
   );
 }
@@ -52,7 +49,7 @@ return(
   <div className="container-fluid">
     <div className="row p-1 bg-dark text-white sticky-md-top">RRC WCR apptitude Test</div>
     <div className="row border">
-      <div className="col-10">
+      <div className="col-11">
       <div className="row p-1 border">
       <div className="col-2 ms-1 border"><div className="row">
         <div className="col-10 px-0"><small>Intelligence Test</small></div><div className="col-2 px-0"><HowerD/></div></div></div>
@@ -66,35 +63,27 @@ return(
         <div className="col-10 px-0"><small>Personality Test</small></div><div className="col-2 px-0"><HowerD/></div></div></div>
         <div className="col-2 "></div>
       </div>
-      <div className="row p-0 border">
+      <div className="row py-3 border">
       <div className="col-2 text-center"><text>Sections</text></div>
-      <div className="col-7"></div>
+      <div className="col-6"></div>
       
-      <div className="col-2 text-center"><text>Time Left:</text></div>
-      <div className="col-1"><CountDownTimer hoursMinSecs={hoursMinSecs}/></div>
+      <div className="col-2 text-end"><text>Time Left:</text></div>
+      <div className="col-2 text-start">
+        <CountDownTimer hoursMinSecs={hoursMinSecs}/>
+        </div>
       
       </div>
-      <div className="row p-4 border"></div>
       </div>
-      <div className="col-2"> {  <Stack direction="row" spacing={0}> 
-      <Avatar sx={{ width: 150, height: 120  }} variant="square"   src="/broken-image.jpg"/>
-    
-  
-    </Stack>} 
+      <div className="col-1"> <img alt="" src="https://soe-buck-lb.storage.googleapis.com/front-end/images/candidateImg.jpg" className={classes.img}/>
     </div>
    
     </div>
     
     <div className="col-12 p-4" style={{ width: '100%', height: '440px', overflow: 'auto'}} >  </div>
-    <div className="row p-1 border">
-       <div className="col-4">
-              
-              
-       </div>
-       
-       <div className="col-6"></div>
-    
-        <div className="col-2"><button type="button" className="btn  btn-outline-danger fs-6" onClick={() => navigate.push('/Ex-summary2')}>Skip Test</button></div>
+    <div className="row px-1 bg-white border" style={{ position: 'fixed',bottom: '10px', width: '100%'}}>
+       <div className="col-2"></div>
+       <div className="col-8 text-center"><button type="button" className="btn  btn-outline-danger px-4 fs-6 " onClick={() => navigate.push('/Ex-summary2')}>Skip</button></div>
+        <div className="col-2"></div>
     </div>
    
   </div>

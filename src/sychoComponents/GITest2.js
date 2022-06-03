@@ -35,9 +35,7 @@ const CountDownTimer = ({hoursMinSecs}) => {
   
   return (
       <div>
-          <p>{`${hrs.toString().padStart(2, '0')}:${mins
-          .toString()
-          .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</p> 
+  <span>{`${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</span>  
       </div>
   );
 }
@@ -54,16 +52,16 @@ export default function GITestTwo() {
   return(
     <>
     <div  className="container-fluid"> 
-    <div className="row p-1 bg-dark text-white sticky-md-top"><text>RRC WCR apptitude Test</text> </div>
+    <div className="row p-1 bg-dark text-white"><text>RRC WCR apptitude Test</text> </div>
       
     
    
  
       <div   className="row " >
-        <div className="col-md-11">
+        <div className="col-11">
           <div className="row p-2 bg-secondary sticky-md-top text-center text-white"><h5>Group Instructions: Test 2 Selective Attention Test/चयनात्मक ध्यान परीक्षण</h5></div>
           <div className="row fs-5 ">
-          <div style={{ maxWidth: '100%', maxHeight: '521px', overflow: 'auto'}} className=" col-12 overflow-y fs-6 p-5">
+          <div style={{ maxWidth: '100%', maxHeight: '510px', overflow: 'auto'}} className=" col-12 overflow-y fs-6 p-5">
              <h4>TEST 2:   Selective Attention Test / चयनात्मक ध्यान परीक्षण</h4> <br />
             <div className="row ps-5">
               
@@ -140,15 +138,15 @@ export default function GITestTwo() {
            
           </div>
           </div>
-          <div className="row p-1  sticky-md-bottom border">
-            <div className="col-3 p-1  text-center"></div>
-            <div className="col-7"></div>
-            <div className="col-2 p-1  text-center "><button type="button" class="btn btn-outline-danger fs-6" onClick={() => navigate.push('/section2')}>Skip Instruction</button></div>
-            
+          <div className="row px-1 bg-white border" style={{ position: 'fixed',bottom: '10px', width: '100%'}}>
+           <div className="col-2"></div>
+            <div className="col-8 text-center ">
+            <button type="button" class="btn btn-outline-danger px-4  fs-6" onClick={() => navigate.push('/section2')}>Skip</button></div>
+            <div className="col-2"></div> 
           </div>
           </div>
-          <div className="col-md-1  text-center">
-          <div className="row p-1 bg-secondary sticky-md-top text-white">
+          <div className="col-1  text-center">
+          <div className="row p-1 bg-secondary text-white">
             <div><small>Timer</small></div>
             <div><CountDownTimer hoursMinSecs={hoursMinSecs}/></div>
           </div>
