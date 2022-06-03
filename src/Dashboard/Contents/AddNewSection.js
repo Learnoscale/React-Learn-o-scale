@@ -87,6 +87,8 @@ export default function AddNewSection(props) {
   });
   const [showeditor, setShoweditor] = useState(false);
   const [sectioninst, setsectioninst] = useState("")
+  const[testvalue,settestvalue]=useState("")
+
   async function getTestLayOut()
   {
      
@@ -101,6 +103,7 @@ export default function AddNewSection(props) {
       setLoader(false);
       }
   }
+  
   async function getvalue(){
     const data1=await crud.retrieve('/TestSectionApi/')
     console.log('hhh',data1)
@@ -335,7 +338,9 @@ export default function AddNewSection(props) {
                         testEndON:endDate
                       });
                       const data=await crud.retrieve('/testMakesapi/');
-                      console.log('hellod',data)
+                      console.log('hellod',data.length)
+                      
+
 
                       await crud.create('/TestSectionApi/',{
                               sectionName:saveSection.secname,
