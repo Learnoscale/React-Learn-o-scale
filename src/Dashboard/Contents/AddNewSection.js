@@ -334,6 +334,9 @@ export default function AddNewSection(props) {
                         testShowFrom:startDate,
                         testEndON:endDate
                       });
+                      const data=await crud.retrieve('/testMakesapi/');
+                      console.log('hellod',data)
+
                       await crud.create('/TestSectionApi/',{
                               sectionName:saveSection.secname,
                               hour:saveSection.hour,
@@ -344,6 +347,7 @@ export default function AddNewSection(props) {
                               useSectionAsBreak:saveSection.secBreak,
                               showPreviousSection:false,
                               sectionInstruction:sectioninst,
+                              
                              
                       });
                       
