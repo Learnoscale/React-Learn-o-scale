@@ -1,9 +1,20 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {selectUser,makeLogin} from "../services/Slices/UserSlice";
+import {Link, useHistory} from 'react-router-dom';
+import _ from 'lodash';
+import {makeLogout} from "../services/Slices/UserSlice";
+import {Button, Menu, MenuItem, Avatar} from "@material-ui/core";
 import './style.css';
 import im1 from './img/favicon.png';
 import { List } from '@material-ui/core';
-export default function Menu() {
+export default function Manu() {
+  
+  const  isAuthenticated = useSelector(selectUser);
+  const dispatch=useDispatch();
+  const [userLogin, setUserLogin] = useState(false);
+  const [adminLogin, setAdminLogin] = useState(false);
+  const history = useHistory;
     
     return(
         <>
@@ -19,7 +30,7 @@ export default function Menu() {
               <img src={im1} alt='favicon' />
             </Link>
           </div>
-          <nav id="navbar" className="navbar1">
+          <nav id="navbar" className="navbar">
             <ul>
               <li className="dropdown">
                 <Link to="#">
@@ -426,11 +437,62 @@ export default function Menu() {
                   Contact
                 </a>
               </li>
-              <li>
+              {(!(_.isEmpty(isAuthenticated)))?
+                               <li className="nav-item dropdown">
+                                <Button className='mt-1 mx-1' aria-controls="simple-menu" aria-haspopup="true"
+                                        onClick={(event) => {
+                                            setUserLogin(event.currentTarget)
+                                        }}>
+                                    <Avatar alt="Remy Sharp"
+                                            src="https://media-exp1.licdn.com/dms/image/C4E03AQENlMNKH9CE0w/profile-displayphoto-shrink_200_200/0/1634066552225?e=1647475200&v=beta&t=2WaAjJJUXoHhK3P4gTa1jU5Z542bB1iC9IwF9nJdM-0"/>
+                                </Button>
+                                {(userLogin===adminLogin)?
+                                <>
+                                <Menu id="simple-menu" anchorEl={userLogin} keepMounted open={Boolean(userLogin)}
+                                      onClose={(event) => {
+                                          setAdminLogin(null)
+                                      }}>
+                                    <MenuItem onClick={() => {
+                                   history.push('/admin-panel')
+                                        setUserLogin(null)
+                                    }}>Admin</MenuItem>
+                                    <MenuItem onClick={() => {
+                                        setAdminLogin(null)
+                                    }}>Profile</MenuItem>
+                                    <MenuItem
+
+                                        onClick={() => {
+                                            dispatch(makeLogout({}))
+                                            history.push('/login')
+                                        setAdminLogin(null);}}
+                                    >Logout</MenuItem>
+                                </Menu>
+                                </>:
+                                <>
+                                <Menu id="simple-menu" anchorEl={userLogin} keepMounted open={Boolean(userLogin)}
+                                      onClose={(event) => {
+                                          setUserLogin(null)
+                                      }}>
+                                    <MenuItem onClick={() => {
+                                        setUserLogin(null)
+                                    }}>Profile</MenuItem>
+                                    <MenuItem
+
+                                        onClick={() => {
+                                            dispatch(makeLogout({}))
+                                            history.push('/login')
+                                        setUserLogin(null);}}
+                                    >Logout</MenuItem>
+                                </Menu>
+                                </>}
+                                </li>
+              :<li>
                 <Link className="nav-link scrollto" to="/login-page">
                   Login
                 </Link>
+                
               </li>
+}
             </ul>
             <i className="bi bi-list mobile-nav-toggle" />
           </nav>
