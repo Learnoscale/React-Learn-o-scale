@@ -24,7 +24,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function CreateNewSection(props) {
   
 
-  
+  const hour=props.hour;
+  const minute=props.minute; 
+  var testduration = Number(hour*60) + Number(minute);
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -62,8 +64,8 @@ export default function CreateNewSection(props) {
             <div className="col-sm-3" style={{testAlign: 'center'}}>
             <AddNewSection 
                 testName={props.testName} 
-                hour={props.hour } 
-                minute={props.minute }  
+                testduration={testduration } 
+                 
               
                 disableEnforceFocus={true} />
             </div>

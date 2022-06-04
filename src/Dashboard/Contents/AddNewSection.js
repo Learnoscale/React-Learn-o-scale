@@ -76,7 +76,11 @@ export default function AddNewSection(props) {
   });
   const [showeditor, setShoweditor] = useState(false);
   const [sectioninst, setsectioninst] = useState("")
-  
+  var timeleft = props.testduration;
+   let sectime =  Number(saveSection.hour) + Number(saveSection.minute);
+   if(sectime > 0){  
+   timeleft = timeleft - sectime;   
+   }
 
   async function getTestLayOut()
   {
@@ -169,13 +173,14 @@ export default function AddNewSection(props) {
          <div className="row my-2">
            <div className="col-sm-3 d-flex align-items-center"><h6>Test Duration</h6></div>
            <div className="col-sm-2 d-flex align-items-center"><Slider /></div>
-           <div className="col-sm-3"><h6>Time left: 30 mins</h6></div>
+           <div className="col-sm-3"><h6> {timeleft} mins </h6></div>
            <div className="col-sm-4"></div>
          </div>
          <div className="row my-2">
            <div className="col-sm-2 d-flex align-items-center requiredField"><h6 className='pr-4'>Duration</h6> </div>
            <div className="col-sm-6 pt-4"><select name="hours"  value={saveSection.hour} 
           onChange={(e) => {setsaveSection({...saveSection,hour:e.target.value})}}   id="hours" className='border'>
+             <option value="0">0</option>
              <option value="1">1</option>
              <option value="2">2</option>
              <option value="2">3</option>
@@ -192,6 +197,7 @@ export default function AddNewSection(props) {
              <label htmlFor="hour"><p className='px-4'>Hour</p></label>
              <select name="hours"  value={saveSection.minute} 
           onChange={(e) => {setsaveSection({...saveSection,minute:e.target.value})}}   id="hours" className='border'>
+                <option value="0">00</option>
                {/* <option value="1">1</option>
                <option value="2">2</option>
                <option value="2">3</option>
