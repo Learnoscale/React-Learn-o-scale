@@ -70,7 +70,7 @@ export default function SignUp() {
                 var formdata = new FormData();
                 formdata.append("phone", params.phone);
                 try {
-                    //const {status} = await crud.create('/api/validate_phone/', formdata);
+                    await crud.create('/api/validate_phone/', formdata);
                     setLoader(false);
                     setState(false);
                 } catch (e) {
@@ -87,9 +87,10 @@ export default function SignUp() {
                 notify.show(error[0], "error", 1000);
             } else {
                 try {
-                    //var formdata = new FormData();
+                    formdata = new FormData();
                     formdata.append("phone", params.phone);
                     formdata.append("password", params.password);
+                    formdata.append("name", params.name);
                     setLoader(true);
                     const {status} = await crud.create('/api/Register/', formdata);
                     setLoader(false);
@@ -119,7 +120,7 @@ export default function SignUp() {
                 var formdata = new FormData();
                 formdata.append("phone", params.phone);
                 try {
-                    //const {status} = await crud.create('/api/validate_phone/', formdata);
+                    await crud.create('/api/validate_phone/', formdata);
                     setLoader(false);
                     setState(false);
                 } catch (e) {
@@ -164,6 +165,14 @@ export default function SignUp() {
                                                    }));
                                                }}/></> : <></>}
                     {hide.formHIde ? <>
+                        <input type="text" name="name" value={params.name} placeholder="UserName"
+                               onChange={(e) => {
+                                   const {value: name} = e.target;
+                                   setParams((params) => ({
+                                       ...params,
+                                       name,
+                                   }));
+                               }}/>
                         <input type="password" name="password" value={params.password} placeholder="Password"
                                onChange={(e) => {
                                    const {value: password} = e.target;
