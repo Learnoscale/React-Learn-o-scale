@@ -87,7 +87,7 @@ export default function AddNewSection(props) {
   });
   const [showeditor, setShoweditor] = useState(false);
   const [sectioninst, setsectioninst] = useState("")
-  const[testvalue,settestvalue]=useState("")
+  
 
   async function getTestLayOut()
   {
@@ -337,8 +337,8 @@ export default function AddNewSection(props) {
                         testShowFrom:startDate,
                         testEndON:endDate
                       });
-                      const data=await crud.retrieve('/testMakesapi/');
-                      console.log('hellod',data.length)
+                      const data=await crud.retrieve('/lastmake/');
+                      console.log("dataa",data.lastid)
                       
 
 
@@ -352,6 +352,7 @@ export default function AddNewSection(props) {
                               useSectionAsBreak:saveSection.secBreak,
                               showPreviousSection:false,
                               sectionInstruction:sectioninst,
+                              testmake:data.lastid
                               
                              
                       });
