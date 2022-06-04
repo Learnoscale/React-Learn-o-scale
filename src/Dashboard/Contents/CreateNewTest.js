@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import {
-//   makeStyles,
+import {
+  makeStyles,
   
-// } from "@material-ui/core";
+} from "@material-ui/core";
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -12,12 +12,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import {IconButton, Switch} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-
+//import  styles from './Contents.css'
 import { Themes } from "../../Theme/theme";
 import {Add} from "@material-ui/icons";
 import { crud } from "../../services/crud";
 import { useLocation } from "react-router-dom";
-
+import clsx from "clsx";
 import CreateNewSection from './CreateNewSection';
 
 const label = {inputProps: { 'aria-label': 'Switch demo'}};
@@ -60,32 +60,32 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CreateNewTest() {
-  
+  const classes = useStyles();
   const location = useLocation();
   const [loader, setLoader] = useState(false);
   const [open, setOpen] = useState(false);
  
   const [testLayout,settestLayout]=useState();
-  // const [formData, setFormData] = useState({
-  //   formTitle: "",
-  //   ButtonTitle: "",
-  // });
+  const [formData, setFormData] = useState({
+    formTitle: "",
+    ButtonTitle: "",
+  });
   const [saveTest, setsaveTest] = useState('');
   const [savePoolFree, setsavePoolFree] = useState('');
   function AddsaveTest(){
   setOpen(true)
   setsaveTest({
-      formTitle: 'Create Test',
-      ButtonTitle: 'Create Test',
+      formTitle: 'Save & Next',
+      ButtonTitle: 'Save & Next',
   });
   }
-  // function saveTestData() {
-  //       setOpen(true)
-  //       setFormData({
-  //          formTitle: 'Create New Test',
-  //          ButtonTitle: 'Create Test',
-  //       });
-  // }
+  function saveTestData() {
+        setOpen(true)
+        setFormData({
+           formTitle: 'Create New Test',
+           ButtonTitle: 'Save & Next',
+        });
+  }
 
   const handleClose = () => {
     setOpen(false);
@@ -114,7 +114,7 @@ export default function CreateNewTest() {
     <div>
       {loader}
       <Button variant="contained" onClick={() => {
-        // saveTestData();
+        saveTestData();
         AddsaveTest();
 
       }} 
@@ -273,7 +273,6 @@ export default function CreateNewTest() {
              <select name="test-layout" value={saveTest.testlayout} 
              onChange={(e) => {setsaveTest({...saveTest,testlayout:e.target.value})}} 
              className='border' id="test-layout">
-              <option disabled>None</option>
              {testLayout?.map((value, index) => (  
               <option value={value?.tl_id}>{value?.tl_title}</option>
              ))} 
@@ -315,22 +314,9 @@ export default function CreateNewTest() {
        </div>
         </DialogContent>
         <DialogActions>
-        <CreateNewSection 
-        testName={saveTest.testname}
-        tagName={saveTest.tagname}
-        questionNo={saveTest.questionNo}
-        totalmarks={saveTest.totalmarks}
-        hour={saveTest.hour}
-        minute={saveTest.minute}
-        testcategory={saveTest.testcategory}
-        testlayout={saveTest.testlayout}
-        poolQ={savePoolFree.poolQ}
-        freeA={savePoolFree.freeA}
-        startDate={saveTest.startDate}
-        endDate={saveTest.endDate}
-        />
-        {/* <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
-                    if(formData.ButtonTitle==='Create Test'){
+        {/* <CreateNewSection hour={saveTest.hour} minute={saveTest.minute}/> */}
+        <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
+                    if(formData.ButtonTitle==='Save & Next'){
                           await crud.create('/testMakesapi/',{
                               user :1,
                               testName:saveTest.testname,
@@ -350,50 +336,51 @@ export default function CreateNewTest() {
                      }
                       // setOpen(false)
                     }} color="primary"> 
-                        {formData.ButtonTitle}
-        </Button> */}
+                        <CreateNewSection hour={saveTest.hour} minute={saveTest.minute}/>
+                        
+        </Button>
         </DialogActions>
       </BootstrapDialog>
     </div>
   );
 }
 
-// const useStyles = makeStyles((theme) => ({
-//   title: {
-//     marginTop: "-16px",
-//     [theme.breakpoints.up("sm")]: {
-//       marginTop: "0px",
-//     },
-//   },
-//   menu: {
-//     position: "absolute",
-//     top: 0,
-//     right: 0,
-//   },
-//   menuIcon: {
-//     marginLeft: 10,
-//   },
-//   CloseBtn: {
-//     position: "absolute",
-//     top: 5,
-//     right: 10,
-//   },
-//   FormWidth: {
-//     width: 300,
-//     minHeight: 200,
-//     [theme.breakpoints.up("sm")]: {
-//       width: 600,
-//     },
-//   },
-//   justifyContentForm: {
-//     display: "flex",
-//     justifyContent: "space-between",
-//   },
-//   InputTitle: {
-//     paddingTop: 5,
-//   },
-//   Btn: {
-//     background: Themes.MainHeaderColor,
-//     color: Themes.WHITE,
-//   },
-// }));
+const useStyles = makeStyles((theme) => ({
+  title: {
+    marginTop: "-16px",
+    [theme.breakpoints.up("sm")]: {
+      marginTop: "0px",
+    },
+  },
+  menu: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+  },
+  menuIcon: {
+    marginLeft: 10,
+  },
+  CloseBtn: {
+    position: "absolute",
+    top: 5,
+    right: 10,
+  },
+  FormWidth: {
+    width: 300,
+    minHeight: 200,
+    [theme.breakpoints.up("sm")]: {
+      width: 600,
+    },
+  },
+  justifyContentForm: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  InputTitle: {
+    paddingTop: 5,
+  },
+  Btn: {
+    background: Themes.MainHeaderColor,
+    color: Themes.WHITE,
+  },
+}));

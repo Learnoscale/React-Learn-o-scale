@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Divider from '@mui/material/Divider';
 
@@ -39,9 +39,9 @@ export default function CreateNewSection(props) {
   return (
     <div>
       
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Create New Section
-      </Button>
+      <div onClick={handleClickOpen}>
+        Save & Next
+      </div>
       <Dialog 
         disableEnforceFocus={true} 
         fullScreen

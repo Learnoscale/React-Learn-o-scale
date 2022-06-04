@@ -62,18 +62,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function AddNewSection(props) {
-  const testName=props.testName 
-  const tagname=props.tagName
-  const questionno=props.questionNo
-  const totalmarks=props.totalmarks
-  const hour=props.hour  
-  const minute=props.minute   
-  const testcategory=props.testcategory
-  const testlayout=props.testlayout
-  const poolQ=props.poolQ
-  const freeA=props.freeA
-  const startDate=props.startDate
-  const endDate=props.endDate
+
   
   const classes = useStyles();
   const location = useLocation();
@@ -322,26 +311,9 @@ export default function AddNewSection(props) {
            <div className="col-sm-2"></div>
            <div className="col-sm-3"><Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
                     if(formData.ButtonTitle==='Add Section'){
-                      await crud.create('/testMakesapi/',{
-                        user :1,
-                        testName:testName,
-                        tags:tagname,
-                        noOfQuestions:questionno,
-                        totalMarks:totalmarks,
-                        hour:hour,
-                        minute:minute,
-                        testCategory:testcategory,
-                        testLayout:testlayout,
-                        poolQuestion:poolQ,
-                        freeAvailable:freeA,
-                        testShowFrom:startDate,
-                        testEndON:endDate
-                      });
+                  
                       const data=await crud.retrieve('/lastmake');
                       console.log("dataa",data.lastid)
-                      
-
-
                       await crud.create('/TestSectionApi/',{
                               sectionName:saveSection.secname,
                               hour:saveSection.hour,
@@ -353,9 +325,7 @@ export default function AddNewSection(props) {
                               showPreviousSection:false,
                               sectionInstruction:sectioninst,
                               testmake:data.lastid
-                              
-                             
-                      });
+                          });
                       
                     }
                       // setOpen(false)
