@@ -1,5 +1,5 @@
 import * as React from 'react';
-//import Button from '@mui/material/Button';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Divider from '@mui/material/Divider';
 
@@ -39,9 +39,9 @@ export default function CreateNewSection(props) {
   return (
     <div>
       
-      <div onClick={handleClickOpen}>
-        Save & Next
-      </div>
+      <Button variant='outlined' onClick={handleClickOpen}>
+        Create Section
+      </Button>
       <Dialog 
         disableEnforceFocus={true} 
         fullScreen
@@ -56,7 +56,7 @@ export default function CreateNewSection(props) {
           <div className='container-fluid' style={{testAlign: 'center'}}>
             <div className="row py-2">
             <div className='col-sm-3'>
-            Test Name: {props.testName} 
+            Test Name: {props.testName} {props.hour}
             </div>
             <div className="col-sm-5"></div>
             <div className="col-sm-3" style={{testAlign: 'center'}}>
