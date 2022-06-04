@@ -337,7 +337,7 @@ export default function AddNewSection(props) {
                         testShowFrom:startDate,
                         testEndON:endDate
                       });
-                      const data=await crud.retrieve('/lastmake/');
+                      const data=await crud.retrieve('/lastmake');
                       console.log("dataa",data.lastid)
                       
 
