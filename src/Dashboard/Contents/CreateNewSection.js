@@ -62,17 +62,9 @@ export default function CreateNewSection(props) {
             <div className="col-sm-3" style={{testAlign: 'center'}}>
             <AddNewSection 
                 testName={props.testName} 
-                tagName={props.tagName}
-                questionNo={props.questionNo}
-                totalmarks={props.totalmarks}
                 hour={props.hour } 
                 minute={props.minute }  
-                testcategory={props.testcategory}
-                testlayout={props.testlayout}
-                poolQ={props.poolQ}
-                freeA={props.freeA}
-                startDate={props.startDate}
-                endDate={props.endDate}
+              
                 disableEnforceFocus={true} />
             </div>
             <div className="col-sm-1">

@@ -336,7 +336,7 @@ export default function CreateNewTest() {
                      }
                       // setOpen(false)
                     }} color="primary"> 
-                        <CreateNewSection hour={saveTest.hour} minute={saveTest.minute}/>
+                        <CreateNewSection testName={saveTest.testname} hour={saveTest.hour} minute={saveTest.minute}/>
                         
         </Button>
         </DialogActions>

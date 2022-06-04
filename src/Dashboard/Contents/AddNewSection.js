@@ -93,10 +93,7 @@ export default function AddNewSection(props) {
       }
   }
   
-  async function getvalue(){
-    const data1=await crud.retrieve('/TestSectionApi/')
-    console.log('hhh',data1)
-  }
+
   function Addsectionsave(){
     setOpen(true)
     setsaveSection({
@@ -122,7 +119,7 @@ export default function AddNewSection(props) {
   useEffect(() => {
     
      getTestLayOut();
-     getvalue();
+   
   }, [location]);
 
   return (
@@ -131,7 +128,7 @@ export default function AddNewSection(props) {
       <Button variant="contained" onClick={() => {
         saveSctiondata();
         Addsectionsave();
-        getvalue();
+        
 
       }} startIcon={<Add/>}  style={{background: Themes.MainHeaderColor, color: Themes.WHITE}}>
        Add New Section
