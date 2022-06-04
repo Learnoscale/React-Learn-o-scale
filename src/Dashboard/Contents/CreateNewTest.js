@@ -314,7 +314,7 @@ export default function CreateNewTest() {
        </div>
         </DialogContent>
         <DialogActions>
-        {/* <CreateNewSection hour={saveTest.hour} minute={saveTest.minute}/> */}
+        <CreateNewSection testName={saveTest.testname} hour={saveTest.hour} minute={saveTest.minute}/> 
         <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
                     if(formData.ButtonTitle==='Save & Next'){
                           await crud.create('/testMakesapi/',{
@@ -336,7 +336,7 @@ export default function CreateNewTest() {
                      }
                       // setOpen(false)
                     }} color="primary"> 
-                        <CreateNewSection testName={saveTest.testname} hour={saveTest.hour} minute={saveTest.minute}/>
+                        {formData.ButtonTitle}
                         
         </Button>
         </DialogActions>
