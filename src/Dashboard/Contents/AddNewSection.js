@@ -77,7 +77,7 @@ export default function AddNewSection(props) {
   const [showeditor, setShoweditor] = useState(false);
   const [sectioninst, setsectioninst] = useState("")
   var timeleft = props.testduration;
-   let sectime =  Number(saveSection.hour) + Number(saveSection.minute);
+   let sectime =  Number(saveSection.hour*60) + Number(saveSection.minute);
    if(sectime > 0){  
    timeleft = timeleft - sectime;   
    }
