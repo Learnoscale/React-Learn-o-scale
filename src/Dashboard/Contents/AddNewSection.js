@@ -19,6 +19,8 @@ import { crud } from "../../services/crud";
 import { useLocation } from "react-router-dom";
 import clsx from "clsx";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+import {useDispatch, useSelector, shallowEqual} from 'react-redux';
+import { testDurationAction } from '../../services/actions/testActions'; 
 
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
@@ -60,10 +62,9 @@ BootstrapDialogTitle.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
 };
+export default function AddNewSection() {
+  const dispatch = useDispatch()
 
-export default function AddNewSection(props) {
-
-  
   const classes = useStyles();
   const location = useLocation();
   const [loader, setLoader] = useState(false);
@@ -75,13 +76,18 @@ export default function AddNewSection(props) {
     ButtonTitle: "",
   });
   const [showeditor, setShoweditor] = useState(false);
-  const [sectioninst, setsectioninst] = useState("")
-  var timeleft = props.testduration;
-   let sectime =  Number(saveSection.hour*60) + Number(saveSection.minute);
-   if(sectime > 0){  
-   timeleft = timeleft - sectime;   
-   }
 
+  const  testTimeDuration = useSelector(state => state.testDurationState, shallowEqual);
+
+  
+  let sectionDuration = Number(saveSection.hour === undefined ? 0 : saveSection.hour*60) + Number(saveSection.minute === undefined ? 0 : saveSection.minute);
+  console.log(saveSection.hour,"=====>>>", saveSection.minute, 'sectionDuration', sectionDuration, 'saveSection.hour', saveSection.hour)
+  let timeleft = (testTimeDuration.testTime);
+  if(sectionDuration > 0){
+     timeleft = ((testTimeDuration.testTime)) - (sectionDuration);
+  }
+ 
+  console.log('testTimeDuration', testTimeDuration);
   async function getTestLayOut()
   {
      
@@ -96,8 +102,6 @@ export default function AddNewSection(props) {
       setLoader(false);
       }
   }
-  
-
   function Addsectionsave(){
     setOpen(true)
     setsaveSection({
@@ -123,16 +127,35 @@ export default function AddNewSection(props) {
   useEffect(() => {
     
      getTestLayOut();
-   
   }, [location]);
-
+  const addNewSectionSave = async () => {
+      if(formData.ButtonTitle==='Add Section'){
+              const data=await crud.retrieve('/lastmake');
+              await crud.create('/TestSectionApi/',{
+                sectionName:saveSection.secname,
+                hour:saveSection.hour,
+                minute:saveSection.minute,
+                allowedSectionSwitching:saveSection.secSwich,
+                skipSectionBeforeTimeOver:saveSection.secSkip,
+                studentChoice: saveSection.stdChoice,
+                useSectionAsBreak:saveSection.secBreak,
+                showPreviousSection:false,
+                sectionInstruction:saveSection.secInstruction,
+                testmake:data.lastid
+            });
+         setOpen(false)
+      }
+      console.log(saveSection.minute, 'minutes')
+     dispatch(testDurationAction(timeleft))
+      
+  }
   return (
+    <> 
     <div>
-      <p>{loader}</p>
+       {loader}
       <Button variant="contained" onClick={() => {
         saveSctiondata();
         Addsectionsave();
-        
 
       }} startIcon={<Add/>}  style={{background: Themes.MainHeaderColor, color: Themes.WHITE}}>
        Add New Section
@@ -146,7 +169,7 @@ export default function AddNewSection(props) {
         maxWidth= "md"
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-         Add New Section 
+         Add New Section
         </BootstrapDialogTitle>
         <DialogContent dividers>
        <div className="container-fluid">
@@ -161,7 +184,6 @@ export default function AddNewSection(props) {
            <select name="test-layout" value={saveSection.testlayout} 
              onChange={(e) => {setsaveSection({...saveSection,testlayout:e.target.value})}} 
              className='border' id="test-layout">
-               <option disabled>None</option>
              {testLayout?.map((value, index) => (  
               <option value={value?.tl_id}>{value?.tl_title}</option>
              ))} 
@@ -173,17 +195,17 @@ export default function AddNewSection(props) {
          <div className="row my-2">
            <div className="col-sm-3 d-flex align-items-center"><h6>Test Duration</h6></div>
            <div className="col-sm-2 d-flex align-items-center"><Slider /></div>
-           <div className="col-sm-3"><h6> {timeleft} mins </h6></div>
+           <div className="col-sm-3"><h6>Time left: {timeleft} mins</h6></div>
            <div className="col-sm-4"></div>
          </div>
          <div className="row my-2">
            <div className="col-sm-2 d-flex align-items-center requiredField"><h6 className='pr-4'>Duration</h6> </div>
            <div className="col-sm-6 pt-4"><select name="hours"  value={saveSection.hour} 
-          onChange={(e) => {setsaveSection({...saveSection,hour:e.target.value})}}   id="hours" className='border'>
+          onChange={(e) => {setsaveSection({...saveSection, hour:e.target.value})}}   id="hours" className='border'>
              <option value="0">0</option>
              <option value="1">1</option>
              <option value="2">2</option>
-             <option value="2">3</option>
+             <option value="3">3</option>
              {/* <option value="2">4</option>
              <option value="2">5</option>
              <option value="2">6</option>
@@ -196,7 +218,7 @@ export default function AddNewSection(props) {
              </select>
              <label htmlFor="hour"><p className='px-4'>Hour</p></label>
              <select name="hours"  value={saveSection.minute} 
-          onChange={(e) => {setsaveSection({...saveSection,minute:e.target.value})}}   id="hours" className='border'>
+          onChange={(e) => {setsaveSection({...saveSection, minute:e.target.value})}}   id="hours" className='border'>
                 <option value="0">00</option>
                {/* <option value="1">1</option>
                <option value="2">2</option>
@@ -281,7 +303,7 @@ export default function AddNewSection(props) {
              onChange={(e) => {setsaveSection({...saveSection,secSkip:e.target.checked})}} {...label} />on</div>
          </div> 
          <div className="row my-1">
-           <div className="col-sm-9 d-flex align-items-center"><h6>Give students choice of which questions to attempt</h6></div>
+           <div className="col-sm-9 d-flex align-items-center"><h6>Give students choice fo which questions to attempt</h6></div>
            <div className="col-sm-3">off<Switch value={saveSection.stdChoice ? "off" :"on"} 
              onChange={(e) => {setsaveSection({...saveSection,stdChoice:e.target.checked})}} {...label} />on</div>
          </div> 
@@ -293,13 +315,10 @@ export default function AddNewSection(props) {
 
          <div className="row my-3">
            <label htmlFor="section-instruction"> <h6>Section Instructions</h6></label>
+           {/* <textarea name="section-instruction" value={saveSection.secInstruction ? "off" :"on"} 
+             onChange={(e) => {setsaveSection({...saveSection,secInstruction:e.target.checked})}} id="section-instruction" cols="20" rows="5"></textarea> */}
          <div className="border p-4" onClick={handleEditor} ><div style={{ display:(showeditor===true)?'block':'none'}} id='myDIV'  >
-         <CKEditor editor={Editor}
-         dataS={sectioninst} 
-         onChange={(event, editor) => { const dataS = editor.getData()
-         setsectioninst(dataS)
-         }}
-         /></div>
+         <CKEditor editor={Editor} /></div>
          </div>
          </div>
          <div className="row my-3">
@@ -312,27 +331,7 @@ export default function AddNewSection(props) {
       Add Questions
       </Button></div>
            <div className="col-sm-2"></div>
-           <div className="col-sm-3"><Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
-                    if(formData.ButtonTitle==='Add Section'){
-                  
-                      const data=await crud.retrieve('/lastmake');
-                      console.log("dataa",data.lastid)
-                      await crud.create('/TestSectionApi/',{
-                              sectionName:saveSection.secname,
-                              hour:saveSection.hour,
-                              minute:saveSection.minute,
-                              allowedSectionSwitching:saveSection.secSwich,
-                              skipSectionBeforeTimeOver:saveSection.secSkip,
-                              studentChoice: saveSection.stdChoice,
-                              useSectionAsBreak:saveSection.secBreak,
-                              showPreviousSection:false,
-                              sectionInstruction:sectioninst,
-                              testmake:data.lastid
-                          });
-                      
-                    }
-                      // setOpen(false)
-                    }} color="primary"> 
+           <div className="col-sm-3"><Button className={clsx(classes.Btn,)} variant={'contained'} onClick={addNewSectionSave} color="primary"> 
                         {formData.ButtonTitle}
         </Button></div>
            <div className="col-sm-2"></div>
@@ -341,6 +340,7 @@ export default function AddNewSection(props) {
        </DialogContent>
       </BootstrapDialog>
     </div>
+    </>
   );
 }
 

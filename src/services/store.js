@@ -5,11 +5,14 @@ import thunk from 'redux-thunk'
 import storage from 'redux-persist/lib/storage';
 import  userReducer from './Slices/UserSlice';
 import themeReducer from './Slices/ThemeSlice';
+import testReducer from './reducers/testReducer';
+
 const reducers = combineReducers({
     user: userReducer,
     theme: themeReducer,
-
+    testDurationState: testReducer,
 })
+
 const persistConfig = {
     key: 'root',
     storage,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import {
   makeStyles,
   
@@ -12,14 +12,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import {IconButton, Switch} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-//import  styles from './Contents.css'
 import { Themes } from "../../Theme/theme";
 import {Add} from "@material-ui/icons";
 import { crud } from "../../services/crud";
 import { useLocation } from "react-router-dom";
 import clsx from "clsx";
 import CreateNewSection from './CreateNewSection';
-
+import { testDurationAction } from '../../services/actions/testActions'; 
+import { useDispatch } from "react-redux";
 const label = {inputProps: { 'aria-label': 'Switch demo'}};
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -60,6 +60,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CreateNewTest() {
+  const dispatch = useDispatch()
   const classes = useStyles();
   const location = useLocation();
   const [loader, setLoader] = useState(false);
@@ -75,15 +76,15 @@ export default function CreateNewTest() {
   function AddsaveTest(){
   setOpen(true)
   setsaveTest({
-      formTitle: 'Save & Next',
-      ButtonTitle: 'Save & Next',
+      formTitle: 'Create Test',
+      ButtonTitle: 'Create Test',
   });
   }
   function saveTestData() {
         setOpen(true)
         setFormData({
            formTitle: 'Create New Test',
-           ButtonTitle: 'Save & Next',
+           ButtonTitle: 'Create Test',
         });
   }
 
@@ -110,6 +111,30 @@ export default function CreateNewTest() {
     
      getTestLayOut();
   }, [location]);
+
+const createTestSaveData = async () => {
+    if(formData.ButtonTitle==='Create Test'){
+           crud.create('/testMakesapi/', {
+              user :1,
+              testName:saveTest.testname,
+              tags:saveTest.tagname,
+              noOfQuestions:saveTest.questionNo,
+              totalMarks:saveTest.totalmarks,
+              hour:saveTest.hour,
+              minute:saveTest.minute,
+              testCategory:saveTest.testcategory,
+              testLayout:saveTest.testlayout,
+              poolQuestion:savePoolFree.poolQ,
+              freeAvailable:savePoolFree.freeA,
+              testShowFrom:saveTest.startDate,
+              testEndON:saveTest.endDate
+            });
+      
+     }
+     dispatch(testDurationAction(Number(saveTest.hour === undefined ? 0 : saveTest.hour*60) + Number(saveTest.minute === undefined ? 0 : saveTest.minute)));
+    //  console.log(saveTest.hour, 'saveTest.hour,')
+}
+
   return (
     <div>
       {loader}
@@ -314,30 +339,9 @@ export default function CreateNewTest() {
        </div>
         </DialogContent>
         <DialogActions>
-        <CreateNewSection testName={saveTest.testname} hour={saveTest.hour} minute={saveTest.minute}/> 
-        <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
-                    if(formData.ButtonTitle==='Save & Next'){
-                          await crud.create('/testMakesapi/',{
-                              user :1,
-                              testName:saveTest.testname,
-                              tags:saveTest.tagname,
-                              noOfQuestions:saveTest.questionNo,
-                              totalMarks:saveTest.totalmarks,
-                              hour:saveTest.hour,
-                              minute:saveTest.minute,
-                              testCategory:saveTest.testcategory,
-                              testLayout:saveTest.testlayout,
-                              poolQuestion:savePoolFree.poolQ,
-                              freeAvailable:savePoolFree.freeA,
-                              testShowFrom:saveTest.startDate,
-                              testEndON:saveTest.endDate
-                            });
-                      
-                     }
-                      // setOpen(false)
-                    }} color="primary"> 
+        <CreateNewSection/>
+        <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={createTestSaveData} color="primary"> 
                         {formData.ButtonTitle}
-                        
         </Button>
         </DialogActions>
       </BootstrapDialog>
