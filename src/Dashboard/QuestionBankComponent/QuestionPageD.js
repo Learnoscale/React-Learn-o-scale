@@ -146,7 +146,9 @@ export default function QuestionPageD() {
     const [AddFinalQuestions, setAddFinalQuestions] = useState('');
     const[Tquestion,setTquestion]=useState([false]);
     const[TquestionDual,setTquestionDual]=useState([false]);
-    
+    const[quesdis,setquesdis]=useState(true);
+    const [quesdetail, setquesdetail] = useState(false)
+
     function GetFormManage() {
         setOpen(true)
         setFormData({
@@ -482,7 +484,7 @@ export default function QuestionPageD() {
                         <Grid container className="mt-3">
                             <Grid item xs={12}>
                             <DialogActions>
-                            <Button className={clsx(classes.Btn,)} startIcon={<AddIcon />} variant={'contained'} onClick={async() => {
+                            <Button className={clsx(classes.Btn,)} startIcon={<AddIcon />} variant={'contained'} disabled={quesdetail} onClick={async() => {
                                     if(formData.ButtonTitle==='Add Details'){
                                         await crud.create('/questionsapi/',{
                                             qtype:PostQuestions.QType,
@@ -492,6 +494,8 @@ export default function QuestionPageD() {
                                             topic:location.state?.topic1
                                         });
                                     console.log("under",)
+                                    setquesdis(false)
+                                    setquesdetail(true)
                                     }
                                     
                                     }} color="primary">
@@ -500,7 +504,7 @@ export default function QuestionPageD() {
 
                             </Button>
                             <Button className={clsx(classes.Btn,)} startIcon={<AddIcon />} variant={'contained'}
-                            onClick={async() => { questionList() }} color="primary" >
+                            onClick={async() => { questionList() }} disabled={quesdis} color="primary" >
                               ADD Questions
                             </Button>
                             </DialogActions>

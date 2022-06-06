@@ -7,6 +7,7 @@ import {makeLogout} from "../services/Slices/UserSlice";
 import {Button, Menu, MenuItem, Avatar} from "@material-ui/core";
 import './style.css';
 
+import im1 from './img/favicon.png';
 import { crud } from "../services/crud";
 export default  function Header(){
 
@@ -31,12 +32,17 @@ export default  function Header(){
          setLoader(false);
      }
      }
-    
+     const  getHomeDynamic = () => {
+      const favicon = document.getElementById('favicon');
+      favicon.href =  home[0]?.home_logo;
+      if(home[0]?.home_title === undefined) {
+       document.getElementById('slug').innerHTML = 'LMS';
+      }
+     else document.getElementById('slug').innerHTML = home[0]?.home_title; 
+    }
      useEffect(() => {
        getHome();
-       const favicon = document.getElementById('favicon');
-       favicon.href =  home[0]?.home_logo;
-       document.getElementById('slug').innerHTML = home[0]?.home_title;
+       getHomeDynamic();
         
      },);
 
@@ -54,10 +60,7 @@ export default  function Header(){
        {/* Change it to dynamic */}
           <div id="logo">
             <Link to="/">
-              <img src={
-              
-          home[0]?.home_logo
-              } alt='logo' height={'50px'} width={'100%'} />
+            <img src={(home[1]?.home_logo === undefined) ? im1 : home[1]?.home_logo  } alt='logo' height={'50px'} width={'100%'} />
             </Link>
           </div>
           <nav id="navbar" className="navbar">
@@ -499,7 +502,9 @@ export default  function Header(){
           <div id="main"></div>
           {/* Change it to dynamic */}
           
+          {(home[0]?.home_title === undefined) ? <h1>Smart Online Exam</h1>:
           <h1>{home[0]?.home_title}</h1>
+          }
           <h2>We are Creating and Promoting Talents</h2>
           <Link to="#about" className="btn-get-started">
             Get Started
