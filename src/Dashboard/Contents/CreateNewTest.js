@@ -19,7 +19,8 @@ import { useLocation } from "react-router-dom";
 import clsx from "clsx";
 import CreateNewSection from './CreateNewSection';
 import { testDurationAction } from '../../services/actions/testActions'; 
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
+
 const label = {inputProps: { 'aria-label': 'Switch demo'}};
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -66,6 +67,10 @@ export default function CreateNewTest() {
   const [loader, setLoader] = useState(false);
   const [open, setOpen] = useState(false);
  
+  const user = useSelector(state => state.user)
+
+
+
   const [testLayout,settestLayout]=useState();
   const [formData, setFormData] = useState({
     formTitle: "",
@@ -108,14 +113,15 @@ export default function CreateNewTest() {
       }
   }
   useEffect(() => {
-    
+   
      getTestLayOut();
   }, [location]);
 
 const createTestSaveData = async () => {
     if(formData.ButtonTitle==='Create Test'){
+          
            crud.create('/testMakesapi/', {
-              user :1,
+              user :user.user.id,
               testName:saveTest.testname,
               tags:saveTest.tagname,
               noOfQuestions:saveTest.questionNo,

@@ -16,11 +16,11 @@ import { CKEditor } from '@ckeditor/ckeditor5-react'
 
 import VideoUpload from "./UploadVideo";
 import ReactHtmlParser from 'react-html-parser';
-
+import { useSelector } from "react-redux";
 
 export default function QuestionPageD() {  
 
-
+  
     const [radiovalue, setRadiovalue] = useState();
     const [radiovaluedual, setRadiovaluedual] = useState();
 
@@ -47,6 +47,9 @@ export default function QuestionPageD() {
 
     const [textsol, settextsol] = useState("")
     const [textsolDual, settextsolDual] = useState("")
+
+   
+    const user = useSelector(state => state.user)
 
 
     const [optionData, setoptionData] = useState([])
@@ -143,7 +146,7 @@ export default function QuestionPageD() {
     const [AddFinalQuestions, setAddFinalQuestions] = useState('');
     const[Tquestion,setTquestion]=useState([false]);
     const[TquestionDual,setTquestionDual]=useState([false]);
-   
+    
     function GetFormManage() {
         setOpen(true)
         setFormData({
@@ -275,7 +278,11 @@ export default function QuestionPageD() {
         setLoader(false);
         }
     }  
-    const API_URl = "https://lmsoskillupdated.herokuapp.com"
+ 
+    //this.baseUrl = "http://"+xp+".learnoscale.in";
+   // this.baseUrl = "https://lmsoskillupdated.herokuapp.com";
+    const API_URl = crud.baseUrl
+
     const UPLOAD_ENDPOINT = "imagedemo/";
     function uploadAdapter(loader) {
         return {
@@ -315,6 +322,7 @@ export default function QuestionPageD() {
         getDifficulty();
         getLanguage();
         getQid();
+        console.log("imageurl",crud.baseUrl)
         // eslint-disable-next-line
     }, [location]);
   
@@ -482,7 +490,7 @@ export default function QuestionPageD() {
                                             qtype:PostQuestions.QType,
                                             difficulty:PostQuestions.QDifficulty,
                                             language:PostQuestions.QLanguage,
-                                            user:1,
+                                            user:user.user.id,
                                             topic:location.state?.topic1
                                         });
                                     console.log("under",)
@@ -894,7 +902,6 @@ export default function QuestionPageD() {
                                         await crud.create('/testquestionsapi/',
                                         
                                         {
-                                        
                                             qid:Qid[(Qid.length)-1].qu_id,
                                             question_para:textpara,
                                             question_text:textque,
