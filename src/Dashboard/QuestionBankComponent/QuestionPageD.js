@@ -199,7 +199,6 @@ export default function QuestionPageD() {
     {
         setLoader(true);
         try{
-            console.log("base==",crud.baseUrl)
             const data1= await crud.retrieve('/testquestionsapi/')
             setQuestion(data1);
             setLoader(false);

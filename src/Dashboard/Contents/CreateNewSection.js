@@ -16,6 +16,7 @@ import TestInstructions from './TestInstruction';
 import TestSettings from './TestSettings';
 import './Contents.css'
 import AddNewSection from './AddNewSection';
+import {useSelector, shallowEqual} from 'react-redux';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -27,9 +28,14 @@ export default function CreateNewSection(props) {
 
 
   const [open, setOpen] = React.useState(false);
-
+  const  testTimeDuration = useSelector(state => state.testDurationState, shallowEqual);
+  let timeleft = testTimeDuration;
   const handleClickOpen = () => {
+    if(timeleft.testTime > 0){
     setOpen(true);
+    }
+    else
+          setOpen(false);
   };
 
   const handleClose = () => {

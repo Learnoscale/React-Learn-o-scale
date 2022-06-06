@@ -8,7 +8,7 @@ export class CrudFactory extends CrudRequest {
     const psl = require('psl');
     const x=document.domain
     const Parse = psl.parse(x);
-    console.log('log',x)
+    console.log('logss',x)
     var xp=Parse.sld
     if(xp==='learnoscale')
     {

@@ -86,6 +86,13 @@ export default function AddNewSection() {
   if(sectionDuration > 0){
      timeleft = ((testTimeDuration.testTime)) - (sectionDuration);
   }
+  const handleClickOpen = () => {
+    if(timeleft > 0){
+    setOpen(true);
+    }
+    else
+          setOpen(false);
+  };
  
   console.log('testTimeDuration', testTimeDuration);
   async function getTestLayOut()
@@ -156,6 +163,7 @@ export default function AddNewSection() {
       <Button variant="contained" onClick={() => {
         saveSctiondata();
         Addsectionsave();
+        handleClickOpen();
 
       }} startIcon={<Add/>}  style={{background: Themes.MainHeaderColor, color: Themes.WHITE}}>
        Add New Section
