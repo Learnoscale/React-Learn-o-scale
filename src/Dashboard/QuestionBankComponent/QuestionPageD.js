@@ -185,8 +185,6 @@ export default function QuestionPageD() {
         
     }
 
-
-     
     const addOption = () => {
         setOptions([...options, {checked: false, value: ""}]);
       
@@ -201,6 +199,7 @@ export default function QuestionPageD() {
     {
         setLoader(true);
         try{
+            console.log("base==",crud.baseUrl)
             const data1= await crud.retrieve('/testquestionsapi/')
             setQuestion(data1);
             setLoader(false);
@@ -308,6 +307,7 @@ export default function QuestionPageD() {
     }
 
     function uploadPlugin(editor) {
+        
         editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
         return uploadAdapter(loader);
         }
@@ -321,7 +321,7 @@ export default function QuestionPageD() {
         getDifficulty();
         getLanguage();
         getQid();
-        console.log("imageurl",crud.baseUrl)
+        
         // eslint-disable-next-line
     }, [location]);
   
