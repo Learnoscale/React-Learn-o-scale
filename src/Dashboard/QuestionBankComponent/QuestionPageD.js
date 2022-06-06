@@ -279,8 +279,7 @@ export default function QuestionPageD() {
         }
     }  
  
-    //this.baseUrl = "http://"+xp+".learnoscale.in";
-   // this.baseUrl = "https://lmsoskillupdated.herokuapp.com";
+ 
     const API_URl = crud.baseUrl
 
     const UPLOAD_ENDPOINT = "imagedemo/";
