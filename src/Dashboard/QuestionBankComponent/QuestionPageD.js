@@ -150,6 +150,7 @@ export default function QuestionPageD() {
     const[Tquestion,setTquestion]=useState([false]);
     const[TquestionDual,setTquestionDual]=useState([false]);
    
+  
 
    
 
@@ -315,11 +316,15 @@ export default function QuestionPageD() {
         return uploadAdapter(loader);
         }
       }
-    const refreshPage = ()=>{
-        setTextpara({});
+      function getClearAll() {
+      
+        
+        setTextpara({
+           
+        });
         setTextpara1({});
         setTextpara2({});
-     }
+    }
     useEffect(() => {
         
         getQuestion();
@@ -540,6 +545,7 @@ export default function QuestionPageD() {
                                 <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
                                 if(formData4.ButtonTitle==='NEXT'){ 
                                         
+                                       
                                         await crud.create('/testquestionsapi/',
                                         
                                         {
@@ -573,8 +579,8 @@ export default function QuestionPageD() {
                                     );
                                   
                                     }
-                                    
-                                    refreshPage();
+                                    getClearAll();
+                              
                                     }
                                     
                                     } color="primary">
@@ -584,8 +590,10 @@ export default function QuestionPageD() {
                             </>:<></>}    
                             {PostQuestions.QLanguage===3?<>
                                 <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
+                                 
                                  if(formData4.ButtonTitle==='NEXT'){ 
                                     
+                                   
                                     await crud.create('/testquestionsapi/',
                                     {
                                         qid:Qid[(Qid.length)-1].qu_id,
@@ -641,8 +649,8 @@ export default function QuestionPageD() {
                                     );
                                    
                                 }
+                                getClearAll();
                                 
-                                refreshPage();
                                 }} 
                                 color="primary">
                                 {formData4.ButtonTitle}
