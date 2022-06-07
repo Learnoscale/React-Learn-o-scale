@@ -316,7 +316,9 @@ export default function QuestionPageD() {
         }
       }
     const refreshPage = ()=>{
-        
+        setTextpara({});
+        setTextpara1({});
+        setTextpara2({});
      }
     useEffect(() => {
         
@@ -571,7 +573,8 @@ export default function QuestionPageD() {
                                     );
                                   
                                     }
-                                    setOpen(false);
+                                    
+                                    refreshPage();
                                     }
                                     
                                     } color="primary">
@@ -638,7 +641,8 @@ export default function QuestionPageD() {
                                     );
                                    
                                 }
-                                setOpen(false);
+                                
+                                refreshPage();
                                 }} 
                                 color="primary">
                                 {formData4.ButtonTitle}
