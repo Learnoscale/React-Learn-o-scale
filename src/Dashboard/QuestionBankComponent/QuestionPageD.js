@@ -42,6 +42,9 @@ export default function QuestionPageD() {
     const [setChip] = useState()
 
     const [textpara, setTextpara] = useState("")
+    const [textpara1, setTextpara1] = useState("")
+    const [textpara2, setTextpara2] = useState("")
+
     const [textque, settextque] = useState("")
     const [textqueDual, settextqueDual] = useState("")
 
@@ -50,8 +53,7 @@ export default function QuestionPageD() {
 
    
     const user = useSelector(state => state.user)
-
-
+    
     const [optionData, setoptionData] = useState([])
     const [optionDatadual, setoptionDatadual] = useState([])
     const[showeditor1,setShoweditor1]=useState(false)
@@ -128,10 +130,6 @@ export default function QuestionPageD() {
     ]);
     
    
-    const [formData, setFormData] = useState({
-        formTitle: '',
-        ButtonTitle: ''
-    })
     const [formData2, setFormData2] = useState({
         formTitle: '',
         ButtonTitle: ''
@@ -141,21 +139,19 @@ export default function QuestionPageD() {
         formTitle: '',
         ButtonTitle: ''
     })
+
+    const [formData4, setFormData4] = useState({
+        formTitle: '',
+        ButtonTitle: ''
+    })
     // post questions
     const [PostQuestions, setPostQuestions] = useState('');
     const [AddFinalQuestions, setAddFinalQuestions] = useState('');
     const[Tquestion,setTquestion]=useState([false]);
     const[TquestionDual,setTquestionDual]=useState([false]);
-    const[quesdis,setquesdis]=useState(true);
-    const [quesdetail, setquesdetail] = useState(false)
+   
 
-    function GetFormManage() {
-        setOpen(true)
-        setFormData({
-            formTitle: 'Create New Question',
-            ButtonTitle: 'Add Details',
-        });
-    }
+   
 
     function questionList(){
         setadQuestions([...adQuestions,{value:""}]);
@@ -175,7 +171,13 @@ export default function QuestionPageD() {
             ButtonTitle: 'SAVE',
         });
     }
-
+    function AddFinalQuestion4(){
+        setOpen(true)
+        setFormData4({
+            formTitle: 'next',
+            ButtonTitle: 'NEXT',
+        });
+    }
     function handleChangeR (option) {
         setRadiovalue(option);
          }
@@ -313,7 +315,9 @@ export default function QuestionPageD() {
         return uploadAdapter(loader);
         }
       }
-
+    const refreshPage = ()=>{
+        
+     }
     useEffect(() => {
         
         getQuestion();
@@ -351,9 +355,10 @@ export default function QuestionPageD() {
                         <label htmlFor="contained-button-file">
                             <Button
                             onClick={() => {
-                                GetFormManage();
+                                
                                 AddFinalQuestion();
                                 AddFinalQuestion2();
+                                AddFinalQuestion4();
                             }}
                             variant={'contained'}  startIcon={<AddIcon/>} className={clsx(classes.Button)}>
                                 Create Question
@@ -413,30 +418,292 @@ export default function QuestionPageD() {
              TransitionComponent={Transition}>
                <div className={'container-fluid'}>
                 <div className={'row'}>
-                <div className={'col-12 pl-0 pr-0'}>
+                <div className={'col-12 pl-0 pr-3'}>
+                            
                             <DialogTitle>{location.state?.question_type} </DialogTitle>
-                            <div style={{position:'absolute',top:15,right:90}}>
+                            <div style={{position:'fixed',zIndex:1}}>
+                                <Button  variant={'contained'} className={clsx(classes.Button)}>Previous</Button>
+                            {PostQuestions.QLanguage===1 || PostQuestions.QLanguage===2?<>
+                                <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
+                                if(formData2.ButtonTitle==='SAVE'){ 
+                                        
+                                        await crud.create('/testquestionsapi/',
+                                        
+                                        {
+                                           // qid:Qid[(Qid.length)-1].qu_id,
+                                            qtype:PostQuestions.QType,
+                                            difficulty:PostQuestions.QDifficulty,
+                                            user:user.user.id,
+                                            topic:location.state?.topic1,
+                                            question_para:textpara,
+                                            question_text:textque,
+                                            ques_lang:PostQuestions.QLanguage,
+                                            description:AddFinalQuestions.QDes,
+                                            solution:textsol,
+                                            is_active:'true',
+                                            choices: 
 
-                                <Button variant={'contained'} className={clsx(classes.Button)}>Previous</Button>
-                                <Button variant={'contained'} className={clsx(classes.Button,"mx-3")}>Save</Button>
-                                <Button variant={'contained'} className={clsx(classes.Button)}>Next</Button>
+                                        
+                                        options.map((option,index) =>    
+                                        {
+                                        return(  
+                                            {
+                                                language:PostQuestions.QLanguage,
+                                                answer_text:optionData[index],
+                                                is_right:Tquestion[index]
+                                                
+                                            }
+                                        )
+                                        }
+                                     )
+                                    }
+                                    );
+                                  
+                                    }
+                                    setOpen(false);
+                                    }
+                                    
+                                    } color="primary">
+                                    {formData2.ButtonTitle}
+                                   
+                                </Button>
+                            </>:<></>}    
+                            {PostQuestions.QLanguage===3?<>
+                                <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
+                                 if(formData3.ButtonTitle==='SAVE'){ 
+                                    
+                                    await crud.create('/testquestionsapi/',
+                                    {
+                                        qid:Qid[(Qid.length)-1].qu_id,
+                                        question_para:textpara1,
+                                        question_text:textque,
+                                        ques_lang:1,
+                                        description:AddFinalQuestions.QDes,
+                                        solution:textsol,
+                                        is_active:'true',
+                                        choices: 
+                                    options.map((option,index) =>    
+                                    {
+                                    return(  
+                                        {
+                                            language:1,
+                                            answer_text:optionData[index],
+                                            is_right:Tquestion[index]
+                                        }
+                                    )
+                                    
+                                    }
+                                    
+                                    )
+                                    
+                                    }
+                                    
+                                    );
+                                    
+                                    console.log("qid",Qid[(Qid.length)-1].qu_id)  
+                                    await crud.create('/testquestionsapi/',
+                                    {
+                                        qid:Qid[(Qid.length)-1].qu_id,
+                                        question_para:textpara2,
+                                        question_text:textqueDual,
+                                        ques_lang:2,
+                                        description:AddFinalQuestions.QDes,
+                                        solution:textsolDual,
+                                        is_active:'true',
+                                        choices: 
+                                    options.map((option,index) =>    
+                                    {
+                                    return(  
+                                        {
+                                            language:2,
+                                            answer_text:optionDatadual[index],
+                                            is_right:TquestionDual[index]
+                                        }
+                                    )
+                                    }
+                                    )
+                                    
+                                    }
+                                    );
+                                   
+                                }
+                                setOpen(false);
+                                }} 
+                                color="primary">
+                                {formData3.ButtonTitle}
+                                </Button>
+                            </>:<></>} 
+
+                             {PostQuestions.QLanguage===1 || PostQuestions.QLanguage===2?<>
+                                <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
+                                if(formData4.ButtonTitle==='NEXT'){ 
+                                        
+                                        await crud.create('/testquestionsapi/',
+                                        
+                                        {
+                                           // qid:Qid[(Qid.length)-1].qu_id,
+                                            qtype:PostQuestions.QType,
+                                            difficulty:PostQuestions.QDifficulty,
+                                            user:user.user.id,
+                                            topic:location.state?.topic1,
+                                            question_para:textpara,
+                                            question_text:textque,
+                                            ques_lang:PostQuestions.QLanguage,
+                                            description:AddFinalQuestions.QDes,
+                                            solution:textsol,
+                                            is_active:'true',
+                                            choices: 
+
+                                        
+                                        options.map((option,index) =>    
+                                        {
+                                        return(  
+                                            {
+                                                language:PostQuestions.QLanguage,
+                                                answer_text:optionData[index],
+                                                is_right:Tquestion[index]
+                                                
+                                            }
+                                        )
+                                        }
+                                     )
+                                    }
+                                    );
+                                  
+                                    }
+                                    setOpen(false);
+                                    }
+                                    
+                                    } color="primary">
+                                    {formData4.ButtonTitle}
+                                   
+                                </Button>
+                            </>:<></>}    
+                            {PostQuestions.QLanguage===3?<>
+                                <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
+                                 if(formData4.ButtonTitle==='NEXT'){ 
+                                    
+                                    await crud.create('/testquestionsapi/',
+                                    {
+                                        qid:Qid[(Qid.length)-1].qu_id,
+                                        question_para:textpara1,
+                                        question_text:textque,
+                                        ques_lang:1,
+                                        description:AddFinalQuestions.QDes,
+                                        solution:textsol,
+                                        is_active:'true',
+                                        choices: 
+                                    options.map((option,index) =>    
+                                    {
+                                    return(  
+                                        {
+                                            language:1,
+                                            answer_text:optionData[index],
+                                            is_right:Tquestion[index]
+                                        }
+                                    )
+                                    
+                                    }
+                                    
+                                    )
+                                    
+                                    }
+                                    
+                                    );
+                                    
+                                    console.log("qid",Qid[(Qid.length)-1].qu_id)  
+                                    await crud.create('/testquestionsapi/',
+                                    {
+                                        qid:Qid[(Qid.length)-1].qu_id,
+                                        question_para:textpara2,
+                                        question_text:textqueDual,
+                                        ques_lang:2,
+                                        description:AddFinalQuestions.QDes,
+                                        solution:textsolDual,
+                                        is_active:'true',
+                                        choices: 
+                                    options.map((option,index) =>    
+                                    {
+                                    return(  
+                                        {
+                                            language:2,
+                                            answer_text:optionDatadual[index],
+                                            is_right:TquestionDual[index]
+                                        }
+                                    )
+                                    }
+                                    )
+                                    
+                                    }
+                                    );
+                                   
+                                }
+                                setOpen(false);
+                                }} 
+                                color="primary">
+                                {formData4.ButtonTitle}
+                                </Button>
+                            </>:<></>}   
+                              
                             </div>
                             <IconButton onClick={() => {setOpen(false);}}  className={classes.menu}><ClearIcon/></IconButton>
+                            
                             <hr/>
                 </div>
                 <div className={'col-12 mt-3'}>
                 <div className="border p-4" onClick={handleEditor1} >
-                <div style={{ display:(showeditor1===true)?'block':'none'}} >        
+                <div style={{ display:(showeditor1===true)?'block':'none'}} > 
+                {PostQuestions.QLanguage===1?<>       
+                <CKEditor editor={Editor} datapara={textpara} 
+                                           
+                                            onChange={(event, editor) => { const datapara = editor.getData()
+                                            setTextpara(datapara)
+                                            }}
+                                            value={AddFinalQuestions.QPara}
+                                            config={{
+                                                extraPlugins: [uploadPlugin],
+                                                placeholder:"type paragraph in hindi"
+                                            }}
+                                           
+                />
+                </>:<></>}
+                {PostQuestions.QLanguage===2?<>       
                 <CKEditor editor={Editor} datapara={textpara} 
                                             onChange={(event, editor) => { const datapara = editor.getData()
                                             setTextpara(datapara)
                                             }}
                                             value={AddFinalQuestions.QPara}
                                             config={{
-                                                extraPlugins: [uploadPlugin]
+                                                extraPlugins: [uploadPlugin],
+                                                placeholder:"type paragraph in english"
                                             }}
                                            
                 />
+                </>:<></>}
+                {PostQuestions.QLanguage===3?<>       
+                <CKEditor editor={Editor} datapara={textpara1} 
+                                            onChange={(event, editor) => { const datapara1 = editor.getData()
+                                            setTextpara1(datapara1)
+                                            }}
+                                            value={AddFinalQuestions.QPara}
+                                            config={{
+                                                extraPlugins: [uploadPlugin],
+                                                placeholder:"type paragraph in hindi"
+                                            }}
+                                           
+                />
+                <CKEditor editor={Editor} datapara={textpara2} 
+                                            onChange={(event, editor) => { const datapara2 = editor.getData()
+                                            setTextpara2(datapara2)
+                                            }}
+                                            value={AddFinalQuestions.QPara}
+                                            config={{
+                                                extraPlugins: [uploadPlugin],
+                                                placeholder:"type paragraph in english"
+                                            }}
+                                           
+                />
+                </>:<></>}
                 </div>
                 </div> 
                         <div className={'col-lg-8 offset-lg-4 col-12  px-lg-3 d-lg-flex justify-content-lg-end'}>
@@ -484,27 +751,9 @@ export default function QuestionPageD() {
                         <Grid container className="mt-3">
                             <Grid item xs={12}>
                             <DialogActions>
-                            <Button className={clsx(classes.Btn,)} startIcon={<AddIcon />} variant={'contained'} disabled={quesdetail} onClick={async() => {
-                                    if(formData.ButtonTitle==='Add Details'){
-                                        await crud.create('/questionsapi/',{
-                                            qtype:PostQuestions.QType,
-                                            difficulty:PostQuestions.QDifficulty,
-                                            language:PostQuestions.QLanguage,
-                                            user:user.user.id,
-                                            topic:location.state?.topic1
-                                        });
-                                    console.log("under",)
-                                    setquesdis(false)
-                                    setquesdetail(true)
-                                    }
-                                    
-                                    }} color="primary">
-                                    {formData.ButtonTitle}
-                                   
-
-                            </Button>
+                      
                             <Button className={clsx(classes.Btn,)} startIcon={<AddIcon />} variant={'contained'}
-                            onClick={async() => { questionList() }} disabled={quesdis} color="primary" >
+                            onClick={async() => { questionList() }}  color="primary" >
                               ADD Questions
                             </Button>
                             </DialogActions>
@@ -526,7 +775,8 @@ export default function QuestionPageD() {
                                                   settextqueDual(data1)
                                                   }}
                                                   config={{
-                                                    extraPlugins: [uploadPlugin]
+                                                    extraPlugins: [uploadPlugin],
+                                                    placeholder:"type question in hindi"
                                                   }}
                                                   />
                                     </div>
@@ -538,7 +788,8 @@ export default function QuestionPageD() {
                                                     settextque(data2)
                                                   }}
                                                   config={{
-                                                    extraPlugins: [uploadPlugin]
+                                                    extraPlugins: [uploadPlugin],
+                                                    placeholder:"type question in english"
                                                   }}
                                                   />
                                     </div>
@@ -552,7 +803,8 @@ export default function QuestionPageD() {
                                                     settextque(data3)
                                                   }}
                                                   config={{
-                                                    extraPlugins: [uploadPlugin]
+                                                    extraPlugins: [uploadPlugin],
+                                                    placeholder:"type question in english"
                                                   }}
                                                   />
                                    </div>
@@ -567,7 +819,8 @@ export default function QuestionPageD() {
                                                     settextque(data4)
                                                   }}
                                                 config={{
-                                                    extraPlugins: [uploadPlugin]
+                                                    extraPlugins: [uploadPlugin],
+                                                    placeholder:"type question in hindi"
                                                 }}  
                                                 />
                                    </div>
@@ -593,7 +846,7 @@ export default function QuestionPageD() {
                                                                         let Rvaluedual = [false,false,false,false,false,false,false,false,false,false,false,false,false]
                                                                         event.target.checked?Rvaluedual[index]=true:Rvaluedual[index]=false
                                                                         setTquestionDual(Rvaluedual);
-                                                                        console.log("rvalue=eng",Rvaluedual)
+                                                                        
                                                                     }}
                                                                     
                                                                     
@@ -613,7 +866,8 @@ export default function QuestionPageD() {
                                             setoptionDatadual(optionsValuedual);
                                         }}
                                         config={{
-                                            extraPlugins: [uploadPlugin]
+                                            extraPlugins: [uploadPlugin],
+                                            placeholder:"type option("+(index+1)+")in hindi"
                                         }}
                                         />
                                         </div>
@@ -670,7 +924,8 @@ export default function QuestionPageD() {
                                                 setoptionData(optionsValue);
                                             }}
                                             config={{
-                                                extraPlugins: [uploadPlugin]
+                                                extraPlugins: [uploadPlugin],
+                                                placeholder:"type option(" +(index+1)+ ")in english"
                                             }}
                                             />
                                             </div>
@@ -731,7 +986,8 @@ export default function QuestionPageD() {
                                         }}
                                            
                                         config={{
-                                            extraPlugins: [uploadPlugin]
+                                            extraPlugins: [uploadPlugin],
+                                            placeholder:"type option("+ (index+1) +")in hindi"
                                         }}
                                         />
                                         </div>
@@ -776,7 +1032,8 @@ export default function QuestionPageD() {
                                             setoptionData(optionsValue);
                                         }}
                                         config={{
-                                            extraPlugins: [uploadPlugin]
+                                            extraPlugins: [uploadPlugin],
+                                            placeholder:"type option("+ (index+1) +")in english"
                                         }}
                                         />
                                         </div>
@@ -822,7 +1079,8 @@ export default function QuestionPageD() {
                               onChange={(event, editor) => { const data9 = editor.getData()
                               settextsolDual(data9)}}
                               config={{
-                                extraPlugins: [uploadPlugin]
+                                extraPlugins: [uploadPlugin],
+                                placeholder:"type solution in hindi"
                               }}
                               />
                             </div>
@@ -834,7 +1092,8 @@ export default function QuestionPageD() {
                            onChange={(event, editor) => { const data10 = editor.getData()
                            settextsol(data10) }}
                            config={{
-                            extraPlugins: [uploadPlugin]
+                            extraPlugins: [uploadPlugin],
+                            placeholder:"type solution in english"
                            }}
                           />
                           </div>
@@ -849,7 +1108,8 @@ export default function QuestionPageD() {
                         settextsol(data11)
                         }}
                         config={{
-                            extraPlugins: [uploadPlugin]
+                            extraPlugins: [uploadPlugin],
+                            placeholder:"type solution in english"
                         }}
                         />
                         </div>
@@ -864,7 +1124,8 @@ export default function QuestionPageD() {
                         settextsol(data12)
                         }}
                         config={{
-                            extraPlugins: [uploadPlugin]
+                            extraPlugins: [uploadPlugin],
+                            placeholder:"type solution in hindi"
                         }}
                         />
                         </div>
@@ -895,112 +1156,9 @@ export default function QuestionPageD() {
                             </div>
                         </div>
                         <DialogActions>
-                                <Button onClick={() => {setOpen(false);}} color="secondary" variant={'contained'}>Cancel</Button>
-                            {PostQuestions.QLanguage===1 || PostQuestions.QLanguage===2?<>
-                                <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
-                                if(formData2.ButtonTitle==='SAVE'){ 
-                                        
-                                        
-                                        await crud.create('/testquestionsapi/',
-                                        
-                                        {
-                                            qid:Qid[(Qid.length)-1].qu_id,
-                                            question_para:textpara,
-                                            question_text:textque,
-                                            ques_lang:PostQuestions.QLanguage,
-                                            description:AddFinalQuestions.QDes,
-                                            solution:textsol,
-                                            is_active:'true',
-                                            choices: 
 
-                                        
-                                        options.map((option,index) =>    
-                                        {
-                                        return(  
-                                            {
-                                                language:PostQuestions.QLanguage,
-                                                answer_text:optionData[index],
-                                                is_right:Tquestion[index]
-                                                
-                                            }
-                                        )
-                                        }
-                                     )
-                                    }
-                                    );
-                                    console.log("qid",Qid[(Qid.length)-1].qu_id)
-                                    console.log("R value",Tquestion[index])  
-                                    }
-                                    }} color="primary">
-                                    {formData2.ButtonTitle}
-                                </Button>
-                            </>:<></>}    
-                            {PostQuestions.QLanguage===3?<>
-                                <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
-                                 if(formData3.ButtonTitle==='SAVE'){ 
-                                    
-                                    await crud.create('/testquestionsapi/',
-                                    {
-                                        qid:Qid[(Qid.length)-1].qu_id,
-                                        question_para:textpara,
-                                        question_text:textque,
-                                        ques_lang:1,
-                                        description:AddFinalQuestions.QDes,
-                                        solution:textsol,
-                                        is_active:'true',
-                                        choices: 
-                                    options.map((option,index) =>    
-                                    {
-                                    return(  
-                                        {
-                                            language:1,
-                                            answer_text:optionData[index],
-                                            is_right:Tquestion[index]
-                                        }
-                                    )
-                                    
-                                    }
-                                    
-                                    )
-                                    
-                                    }
-                                    
-                                    );
-                                    
-                                    console.log("qid",Qid[(Qid.length)-1].qu_id)  
-                                    await crud.create('/testquestionsapi/',
-                                    {
-                                        qid:Qid[(Qid.length)-1].qu_id,
-                                        question_para:textpara,
-                                        question_text:textqueDual,
-                                        ques_lang:2,
-                                        description:AddFinalQuestions.QDes,
-                                        solution:textsolDual,
-                                        is_active:'true',
-                                        choices: 
-                                    options.map((option,index) =>    
-                                    {
-                                    return(  
-                                        {
-                                            language:2,
-                                            answer_text:optionDatadual[index],
-                                            is_right:TquestionDual[index]
-                                        }
-                                    )
-                                    }
-                                    )
-                                    
-                                    }
-                                   
-                                    );
-                                    console.log("qid",Qid[(Qid.length)-1].qu_id)
-                                }
-                                }} 
-                                color="primary">
-                                {formData3.ButtonTitle}
-                                </Button>
-                            </>:<></>}    
-                            </DialogActions>   
+                          
+                        </DialogActions>   
                         </Grid>
                         
                         
