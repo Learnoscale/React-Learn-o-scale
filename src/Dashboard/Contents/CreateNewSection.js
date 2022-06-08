@@ -29,6 +29,7 @@ export default function CreateNewSection(props) {
   let secOnetime = sectionTimeDuration.sectionTime;
   let timeleft = testTimeDuration;
   console.log('timeleft',timeleft);
+ 
   const handleClickOpen = () => {
     if(timeleft.testTime > 0){
     setOpen(true);
