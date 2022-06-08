@@ -165,7 +165,7 @@ export default function SignUp() {
                                                    }));
                                                }}/></> : <></>}
                     {hide.formHIde ? <>
-                        <input type="text" name="name" value={params.name} placeholder="UserName"
+                        <input type="text" name="name" value={params.name} placeholder="YourName"
                                onChange={(e) => {
                                    const {value: name} = e.target;
                                    setParams((params) => ({

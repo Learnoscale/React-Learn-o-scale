@@ -85,3 +85,22 @@ html {
 
   text-align: 'center',
 }
+
+figure {
+	border: thin #c0c0c0 solid;
+	display: flex;
+	flex-flow: column;
+	padding: 5px;
+	max-width: auto;
+	margin: auto;
+  }
+  
+img {
+	max-width: auto;
+	max-height: auto;
+	image-rendering: left;
+  }
+table {
+	border:1px solid black;
+	border-collapse: collapse;
+  }

@@ -15,9 +15,11 @@ import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 
 import VideoUpload from "./UploadVideo";
-import ReactHtmlParser from 'react-html-parser';
-import { useSelector } from "react-redux";
 
+import { useSelector } from "react-redux";
+import MathJax from "mathjax3-react";
+
+//import { useForm } from 'react-hook-form';
 export default function QuestionPageD() {  
 
   
@@ -326,15 +328,9 @@ export default function QuestionPageD() {
         return uploadAdapter(loader);
         }
       }
-      const onHandleSubmit = (e) => {
-        e.preventDefault();
-        textpara("");
-      };
-      function clear(){
-        setTextpara('')
-        setAddFinalQuestions('')
-      }
+   
       
+    //const {reset} = useForm();  
     useEffect(() => {
         
         getQuestion();
@@ -407,13 +403,36 @@ export default function QuestionPageD() {
                         <>
                         
                             <div key={index} className={'col-12'}>
-                              
-                                {index+1}. {ReactHtmlParser(question?.question_text)}
+                            
+                                {index+1}. {
+                                <MathJax.Provider>
+                                <MathJax.Html html={question?.question_text}/>
+                                </MathJax.Provider>    
+                                
+                                }
                                 {question?.choices.map((option,index)=>(
-                                 <RadioGroup key={index} aria-label="gender" name="gender1" value={ReactHtmlParser(question?.choices.answer_text)}  
+                                 <RadioGroup key={index} aria-label="gender" name="gender1" 
+                                 value=
+                                 {
+                                    <MathJax.Provider>
+                                    <MathJax.Html html={question?.choices.answer_text}/>
+                                    </MathJax.Provider> 
+                                     
+                                }  
                                  onClick={() => {handleChangeQ(option)}}
                                 > 
-                                <FormControlLabel value={ReactHtmlParser(option.answer_text)} checked={AnswerRadio===option} control={<Radio/>} label={ReactHtmlParser(option.answer_text)}/>
+                                <FormControlLabel value={
+                                    <MathJax.Provider>
+                                    <MathJax.Html html={option.answer_text}/>
+                                    </MathJax.Provider> 
+                                    
+                                    } checked={AnswerRadio===option} control={<Radio/>} 
+                                    label={
+                                        <MathJax.Provider>
+                                        <MathJax.Html html={option.answer_text}/>
+                                        </MathJax.Provider> 
+                                        
+                                        }/>
                                 </RadioGroup>
                                  ))}
                                 <div className={'my-2'}>
@@ -437,8 +456,9 @@ export default function QuestionPageD() {
                 <div className={'row'}>
                 <div className={'col-12 pl-0 pr-3'}>
                             
-                            <DialogTitle>{location.state?.question_type} </DialogTitle>
+                            
                             <div style={{position:'fixed',zIndex:1}} >
+                                <DialogTitle>{location.state?.question_type} </DialogTitle>
                                 <Button  variant={'contained'} className={clsx(classes.Button)}>Previous</Button>
                             {PostQuestions.QLanguage===1 || PostQuestions.QLanguage===2?<>
                                 <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
@@ -548,11 +568,12 @@ export default function QuestionPageD() {
                             </>:<></>} 
 
                              {PostQuestions.QLanguage===1 || PostQuestions.QLanguage===2?<>
-                                <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onSubmit={onHandleSubmit} onClick={async() => {
+                                <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
+                                //onHandleSubmit();  
+                                
                                 if(formData4.ButtonTitle==='NEXT'){ 
-                                       
-                                        
-                                        await crud.create('/testquestionsapi/',
+                                      
+                                    await crud.create('/testquestionsapi/',
                                         
                                         {
                                             qid:Qid[(Qid.length)-1].qu_id,
@@ -578,13 +599,14 @@ export default function QuestionPageD() {
                                         }
                                      )
                                     }
+                                    
                                     );
                                    
                                     }
-                                    clear();
+                                    
                                     }
                                    
-                                 
+                                     
                                     
                                     } color="primary">
                                     
@@ -664,7 +686,7 @@ export default function QuestionPageD() {
                             </div>
                             <IconButton onClick={() => {setOpen(false);}}  className={classes.menu}><ClearIcon/></IconButton>
                             <hr/>
-                </div>
+                </div><br></br><br></br><br></br><br></br><br></br>
                 <div className={'col-12 mt-3'}>
                 <div className="border p-4" onClick={handleEditor1} >
                 <label className={'pb-2'}>Select Paragraph</label>
@@ -676,6 +698,7 @@ export default function QuestionPageD() {
                                             onChange={(event, editor) => { const datapara = editor.getData()
                                             setTextpara(datapara)
                                             }}
+                                            name={textpara}
                                             value={AddFinalQuestions.QPara}
                                             config={{
                                                 extraPlugins: [uploadPlugin],

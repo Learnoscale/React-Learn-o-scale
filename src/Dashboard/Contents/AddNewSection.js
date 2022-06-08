@@ -132,8 +132,7 @@ export default function AddNewSection() {
   };
  
   useEffect(() => {
-    
-     getTestLayOut();
+    getTestLayOut();
   }, [location]);
   const addNewSectionSave = async () => {
       if(formData.ButtonTitle==='Add Section'){
