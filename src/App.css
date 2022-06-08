@@ -29,8 +29,7 @@ figure {
     flex-flow: column;
     padding: 5px;
     max-width: auto;
-    margin: auto;
-    align-items: left;
+    margin-left: auto;
   }
   
   img {
