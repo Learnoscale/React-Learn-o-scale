@@ -21,7 +21,7 @@ import clsx from "clsx";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import {useDispatch, useSelector, shallowEqual} from 'react-redux';
 import { testDurationAction } from '../../services/actions/testActions'; 
-
+import { sectionDurationAction } from '../../services/actions/sectionActions'; 
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
 const label = {inputProps: { 'aria-label': 'Switch demo'}};
@@ -81,7 +81,7 @@ export default function AddNewSection() {
 
   
   let sectionDuration = Number(saveSection.hour === undefined ? 0 : saveSection.hour*60) + Number(saveSection.minute === undefined ? 0 : saveSection.minute);
-  console.log(saveSection.hour,"=====>>>", saveSection.minute, 'sectionDuration', sectionDuration, 'saveSection.hour', saveSection.hour)
+
   let timeleft = (testTimeDuration.testTime);
   if(sectionDuration > 0){
      timeleft = ((testTimeDuration.testTime)) - (sectionDuration);
@@ -152,8 +152,8 @@ export default function AddNewSection() {
             });
          setOpen(false)
       }
-      console.log(saveSection.minute, 'minutes')
-     dispatch(testDurationAction(timeleft))
+     console.log(saveSection.minute, 'minutes')
+     dispatch(testDurationAction(timeleft),sectionDurationAction(sectionDuration))
       
   }
   return (

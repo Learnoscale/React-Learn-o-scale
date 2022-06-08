@@ -33,7 +33,7 @@ export default function QuestionCreateCourse() {
     function getClearAll() {
         setCourseData({
             courseName: '',
-            course_subtitle:''
+            category_subtitle:''
         });
     }
     //Edit
@@ -45,11 +45,11 @@ export default function QuestionCreateCourse() {
             });
             setCourseData({
                 courseName: data.category_title,
-                course_subtitle:data.category_short
+                category_subtitle:data.category_short
             })
     }
     //delete
-    async function deletecourse(){
+    async function deletecategory(){
        await crud.confirm();
         await crud.delete('/categoryapi/'+ data.category_id);
         getCourses();
@@ -119,16 +119,17 @@ export default function QuestionCreateCourse() {
                                         setAnchorEl(false)
                                     }}>Edit<Edit className={classes.menuIcon}/></MenuItem>
                                     <MenuItem className={'d-flex justify-content-between text-danger'} onClick={() => {
-                                       deletecourse();
+                                       deletecategory();
                                        setAnchorEl(false);}}>
-                                      Delete <Delete className={classes.menuIcon}/></MenuItem>
+                                      Delete <Delete className={classes.menuIcon}/>
+                                    </MenuItem>
                                     <MenuItem className={'text-success'} onClick={() => {setAnchorEl(false);}}>Enabled</MenuItem>
                                     <MenuItem onClick={() => {
                                         setAnchorEl(false);
                                         crud.confirm()
                                     }}>Disabled</MenuItem>
                                 </Menu>
-                                <h6>{value?.topic} Courses</h6>
+                                {/* <h6>{value?.topic} Courses</h6> */}
                             </div>
                         </div>
                     ))}
@@ -156,22 +157,22 @@ export default function QuestionCreateCourse() {
                     </div>
                         <div className={'row  my-4 pl-0 pr-0'}>
                             <div className={clsx('col-lg-3 col-12')}>
-                                <h6 className={classes.InputTitle}>Courses</h6>
+                                <h6 className={classes.InputTitle}>sub category</h6>
                             </div>
                             <div className={'col-lg-9 col-12'}>
-                            <TextField value={courseData.course_subtitle} onChange={(e)=>{
+                            <TextField value={courseData.category_subtitle} onChange={(e)=>{
                                      setCourseData(
                                          {...courseData,
-                                            course_subtitle:e.target.value})
-                            }} name='course_subtitle'  fullWidth variant="outlined" InputProps={{className: 'TextFieldHeight',}}/>
+                                            category_subtitle:e.target.value})
+                            }} name='category_subtitle'  fullWidth variant="outlined" InputProps={{className: 'TextFieldHeight',}}/>
                         </div>
-                        </div>
+                        </div> 
                 </div>
                 <DialogActions className={'mx-2'}>
                     <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
                     if(formData.ButtonTitle==='Create Category'){
                           await crud.create('/categoryapi/',{
-                              category_short:courseData.course_subtitle,
+                              category_short:courseData.category_subtitle,
                               category_title:courseData.courseName,
                             });
                         getCourses();
@@ -180,7 +181,7 @@ export default function QuestionCreateCourse() {
                         setOpen(false)
                     if(formData.ButtonTitle==='UPDATE'){
                            await crud.update('/categoryapi/'+data.category_id+'/',{
-                                    category_short:courseData.course_subtitle,      
+                                    category_short:courseData.category_subtitle,      
                                     category_title:courseData.courseName,      
                          });
                         getCourses();

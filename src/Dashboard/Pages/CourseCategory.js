@@ -59,7 +59,7 @@ export default function CourseCategory() {
 function getClearAll() {
     setCourseData({
         courseName: '',
-        course_subtitle:''
+        category_subtitle:''
     });
 }
   //Edit
@@ -71,7 +71,7 @@ function getClearAll() {
         });
         setCourseData({
             courseName: data.category_title,
-            course_subtitle:data.category_short
+            category_subtitle:data.category_short
         })
 }
   //delete
@@ -154,7 +154,7 @@ function getClearAll() {
                                         crud.confirm()
                                     }}>Disabled</MenuItem>
                                 </Menu>
-                                <h6>{value?.topic} Courses</h6>
+                                {/* <h6>{value?.topic} Courses</h6> */}
                             </div>
                         </div>
                     ))}
@@ -219,7 +219,7 @@ function getClearAll() {
                   <div className="col-lg-8"><h6>Recent Announcements</h6></div>
                   <div className="col-lg-4 mb-3">
                   <Button variant="contained" size="small">
-         <b> Create</b>
+        <b> Create</b>
         </Button></div>
                   </div>
                   <div className="row bBorder px-lg-0">
@@ -289,14 +289,14 @@ function getClearAll() {
                     </div>
                         <div className={'row  my-4 pl-0 pr-0'}>
                             <div className={clsx('col-lg-3 col-12')}>
-                                <h6 className={classes.InputTitle}>Courses</h6>
+                                <h6 className={classes.InputTitle}>sub category</h6>
                             </div>
                             <div className={'col-lg-9 col-12'}>
-                            <TextField value={courseData.course_subtitle} onChange={(e)=>{
+                            <TextField value={courseData.category_subtitle} onChange={(e)=>{
                                      setCourseData(
                                          {...courseData,
-                                            course_subtitle:e.target.value})
-                            }} name='course_subtitle'  fullWidth variant="outlined" InputProps={{className: 'TextFieldHeight',}}/>
+                                            category_subtitle:e.target.value})
+                            }} name='category_subtitle' fullWidth variant="outlined" InputProps={{className: 'TextFieldHeight',}}/>
                         </div>
                         </div>
                 </div>
@@ -304,7 +304,7 @@ function getClearAll() {
                     <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={async() => {
                     if(formData.ButtonTitle==='Create Category'){
                           await crud.create('/categoryapi/',{
-                              category_short:courseData.course_subtitle,
+                              category_short:courseData.category_subtitle,
                               category_title:courseData.courseName,
                             });
                         getCourses();
@@ -313,7 +313,7 @@ function getClearAll() {
                         setOpen(false)
                     if(formData.ButtonTitle==='UPDATE'){
                            await crud.update('/categoryapi/'+data.category_id+'/',{
-                                    category_short:courseData.course_subtitle,      
+                                    category_short:courseData.category_subtitle,      
                                     category_title:courseData.courseName,      
                          });
                         getCourses();

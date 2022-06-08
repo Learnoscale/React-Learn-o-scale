@@ -205,7 +205,7 @@ export default function CourseCourse() {
                                        setAnchorEl(false);}}>
                                       Delete <Delete className={classes.menuIcon}/></MenuItem>
                                 </Menu>
-                                <h6>{value?.topic} Courses</h6>
+                                {/* <h6>{value?.topic} Courses</h6> */}
                             </div>
                         </div>
                     ))}

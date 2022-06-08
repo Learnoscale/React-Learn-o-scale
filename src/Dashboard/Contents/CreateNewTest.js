@@ -345,7 +345,7 @@ const createTestSaveData = async () => {
        </div>
         </DialogContent>
         <DialogActions>
-        <CreateNewSection/>
+        <CreateNewSection testname={saveTest.testname} />
         <Button className={clsx(classes.Btn,)} variant={'contained'} onClick={createTestSaveData} color="primary"> 
                         {formData.ButtonTitle}
         </Button>

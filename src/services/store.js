@@ -6,11 +6,13 @@ import storage from 'redux-persist/lib/storage';
 import  userReducer from './Slices/UserSlice';
 import themeReducer from './Slices/ThemeSlice';
 import testReducer from './reducers/testReducer';
+import sectionReducer from './reducers/sectionReducer';
 
 const reducers = combineReducers({
     user: userReducer,
     theme: themeReducer,
     testDurationState: testReducer,
+    sectionDurationState: sectionReducer
 })
 
 const persistConfig = {

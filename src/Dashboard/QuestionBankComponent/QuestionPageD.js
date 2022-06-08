@@ -129,7 +129,10 @@ export default function QuestionPageD() {
         }
     ]);
     
-   
+    const [formData, setFormData] = useState({
+        formTitle: '',
+        ButtonTitle: ''
+    })
     const [formData2, setFormData2] = useState({
         formTitle: '',
         ButtonTitle: ''
@@ -149,8 +152,15 @@ export default function QuestionPageD() {
     const [AddFinalQuestions, setAddFinalQuestions] = useState('');
     const[Tquestion,setTquestion]=useState([false]);
     const[TquestionDual,setTquestionDual]=useState([false]);
-   
-  
+    const[quedisable,setQuedisable]=useState(true);
+    const[detaildisable,setDetaildisable]=useState(false);
+    function GetFormManage() {
+        setOpen(true)
+        setFormData({
+            formTitle: 'Create New Question',
+            ButtonTitle: 'Add Details',
+        });
+    }
 
    
 
@@ -316,15 +326,15 @@ export default function QuestionPageD() {
         return uploadAdapter(loader);
         }
       }
-      function getClearAll() {
+      const onHandleSubmit = (e) => {
+        e.preventDefault();
+        textpara("");
+      };
+      function clear(){
+        setTextpara('')
+        setAddFinalQuestions('')
+      }
       
-        
-        setTextpara({
-           
-        });
-        setTextpara1({});
-        setTextpara2({});
-    }
     useEffect(() => {
         
         getQuestion();
@@ -362,7 +372,7 @@ export default function QuestionPageD() {
                         <label htmlFor="contained-button-file">
                             <Button
                             onClick={() => {
-                                
+                                GetFormManage();
                                 AddFinalQuestion();
                                 AddFinalQuestion2();
                                 AddFinalQuestion4();
@@ -428,7 +438,7 @@ export default function QuestionPageD() {
                 <div className={'col-12 pl-0 pr-3'}>
                             
                             <DialogTitle>{location.state?.question_type} </DialogTitle>
-                            <div style={{position:'fixed',zIndex:1}}>
+                            <div style={{position:'fixed',zIndex:1}} >
                                 <Button  variant={'contained'} className={clsx(classes.Button)}>Previous</Button>
                             {PostQuestions.QLanguage===1 || PostQuestions.QLanguage===2?<>
                                 <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
@@ -437,11 +447,7 @@ export default function QuestionPageD() {
                                         await crud.create('/testquestionsapi/',
                                         
                                         {
-                                           // qid:Qid[(Qid.length)-1].qu_id,
-                                            qtype:PostQuestions.QType,
-                                            difficulty:PostQuestions.QDifficulty,
-                                            user:user.user.id,
-                                            topic:location.state?.topic1,
+                                            qid:Qid[(Qid.length)-1].qu_id,
                                             question_para:textpara,
                                             question_text:textque,
                                             ques_lang:PostQuestions.QLanguage,
@@ -482,9 +488,9 @@ export default function QuestionPageD() {
                                     await crud.create('/testquestionsapi/',
                                     {
                                         qid:Qid[(Qid.length)-1].qu_id,
-                                        question_para:textpara1,
+                                        question_para:textpara,
                                         question_text:textque,
-                                        ques_lang:1,
+                                        ques_lang:PostQuestions.QLanguage,
                                         description:AddFinalQuestions.QDes,
                                         solution:textsol,
                                         is_active:'true',
@@ -542,18 +548,14 @@ export default function QuestionPageD() {
                             </>:<></>} 
 
                              {PostQuestions.QLanguage===1 || PostQuestions.QLanguage===2?<>
-                                <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
+                                <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onSubmit={onHandleSubmit} onClick={async() => {
                                 if(formData4.ButtonTitle==='NEXT'){ 
-                                        
                                        
+                                        
                                         await crud.create('/testquestionsapi/',
                                         
                                         {
-                                           // qid:Qid[(Qid.length)-1].qu_id,
-                                            qtype:PostQuestions.QType,
-                                            difficulty:PostQuestions.QDifficulty,
-                                            user:user.user.id,
-                                            topic:location.state?.topic1,
+                                            qid:Qid[(Qid.length)-1].qu_id,
                                             question_para:textpara,
                                             question_text:textque,
                                             ques_lang:PostQuestions.QLanguage,
@@ -577,14 +579,17 @@ export default function QuestionPageD() {
                                      )
                                     }
                                     );
-                                  
+                                   
                                     }
-                                    getClearAll();
-                              
+                                    clear();
                                     }
+                                   
+                                 
                                     
                                     } color="primary">
+                                    
                                     {formData4.ButtonTitle}
+                                    
                                    
                                 </Button>
                             </>:<></>}    
@@ -593,10 +598,10 @@ export default function QuestionPageD() {
                                  
                                  if(formData4.ButtonTitle==='NEXT'){ 
                                     
-                                   
+                                    
                                     await crud.create('/testquestionsapi/',
                                     {
-                                        qid:Qid[(Qid.length)-1].qu_id,
+                                        //qid:Qid[(Qid.length)-1].qu_id,
                                         question_para:textpara1,
                                         question_text:textque,
                                         ques_lang:1,
@@ -625,7 +630,7 @@ export default function QuestionPageD() {
                                     console.log("qid",Qid[(Qid.length)-1].qu_id)  
                                     await crud.create('/testquestionsapi/',
                                     {
-                                        qid:Qid[(Qid.length)-1].qu_id,
+                                        //qid:Qid[(Qid.length)-1].qu_id,
                                         question_para:textpara2,
                                         question_text:textqueDual,
                                         ques_lang:2,
@@ -649,8 +654,7 @@ export default function QuestionPageD() {
                                     );
                                    
                                 }
-                                getClearAll();
-                                
+                               
                                 }} 
                                 color="primary">
                                 {formData4.ButtonTitle}
@@ -659,12 +663,13 @@ export default function QuestionPageD() {
                               
                             </div>
                             <IconButton onClick={() => {setOpen(false);}}  className={classes.menu}><ClearIcon/></IconButton>
-                            
                             <hr/>
                 </div>
                 <div className={'col-12 mt-3'}>
                 <div className="border p-4" onClick={handleEditor1} >
+                <label className={'pb-2'}>Select Paragraph</label>
                 <div style={{ display:(showeditor1===true)?'block':'none'}} > 
+                
                 {PostQuestions.QLanguage===1?<>       
                 <CKEditor editor={Editor} datapara={textpara} 
                                            
@@ -763,8 +768,26 @@ export default function QuestionPageD() {
                         <Grid container className="mt-3">
                             <Grid item xs={12}>
                             <DialogActions>
-                      
-                            <Button className={clsx(classes.Btn,)} startIcon={<AddIcon />} variant={'contained'}
+                            <Button className={clsx(classes.Btn,)} startIcon={<AddIcon />} disabled={detaildisable} variant={'contained'} onClick={async() => {
+                                    if(formData.ButtonTitle==='Add Details'){
+                                        await crud.create('/questionsapi/',{
+                                            qtype:PostQuestions.QType,
+                                            difficulty:PostQuestions.QDifficulty,
+                                            language:PostQuestions.QLanguage,
+                                            user:user.user.id,
+                                            topic:location.state?.topic1
+                                        });
+                                    console.log("under",)
+                                    setQuedisable(false);
+                                    setDetaildisable(true);
+                                    }
+                                    
+                                    }} color="primary">
+                                    {formData.ButtonTitle}
+                                    
+
+                            </Button>
+                            <Button className={clsx(classes.Btn,)} startIcon={<AddIcon />} disabled={quedisable} variant={'contained'}
                             onClick={async() => { questionList() }}  color="primary" >
                               ADD Questions
                             </Button>
