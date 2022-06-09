@@ -163,9 +163,7 @@ export default function QuestionPageD() {
             ButtonTitle: 'Add Details',
         });
     }
-
-   
-
+    
     function questionList(){
         setadQuestions([...adQuestions,{value:""}]);
     }
@@ -328,9 +326,26 @@ export default function QuestionPageD() {
         return uploadAdapter(loader);
         }
       }
+    function clear(){ 
+        console.log("helo")
+    
+        setTextpara({textpara:[{}]})
+        setTextpara({textpara:[{}]})
+        setTextpara1({textpara1:[{}]})
+        setTextpara2({textpara2:[{}]})
+        setAddFinalQuestions({addFinalQuestions:[]})
+       
+       
+        
+        
+    }
+  
+   
+    
+  
     
       
-    //const {reset} = useForm();  
+ 
     useEffect(() => {
         
         getQuestion();
@@ -339,6 +354,7 @@ export default function QuestionPageD() {
         getDifficulty();
         getLanguage();
         getQid();
+        
         
         // eslint-disable-next-line
     }, [location]);
@@ -405,7 +421,7 @@ export default function QuestionPageD() {
                             <div key={index} className={'col-12'}>
                             
                                 {index+1}. {
-                                <MathJax.Provider>
+                                <MathJax.Provider >
                                 <MathJax.Html html={question?.question_text}/>
                                 </MathJax.Provider>    
                                 
@@ -448,11 +464,12 @@ export default function QuestionPageD() {
                 </div>
             </div> 
 
-            <Dialog disableEnforceFocus={true} maxWidth={'lg'}
+            <Dialog  disableEnforceFocus={true} maxWidth={'lg'}
              
-             open={open}
-             TransitionComponent={Transition}>
-               <div className={'container-fluid'}>
+            open={open}
+            TransitionComponent={Transition}>
+           
+                <div className={'container-fluid'}>
                 <div className={'row'}>
                 <div className={'col-12 pl-0 pr-3'}>
                             
@@ -569,8 +586,7 @@ export default function QuestionPageD() {
 
                              {PostQuestions.QLanguage===1 || PostQuestions.QLanguage===2?<>
                                 <Button className={clsx(classes.Button,"mx-2")} variant={'contained'} onClick={async() => {
-                                //onHandleSubmit();  
-                               
+                           
                                 if(formData4.ButtonTitle==='NEXT'){ 
                                       
                                     await crud.create('/testquestionsapi/',
@@ -601,18 +617,18 @@ export default function QuestionPageD() {
                                     }
                                     
                                     );
-                                   
+                                    
                                     }
-                                  
-                                    }
+                               // clear();
+                            
+                                }
+        
                                    
-                                     
                                     
-                                    } color="primary">
+                                } color="primary">
+                               
+                                {formData4.ButtonTitle}
                                     
-                                    {formData4.ButtonTitle}
-                                    
-                                   
                                 </Button>
                             </>:<></>}    
                             {PostQuestions.QLanguage===3?<>
@@ -676,7 +692,7 @@ export default function QuestionPageD() {
                                     );
                                    
                                 }
-                               
+                                clear();
                                 }} 
                                 color="primary">
                                 {formData4.ButtonTitle}
@@ -698,8 +714,8 @@ export default function QuestionPageD() {
                                             onChange={(event, editor) => { const datapara = editor.getData()
                                             setTextpara(datapara)
                                             }}
-                                            name={textpara}
-                                            value={AddFinalQuestions.QPara}
+                                           
+                                            value={textpara}
                                             config={{
                                                 extraPlugins: [uploadPlugin],
                                                 placeholder:"type paragraph in hindi"
@@ -712,7 +728,7 @@ export default function QuestionPageD() {
                                             onChange={(event, editor) => { const datapara = editor.getData()
                                             setTextpara(datapara)
                                             }}
-                                            value={AddFinalQuestions.QPara}
+                                            value={textpara}
                                             config={{
                                                 extraPlugins: [uploadPlugin],
                                                 placeholder:"type paragraph in english"
@@ -725,7 +741,7 @@ export default function QuestionPageD() {
                                             onChange={(event, editor) => { const datapara1 = editor.getData()
                                             setTextpara1(datapara1)
                                             }}
-                                            value={AddFinalQuestions.QPara}
+                                            value={textpara1}
                                             config={{
                                                 extraPlugins: [uploadPlugin],
                                                 placeholder:"type paragraph in hindi"
@@ -736,7 +752,7 @@ export default function QuestionPageD() {
                                             onChange={(event, editor) => { const datapara2 = editor.getData()
                                             setTextpara2(datapara2)
                                             }}
-                                            value={AddFinalQuestions.QPara}
+                                            value={textpara2}
                                             config={{
                                                 extraPlugins: [uploadPlugin],
                                                 placeholder:"type paragraph in english"
@@ -1195,7 +1211,7 @@ export default function QuestionPageD() {
                         <div className={'col-5 mt-3'}>
                             <label className={'pb-2'}>Reference</label>
                             <div>
-                            <TextField value={AddFinalQuestions.QDes} variant={'outlined'}
+                            <TextField type="text" value={AddFinalQuestions.QDes} variant={'outlined'}
                             onChange={(e) => {setAddFinalQuestions({...AddFinalQuestions,QDes:e.target.value})}} 
                             name='QDes'/>
                             </div>
@@ -1230,7 +1246,7 @@ export default function QuestionPageD() {
               
                 </div>
                 </div>
-
+            
             </Dialog>    
             {loader?<Loader/>:<></>}
 </>

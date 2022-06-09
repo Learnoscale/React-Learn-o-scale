@@ -11,7 +11,7 @@ import Drawer from "../../MainComponents/Drawer";
 import {Themes} from '../../Theme/theme';
 import logo from "../../Images/dashLogo.jpg";
 import '../../Website/Component/headerCss.css';
-
+import AddCompany from '../Contents/AddCompany'; 
 
 export default function HeaderWeb() {
  
@@ -41,6 +41,14 @@ export default function HeaderWeb() {
                                                  className="nav-link">{value.title}</NavLink> : <></>}
                                 </li>
                             )))}
+                            <li className="nav-item dropdown">
+                              <Link to={'/'} className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                              data-bs-toggle="dropdown" aria-expanded="false">Settings</Link>
+                               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <li><Link to={'/dashboard'} className="dropdown-item" ><AddCompany/></Link></li>
+                                  <li><Link to={'/'} className="dropdown-item">Abc</Link></li>
+                              </ul>
+                            </li>
                             <li className="nav-item dropdown">
                                 <NavLink activeClassName={'active_link'} to={'/notification'} className="nav-link">
                                     <Badge badgeContent={4} color="secondary" className={'mx-3 mx-lg-0'}>

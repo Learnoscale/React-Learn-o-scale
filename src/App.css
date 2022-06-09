@@ -25,16 +25,18 @@
 
 figure {
     border: thin #c0c0c0 solid;
-    display: flex;
+    display: inline;
     flex-flow: column;
     padding: 5px;
     max-width: auto;
-    margin-left: 0;
+    
+   
   }
   
   img {
     max-width: auto;
     max-height: auto;
+    
   }
   table {
     border:1px solid black;
@@ -50,6 +52,8 @@ figure {
   .preview {
     max-width: 200px;
   } */
+
+ 
   
   
   

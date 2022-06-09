@@ -5,6 +5,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Divider from '@mui/material/Divider';
+import CreateNewInstruction from './CreateNewInstruction';
 
 export default function TestInstructions() {
   return (
@@ -15,7 +16,7 @@ export default function TestInstructions() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Test Instructions</Typography>
+          <Typography><CreateNewInstruction/></Typography>
         </AccordionSummary>
         <Divider />
         <AccordionDetails>

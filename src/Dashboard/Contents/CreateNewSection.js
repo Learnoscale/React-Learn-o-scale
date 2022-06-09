@@ -28,7 +28,7 @@ export default function CreateNewSection(props) {
   const  sectionTimeDuration = useSelector(state => state.sectionDurationState, shallowEqual);
   let secOnetime = sectionTimeDuration.sectionTime;
   let timeleft = testTimeDuration;
-  console.log('timeleft',timeleft);
+
  
   const handleClickOpen = () => {
     if(timeleft.testTime > 0){
@@ -59,7 +59,7 @@ export default function CreateNewSection(props) {
           <div className='container-fluid' style={{testAlign: 'center'}}>
             <div className="row py-2">
             <div className='col-sm-3'>
-            Test Name: {props.name} 
+            Test Name: {props.testname} 
             </div>
             <div className="col-sm-5"></div>
             <div className="col-sm-3" style={{testAlign: 'center'}}>
