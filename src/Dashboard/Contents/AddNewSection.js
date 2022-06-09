@@ -153,7 +153,7 @@ export default function AddNewSection() {
       }
      console.log(saveSection.minute, 'minutes')
      dispatch(testDurationAction(timeleft),sectionDurationAction(sectionDuration))
-     console.log(sectionDuration,'sectin-time') 
+     console.log(sectionDurationAction(sectionDuration),'sectin-time') 
   }
   return (
     <> 

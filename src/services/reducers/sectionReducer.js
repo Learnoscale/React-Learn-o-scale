@@ -16,5 +16,5 @@ const sectionDurationReducer = (state = initialState, action) => {
             return state;
     }
 };
-console.log("time for reducer",sectionDurationReducer.sectionTime)
+
 export default sectionDurationReducer;
