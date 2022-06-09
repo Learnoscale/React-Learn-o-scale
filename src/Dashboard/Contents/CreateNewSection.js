@@ -26,6 +26,7 @@ export default function CreateNewSection(props) {
   const [open, setOpen] = React.useState(false);
   const  testTimeDuration = useSelector(state => state.testDurationState, shallowEqual);
   const  sectionTimeDuration = useSelector(state => state.sectionDurationState, shallowEqual);
+  console.log("ddd",sectionTimeDuration)
   let secOnetime = sectionTimeDuration.sectionTime;
   console.log("timeki bat",secOnetime)
   let timeleft = testTimeDuration;
