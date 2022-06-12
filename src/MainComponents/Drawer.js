@@ -61,15 +61,15 @@ export default function Drawer(props) {
                     </ListItem>
             </List>
             <Divider />
-            {props.component.map((nav => (
+            {props.component.map((nav, ind) => (
                 <>
-                    <ListItem button key={nav.title} to={nav.page} component={Link} >
+                    <ListItem button key={ind} to={nav.page} component={Link} >
                         <ListItemIcon>{nav.icon}</ListItemIcon>
                         <ListItemText primary={nav.title}/>
                     </ListItem>
 
                 </>
-            )))}
+            ))}
             <ListItem button onClick={() => {dispatch(makeLogout({}));}}
             >
                 <ListItemIcon><ExitToAppIcon/></ListItemIcon>

@@ -104,32 +104,32 @@ import './showshop.css'
       <table className="table table-bordered table-hover">
         <tbody>
           <tr style={{ background: "#edf9f6" }}>
-            <th class="showshopstyle6" style={{width: "20%"}} >
+            <th className="showshopstyle6" style={{width: "20%"}} >
               SN
             </th>
-            <th class="showshopstyle6" style={{width: "20%"}} >
+            <th className="showshopstyle6" style={{width: "20%"}} >
               SN
             </th>
-            <th class="showshopstyle6" style={{width: "20%"}} >
+            <th className="showshopstyle6" style={{width: "20%"}} >
               SN
             </th>
-            <th class="showshopstyle6" style={{width: "30%"}}scope='col'>
+            <th className="showshopstyle6" style={{width: "30%"}}scope='col'>
               Test Name
             </th>
-            <th class="showshopstyle6" style={{width: "30%"}}scope='col'>
+            <th className="showshopstyle6" style={{width: "30%"}}scope='col'>
               Test Name
             </th>
-            <th class="showshopstyle6" style={{width: "30%"}}scope='col'>
+            <th className="showshopstyle6" style={{width: "30%"}}scope='col'>
               Test Name
             </th>
-            <th class="showshopstyle6" style={{width: "50%"}}>
+            <th className="showshopstyle6" style={{width: "50%"}}>
               Action
             </th>
           </tr>
           <tr>
-            <td class="showshopstyle6">1</td>
-            <td class="showshopstyle6">1</td>
-            <td class="showshopstyle6">1</td>
+            <td className="showshopstyle6">1</td>
+            <td className="showshopstyle6">1</td>
+            <td className="showshopstyle6">1</td>
             <td>ASM Psycho Booster 01</td>
             <td>ASM Psycho Booster 01</td>
             <td>ASM Psycho Booster 01</td>
@@ -644,7 +644,7 @@ import './showshop.css'
               style={{ width: "100%" }}
             />
           </span>
-          {/* <button class="close" data-dismiss="modal"
+          {/* <button className="close" data-dismiss="modal"
       style="position: relative; margin-top: -65PX;">×</button> */}
         </div>
         <div

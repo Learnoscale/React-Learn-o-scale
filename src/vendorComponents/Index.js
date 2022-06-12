@@ -984,8 +984,8 @@ export const Index = () => (
                       Your message has been sent. Thank you!
                     </div>
                   </div>
-                  {/*<div class="text-center"><button type="submit">Send Message</button></div>
-            <div class="text-center"><button type="submit">Captcha</button></div>
+                  {/*<div className="text-center"><button type="submit">Send Message</button></div>
+            <div className="text-center"><button type="submit">Captcha</button></div>
             */}
                   <div
                     className="g-recaptcha"

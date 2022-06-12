@@ -1,19 +1,9 @@
-import {combineReducers, configureStore} from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import {persistReducer, persistStore} from 'redux-persist';
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 import storage from 'redux-persist/lib/storage';
-import  userReducer from './Slices/UserSlice';
-import themeReducer from './Slices/ThemeSlice';
-import testReducer from './reducers/testReducer';
-import sectionReducer from './reducers/sectionReducer';
-
-const reducers = combineReducers({
-    user: userReducer,
-    theme: themeReducer,
-    testDurationState: testReducer,
-    sectionDurationState: sectionReducer
-})
+import reducers from './reducers/Index';
 
 const persistConfig = {
     key: 'root',
@@ -23,6 +13,8 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducers)
 export  const store= configureStore({
     reducer: persistedReducer,
-    middleware:[thunk,logger]
+    // middleware:[thunk,logger]
+    middleware:[thunk]
+
 })
 export const persistor=persistStore(store);

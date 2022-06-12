@@ -17,30 +17,30 @@ export default function HowerD() {
    <Dropdown.Menu className='bg-light' show={showDropdown}>
         <Dropdown.Item href="#/action-1">
         <img height="30px" width="30px" src={answer} alt="logo"/>
-        <div class="a1">0</div>
+        <div className="a1">0</div>
           <small>&nbsp; Answered</small>
         </Dropdown.Item>
         <Dropdown.Item href="#/action-2">
         <img height="30px" width="30px" src={notanswer} alt="logo"/>
-        <div class="a2">2</div>
+        <div className="a2">2</div>
         <small>&nbsp; Not Answered</small>
           
         </Dropdown.Item>
         <Dropdown.Item href="#/action-3">
         <img height="30px" width="30px" src={markreview} alt="logo"/>
-        <div class="a3">0</div>
+        <div className="a3">0</div>
         <small>&nbsp; Not Visited</small>
           
         </Dropdown.Item>
         <Dropdown.Item href="#/action-4">
         <img height="30px" width="30px" src={notvisited} alt="logo"/>
-        <div class="a4">0</div>
+        <div className="a4">0</div>
         <small>&nbsp; Marked for Review</small>
         
         </Dropdown.Item>
         <Dropdown.Item href="#/action-5">
         <img height="30px" width="30px" src={notvisited} alt="logo"/>
-        <div class="a5">0</div>
+        <div className="a5">0</div>
         <small>&nbsp; Answered and Marked for Review <br/>
           (will not be considerd for evaluation)</small>
          

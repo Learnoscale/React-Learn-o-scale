@@ -81,7 +81,7 @@ export default function CreateNewSection(props) {
             </div>
           </div>
           <Divider />
-          <div class="container-fluid min-vh-100 d-flex flex-column">
+          <div className="container-fluid min-vh-100 d-flex flex-column">
     <div className="row flex-grow-1 " style={{fontSize:'14px'}}>
         <div className="col-md-3 border">
            <div className="row mb-2"><SimpleAccordion /></div>

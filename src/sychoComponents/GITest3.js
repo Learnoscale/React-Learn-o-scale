@@ -138,7 +138,7 @@ export default function GITestThree() {
           <div className="row px-1 bg-white border" style={{ position: 'fixed',bottom: '10px', width: '100%'}}>
            <div className="col-2"></div>
             <div className="col-8 text-center ">
-            <button type="button" class="btn btn-outline-danger px-4  fs-6" onClick={() => navigate.push('/section3')}>Skip</button></div>
+            <button type="button" className="btn btn-outline-danger px-4  fs-6" onClick={() => navigate.push('/section3')}>Skip</button></div>
             <div className="col-2"></div> 
           </div>
           </div>

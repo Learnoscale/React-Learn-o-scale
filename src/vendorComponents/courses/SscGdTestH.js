@@ -437,7 +437,7 @@ import './SscChsl.css'
               style={{ width: "100%" }}
             />
           </span>
-          {/* <button class="close" data-dismiss="modal"
+          {/* <button className="close" data-dismiss="modal"
       style="position: relative; margin-top: -65PX;">×</button> */}
         </div>
         <div

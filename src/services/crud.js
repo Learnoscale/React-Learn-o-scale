@@ -14,8 +14,8 @@ export class CrudFactory extends CrudRequest {
     {
       xp=''
     }
-    this.baseUrl = "http://"+xp+".learnoscale.in";
-    //this.baseUrl="http://www.janjeevseva.learnoscale.in";
+    // this.baseUrl = "http://"+xp+".learnoscale.in";
+    this.baseUrl="http://www.janjeevseva.learnoscale.in";
     //this.baseUrl = "https://lmsoskillupdated.herokuapp.com";
   }
   // const psl = require('psl');

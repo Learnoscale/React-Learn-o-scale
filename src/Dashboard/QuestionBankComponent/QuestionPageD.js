@@ -770,7 +770,7 @@ export default function QuestionPageD() {
                             onChange={(e) => {setPostQuestions({...PostQuestions,QDifficulty:e.target.value})}} 
                             name='QDifficulty'fullWidth  select>
                                 {Diff.map((diff,index)=>(
-                                <MenuItem value={diff.dl_id}>{diff.dl_title}</MenuItem>
+                                <MenuItem key={index} value={diff.dl_id}>{diff.dl_title}</MenuItem>
                                 ))}
                             </TextField>  
                             </>:<></>}   
@@ -782,7 +782,7 @@ export default function QuestionPageD() {
                              onChange={(e) => {setPostQuestions({...PostQuestions,QLanguage:e.target.value})}}  
                              name='QLanguage'  fullWidth  select>
                             {Lang.map((lang,index)=>(   
-                                <MenuItem value={lang.lg_id}>{lang.lg_title}</MenuItem>
+                                <MenuItem key={index} value={lang.lg_id}>{lang.lg_title}</MenuItem>
                             ))}
                             </TextField>
                             </>:<></>}  
@@ -797,7 +797,7 @@ export default function QuestionPageD() {
                              onChange={(e) => {setPostQuestions({...PostQuestions,QType:e.target.value})}} 
                              name="QType" fullWidth  select>
                              {Type.map((type,index)=>(     
-                               <MenuItem value={type.qt_id}>{type.qt_title}</MenuItem>
+                               <MenuItem key={index} value={type.qt_id}>{type.qt_title}</MenuItem>
                             ))}
                             </TextField>
                             </>:<></>}   
@@ -838,7 +838,7 @@ export default function QuestionPageD() {
                         {
                         adQuestions.map((option, index) => <>
                         { 
-                        <Grid container spacing={2} justifyContent={"space-between"}>
+                        <Grid key={index} container spacing={2} justifyContent={"space-between"}>
                             <div className={'col-12 mt-3'}>Question.{index+1}</div>
                             <div className={'col-12 mt-3'}>
                                   {PostQuestions.QLanguage===3?<>

@@ -306,7 +306,7 @@ const createTestSaveData = async () => {
              onChange={(e) => {setsaveTest({...saveTest,testlayout:e.target.value})}} 
              className='border' id="test-layout">
              {testLayout?.map((value, index) => (  
-              <option value={value?.tl_id}>{value?.tl_title}</option>
+              <option key={index} value={value?.tl_id}>{value?.tl_title}</option>
              ))} 
              </select>
            </div>
